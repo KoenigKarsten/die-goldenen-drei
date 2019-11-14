@@ -1,0 +1,39 @@
+
+
+    <div class="modalContentFree">
+        <span class="close">&times;</span>
+            <div class="roomInfoFree">
+                <div class="modal-Box">
+                <header>
+                    <div class='header'>
+                        <form id='radioStatus'>
+                            <label for="radioVermietet">
+                                <input type="radio" id="radioVermietet" name="bookingOrMaintaince" value="vermieten" checked> vermieten<br>
+                            </label>
+                            <label for="radioOOO">
+                                <input type="radio" id="radioOOO" name="bookingOrMaintaince" value="in Wartung"> in Wartung<br>
+                            </label>
+                        </form> 
+                    </div>
+                </header>
+
+                <div class='modal-boxInfo'>
+                    <form action="modal-boxInfoSave.php" method="post">
+                        <select name="anrede" id="anrede">
+                            <option value="herr">Herr</option>
+                            <option value="frau">Frau</option>
+                            <option value="divers">Divers</option>
+                        </select>
+                        <input type="text" name="vorname" id="vorname" placeholder="Vorname *" required>
+                        <input type="text" name="nachname" id="nachname" placeholder="Nachname *" required>
+                        <input type="text" name="strasse" id="strasse" placeholder="Strasse *" required>
+                        <p><div class="footer">
+                                <button type="button" class="btn btn-secondary" >Close</button>
+                                <!-- <button type="submit" class="btn btn-success">Bearbeiten</button> -->
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

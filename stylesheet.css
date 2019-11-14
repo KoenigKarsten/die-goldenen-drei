@@ -1,0 +1,48 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.mainpage{
+    height: 100vh;
+    background: rgb(245, 242, 237);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+}
+
+.fluchtplan{
+    width: auto;
+    flex: 1 1 auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+fieldset{
+    margin-bottom: 50;
+    border:7px rgb(87, 85, 83) double;
+}
+
+#d002{
+    position: absolute;
+    left: 13.4%;
+    top: 0;
+}
+
+#d003{
+    position: absolute;
+    left: 17.9%;
+    top: 0;
+}
+
+#d025{
+    position: absolute;
+    left: 0px;
+    top: 57.5%;
+}
+
+
+
