@@ -95,13 +95,10 @@ if($showFormular) {
 </div> 
 <button type="submit" class="btn btn-lg btn-primary btn-block">Reservieren</button>
 </form>
- 
-<?php
-} //Ende von if($showFormular)
-	
-
-?>
 </div>
+
+
+
 <?php 
 include("templates/footer.inc.php")
 ?>

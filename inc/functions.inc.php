@@ -63,7 +63,6 @@ function getSiteURL() {
 function error($error_msg) {
 	include("templates/header.inc.php");
 	include("templates/error.inc.php");
-	// include("templates/footer.inc.php");
 	exit();
 }
 

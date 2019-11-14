@@ -1,9 +1,9 @@
 function drawRooms() {
     var draw = SVG('polygon_1');
-    var width = "100%";
+    var width = 1170;
     var height = 330;
     draw.size(width, height);
-    var background = draw.rect(width, height).attr({ fill: '#FFF' });
+    var background = draw.rect(width, height).attr({ fill: 'rgb(71, 69, 66)' });
 
 
 
