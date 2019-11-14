@@ -2,9 +2,3 @@
 SchoolProjekt
 
 Gruppenprojekt zur Verwaltung des Internatsgebäude
-
-
-
-
-
-GAAAAAAAAAY
