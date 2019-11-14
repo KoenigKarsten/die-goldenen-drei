@@ -21,6 +21,12 @@
   bottom: 15px;
 }
 
+.wahlReiter{
+  position: absolute;
+  top: 20%;
+  width: auto;
+}
+
 
 /* The Modal (background) */
 .modal {
