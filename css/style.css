@@ -7,7 +7,7 @@
 body{
 font-family: Arial, Helvetica, sans-serif;
 height: 100vh;
-background-image:linear-gradient(to right,yellow, rgb(53, 204, 153));
+background-image:linear-gradient(to right,rgb(204, 0, 255), rgb(53, 204, 153));
 display: flex;
 justify-content: center;
 align-items: center;
