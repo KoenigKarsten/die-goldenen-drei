@@ -11,9 +11,9 @@
   </head>
   <body>
         <!-- <?php if(!is_checked_in()): ?> -->
-          <div class="header">
+          <div class="loginPage">
 
-            <div id="navbarCollapse" class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse">
               <form class="navbar-form navbar-right" action="login.php" method="post">
                 <table class="login" role="presentation">
                   <tbody>
@@ -39,14 +39,16 @@
     </form>         
   </div><!--/.navbar-collapse -->
   <!-- <?php else: ?> -->
-    <div id="navBar" class="navBar">
+   
+    <header>
       <ul class="ulNavbarRechts">     
         <li><a href="overview.php">Übersicht</a></li> 
         <li><a href="internal.php">Interner Bereich</a></li>      
         <li><a href="settings.php">Einstellungen</a></li>
         <li><a href="logout.php">Logout</a></li>
       </ul>   
-    </div><!--/.navbar-collapse -->
+    </header>
+    
     <!-- <?php endif; ?> -->
   </div>
 </div>

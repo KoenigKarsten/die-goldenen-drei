@@ -6,6 +6,8 @@
   include("templates/header.inc.php");
   ?>
 
+
+
   <div class='overviewMainpage'>
     <div class='wahlReiter'>
       <select name="gebaeudeReiter" id="gebaeudeReiter" onchange=>
@@ -26,6 +28,7 @@
     <div class='polygonZeichnung'>
       <div id='polygon_1'></div>
     </div>
+
     <div class="modal"></div>
   </div>
     

@@ -1,5 +1,4 @@
 <div class="footer" >
-    <hr>
   	<footer>
         <p>Powered by <a href="http://www.BfW-Hamburg.de" >BfW-Hamburg.de</a></p>
       </footer>
