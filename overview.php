@@ -1,9 +1,9 @@
   <?php
+
   session_start();
   require_once("inc/config.php.inc");
   require_once("inc/functions.php");
   include_once("templates/header.php");
-  include_once("mapper/ZimmerDAO.php");
   include_once("mapper/SQLDAOFactory.php");
   $user = check_user();
   ?>
@@ -31,11 +31,10 @@
 
   <?php 
 
-
-  // $objZimmer = new ZimmerDAO;
-  // $objZimmer->readGebaeude(); 
-
-
+  use mapper\ZimmerDAO;
+  spl_autoload_register();
+  $objZimmer = new ZimmerDAO();
+  $arrRooms = $objZimmer->readGebaeude(); 
 
   ?>
 
