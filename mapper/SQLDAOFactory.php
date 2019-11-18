@@ -1,6 +1,4 @@
 <?php
-// namespace mapper;
-// namespace inc;
 
 class SQLDAOFactory{
 	private static $instance;
@@ -9,7 +7,7 @@ class SQLDAOFactory{
 		include_once ("./inc/config.inc.php");
 		if(!self::$instance){
 			try{
-				self::$instance = new \mysqli('localhost', 'root', '', 'hi');
+				self::$instance = new \mysqli($db_host, $db_user, $db_password, $db_name);
 				self::$instance->set_charset("utf8");
 			}
 			catch(Exception $e){
