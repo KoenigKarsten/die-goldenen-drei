@@ -1,5 +1,5 @@
 
-//////Elemente in Variablen packen
+//////Elemente in Array packen
 var arrRooms = [
     document.querySelector('#SvgjsPolygon1014'),
     document.querySelector('#SvgjsPolygon1015'),
@@ -24,11 +24,6 @@ var arrRooms = [
 
 window.addEventListener('load', checkRoomStatus);
 
-
-
-
-
-
 function checkRoomStatus(){
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'zimmertest.php');
@@ -36,7 +31,7 @@ function checkRoomStatus(){
     xhr.onreadystatechange = function() {
 
         if (xhr.readyState == 4 && xhr.status == 200) {
-            
+
             let arrJSON = JSON.parse(xhr.responseText);
             var i=0;
             arrJSON.map((temp)=>{
@@ -46,6 +41,8 @@ function checkRoomStatus(){
         }
     };
 }
+
+
 
 ////////////////////Ajax Abfragen, wenn man ein Zimmer anklickt
 //Hier Verbindung zu den unterschiedlichen .html-Dateien.
