@@ -19,14 +19,14 @@
 
                 <div class='modal-boxInfo'>
                     <form action="modal-boxInfoSave.php" method="post">
-                        <select name="anrede" id="anrede">
+                        <label for="inputName">Name:</label>
+                        <p><select name="anrede" id="anrede">
                             <option value="herr">Herr</option>
                             <option value="frau">Frau</option>
                             <option value="divers">Divers</option>
                         </select>
-                        <input type="text" name="vorname" id="vorname" placeholder="Vorname *" required>
-                        <input type="text" name="nachname" id="nachname" placeholder="Nachname *" required>
-                        <input type="text" name="strasse" id="strasse" placeholder="Strasse *" required>
+                        <input type="text" name="vorname" id="vorname" placeholder="Vorname *">
+                        <input type="text" name="nachname" id="nachname" placeholder="Nachname *"></p>
                         <p><div class="modalBoxButton">
                                 <button type="button" class="btn btn-secondary" >Close</button>
                                 <!-- <button type="submit" class="btn btn-success">Bearbeiten</button> -->
