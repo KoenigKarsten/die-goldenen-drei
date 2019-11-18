@@ -34,7 +34,9 @@ function checkRoomStatus(){
     xhr.open('GET', 'zimmertest.php');
     xhr.send();
     xhr.onreadystatechange = function() {
+
         if (xhr.readyState == 4 && xhr.status == 200) {
+            
             let arrJSON = JSON.parse(xhr.responseText);
             var i=0;
             arrJSON.map((temp)=>{

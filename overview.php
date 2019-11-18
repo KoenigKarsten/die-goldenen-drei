@@ -10,18 +10,11 @@
 
   <div class='overviewMainpage'>
     <div class='wahlReiter'>
-      <select name="gebaeudeReiter" id="gebaeudeReiter" onchange=>
-        <option value="B">Gebäude B</option>
-        <option value="C">Gebäude C</option>
-        <option value="D">Gebäude D</option>
+      <select name="gebaeudeReiter" id="gebaeudeReiter">
+
       </select>
       <select name="etageReiter" id="etageReiter">
-        <option value="1">Etage 1</option>
-        <option value="2">Etage 2</option>
-        <option value="3">Etage 3</option>
-        <option value="4">Etage 4</option>
-        <option value="5">Etage 5</option>
-        <option value="6">Etage 6</option>
+
       </select>
     </div>
 
