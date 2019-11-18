@@ -1,6 +1,4 @@
 <?php
-// namespace mapper;
-// namespace inc;
 
 class SQLDAOFactory{
 	private static $instance;

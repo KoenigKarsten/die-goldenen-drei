@@ -2,23 +2,19 @@
 
     include("mapper/GastDAO.php");
     include("model/Gast.php");
-    include_once("inc/config.inc.php");
     include_once("mapper/SQLDAOFactory.php");
 
-    // use mapper\GastDAO;
-    // spl_autoload_register();
-
-    $anrede = null;
+    $anrede = "";
     $vorname = "";
-    $nachname = null;
-    $strasse = null;
-    $hausnr = null;
-    $plz = null;
-    $ort = null;
-    $land = null;
-    $zusatz = null;
-    $telefon = null;
-    $email = null;
+    $nachname = "";
+    $strasse = "";
+    $hausnr = "";
+    $plz = "";
+    $ort = "";
+    $land = "";
+    $zusatz = "";
+    $telefon = "";
+    $email = "";
 
     if(isset($_POST['submit'])) {
         $anrede = $_POST['anrede'];
@@ -32,16 +28,20 @@
         $zusatz = $_POST['zusatz'];
         $telefon = $_POST['telefonNr'];
         $email = $_POST['emailAddy'];
-        
-        $gast = new Gast($vorname);
+
+        $gast = new Gast($anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
         $gastDao = new GastDAO();
+
+
         $gastDao -> create($gast);
-    
+        $reservierungDao -> create($reservierung);
+        $gastDao -> read($gast);
+        
     }
   
     else {
         echo "Fehler";
     }
-    // $gastDao -> create('gastNr', $anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
+
   
    ?>

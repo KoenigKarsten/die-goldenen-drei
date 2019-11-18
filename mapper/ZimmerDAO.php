@@ -6,9 +6,17 @@
             $this->dbConnect = SQLDAOFactory::getInstance();
         }
 
-        public function create($zimmerNr, $gebaeude, $etage, $barrierefrei, $wcBad, $preisTag, $status) {
+        public function create(Zimmer $zimmer) {
             $id = -1;
-            $sql = "insert into zimmer (ZimmerNr, Gebäude, Etage, barrierefrei, WCBadIntegriert, PreisTag, Status) values(?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO zimmer (ZimmerNr, Gebäude, Etage, barrierefrei, WCBadIntegriert, PreisTag, Status) values(?,?,?,?,?,?,?)";
+
+            $zimmernr       = $zimmer->getZimmernr();
+            $gebaeude       = $zimmer->getGebaeude();
+            $etage          = $zimmer->getEtage();
+            $barrierefrei   = $zimmer->getBarrierefrei();   
+            $wcbad          = $zimmer->getWcbad();
+            $preistag       = $zimmer->getPreistag();
+            $status         = $zimmer->getStatus();
 
             if(!$preStmt = $this->dbConnect->prepare($sql)){
                 echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
@@ -22,13 +30,11 @@
                         echo "Fehler beim Ausführen (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                     }
                     else {
-                        $id = $preStmt->insert_id;
+                        header("Location: overview.php?signup=success");
                     }
                 }
             }
 
-            $preStmt->free_result();
             $preStmt->close();
-            return $id;
         }
     }
