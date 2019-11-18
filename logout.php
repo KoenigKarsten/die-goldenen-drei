@@ -7,10 +7,10 @@ unset($_SESSION['userid']);
 setcookie("identifier","",time()-(3600*24*365)); 
 setcookie("securitytoken","",time()-(3600*24*365)); 
 
-require_once("inc/config.inc.php");
-require_once("inc/functions.inc.php");
+require_once("inc/config.php.inc");
+require_once("inc/functions.php");
 
-include("templates/header.inc.php");
+include("templates/header.php");
 
-include("templates/footer.inc.php")
+include("templates/footer.php")
 ?>
