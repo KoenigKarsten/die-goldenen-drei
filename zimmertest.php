@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -6,6 +5,8 @@ require_once("inc/config.php.inc");
 require_once("inc/functions.php");
 
 $user = check_user();
+
+
 
         if ($conn->connect_error) {
               die("Connection failed: " . $conn->connect_error);

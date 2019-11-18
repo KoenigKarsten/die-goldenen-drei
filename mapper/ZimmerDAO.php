@@ -11,8 +11,6 @@ use model\Zimmer;
             $this->dbConnect = SQLDAOFactory::getInstance();
         }
 
-
-
         public function create(Zimmer $zimmer) {
             $id = -1;
             $sql = "INSERT INTO zimmer (ZimmerNr, Gebäude, Etage, barrierefrei, WCBadIntegriert, PreisTag, Status) values(?,?,?,?,?,?,?)";
@@ -47,18 +45,16 @@ use model\Zimmer;
         public function readGebaeude(){
 
             $sql = "SELECT Gebaeude FROM Zimmer GROUP BY Gebaeude";
-
             $ergebnis = $dbConnect->query($sql);
+            var_dump($ergebnis);
 
             $i = 0;
-            while($zeile = $ergebnis->fetch_array(MYSQLI_NUM)){
-                $gebaeude[$i] = $zeile[0];
+            while($zeile = $ergebnis->fetch_array(MYSQLI_ASSOC)){
+                $gebaeude[$i] = $zeile[Gebaeude];
                 $i++;
             }
-
+            
             return $gebaeude;
         }
-
-
 
     }

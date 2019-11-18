@@ -1,5 +1,5 @@
 <?php
-
+namespace mapper;
 
 include_once("../model/Gast.php");
 
