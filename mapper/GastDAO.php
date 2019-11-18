@@ -54,10 +54,10 @@ include_once("../model/Gast.php");
             public function read(Gast $gast) {
                 include("./model/gast.php");
 
-                $sql = ("SELECT g.gastnr, g.anrede, g.vorname, g.nachname, g.strasse, g.hausnr, g.plz, g.land, g.ort, g.zusatz, g.telefon, g.email, r.datumVon, r.datumBis
-                        FROM gast g, reservierung r
-                        WHERE r.zimmerNr = $zimmernr
-                        AND r.gastNr = g.gastNr");
+                $sql = ("SELECT g.gastnr, g.anrede, g.vorname, g.nachname, g.strasse, g.hausnr, g.plz, g.land, g.ort, g.zusatz, g.telefon, g.email
+                        FROM gast g
+                        WHERE r.zimmerNr = $zimmernr;
+                
 
                 if(!$preStmt = $this->dbConnect->prepare($sql)){
                     echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error ."<br>";
