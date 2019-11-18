@@ -1,5 +1,5 @@
 <?php
-    class Reserierung {
+    class Reservierung {
         private $zimmernr;
         private $gastnr;
         private $mitarbeiternr;

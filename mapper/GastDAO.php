@@ -38,7 +38,7 @@
                     }
 
                     else { 
-                        header("Location: success.php?signup=success"); //success.php nur zu Testzwecken, muss eventuell noch geändert werden zu overview.php
+                        header("Location: overview.php?signup=success"); 
         
                     }
                 }

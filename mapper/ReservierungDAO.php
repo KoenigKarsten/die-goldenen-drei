@@ -11,11 +11,11 @@
 
             $sql = ("INSERT INTO reservierung (zimmerNr, gastNr, mitarbeiterNr, datumVon, datumBis) VALUES(?,?,?,?,?)");
 
-            $zimmernr = $reservierung->getZimmernr();
-            $gastnr = $reservierung->getGastnr();
-            $mitarbeiternr = $reservierung->getMitarbeiternr();
-            $datumVon = $reservierung->getDatumVon();
-            $datumBis = $reservierung->getDatumBis();
+            $zimmernr       = $reservierung->getZimmernr();
+            $gastnr         = $reservierung->getGastnr();
+            $mitarbeiternr  = $reservierung->getMitarbeiternr();
+            $datumVon       = $reservierung->getDatumVon();
+            $datumBis       = $reservierung->getDatumBis();
 
             if(!$preStmt = $this->dbConnect->prepare($sql)){
                 echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
@@ -40,8 +40,6 @@
             $preStmt->close();
         }
 
-
-
-        }
     }
+    
 ?>
