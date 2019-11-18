@@ -4,10 +4,14 @@ class SQLDAOFactory{
 	private static $instance;
 	
 	public static function getInstance(){
-		include_once ("./inc/config.inc.php");
+
+
+		include_once ("../inc/config.php.inc");
+
+
 		if(!self::$instance){
 			try{
-				self::$instance = new \mysqli('192.168.101.163', 'admin', '1234', 'test');
+				self::$instance = new \mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
 				self::$instance->set_charset("utf8");
 			}
 			catch(Exception $e){

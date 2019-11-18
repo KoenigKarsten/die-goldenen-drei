@@ -1,4 +1,7 @@
 <?php
+
+include_once("../model/Reservierung.php");
+
     class ReservierungDAO {
         private $dbConnect;
 

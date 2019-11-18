@@ -1,9 +1,11 @@
   <?php
   session_start();
-  require_once("inc/config.inc.php");
-  require_once("inc/functions.inc.php");
+  require_once("inc/config.php.inc");
+  require_once("inc/functions.php");
+  include_once("templates/header.php");
+  include_once("mapper/ZimmerDAO.php");
+  include_once("mapper/SQLDAOFactory.php");
   $user = check_user();
-  include("templates/header.inc.php");
   ?>
 
 
@@ -27,7 +29,15 @@
     
 
 
+  <?php 
 
+
+  // $objZimmer = new ZimmerDAO;
+  // $objZimmer->readGebaeude(); 
+
+
+
+  ?>
 
 
 
@@ -38,6 +48,6 @@
 
 
   <?php 
-  include("templates/footer.inc.php");
+  include("templates/footer.php");
   ?>
 

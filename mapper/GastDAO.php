@@ -1,5 +1,8 @@
 <?php
 
+
+include_once("../model/Gast.php");
+
     class GastDAO {
         private $dbConnect;
 

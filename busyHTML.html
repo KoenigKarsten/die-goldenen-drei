@@ -18,24 +18,42 @@
 
                 <div class='modal-boxInfo'>
                     <form action="modal-boxInfoSave.php" method="post">
+                        <label for="inputName">Name:</label>
                         <p><select name="anrede" id="anrede">
                             <option value="herr">Herr</option>
                             <option value="frau">Frau</option>
                             <option value="divers">Divers</option>
                         </select>
-                        <input type="text" name="vorname" id="vorname" placeholder="Vorname *" required>
-                        <input type="text" name="nachname" id="nachname" placeholder="Nachname *" required></p>
-                        <p><input type="text" name="strasse" id="strasse" placeholder="Strasse *" required>
-                        <input type="text" name="hausnummer" id="hausnummer" placeholder="Hausnummer *" required>
-                        <input type="text" name="postleitzahl" id="postleitzahl" placeholder="Postleitzahl *" required>
-                        <input type="text" name="land" id="land" placeholder="Land *" required>
-                        <input type="text" name="ort" id="ort" placeholder="Ort *" required></p>
-                        <p><input type="text" name="telefonNr" id="telefonNr" placeholder="Telefonnummer">
-                        <input type="text" name="emailAddy" id="emailAddy" placeholder="E-Mail-Adresse *" required></p>
+                        <input type="text" name="vorname" id="vorname" placeholder="Vorname *">
+                        <input type="text" name="nachname" id="nachname" placeholder="Nachname *"></p>
+                        
+                        <label for="inputAdresse">Adresse:</label>
+                        <p><input type="text" name="strasse" id="strasse" placeholder="Strasse *">
+                        <input type="text" name="hausnummer" id="hausnummer" placeholder="Hausnummer *">
+                        <input type="text" name="postleitzahl" id="postleitzahl" placeholder="Postleitzahl *">
+                        <input type="text" name="ort" id="ort" placeholder="Ort *">
+                        <input type="text" name="zusatz" id="zusatz" placeholder="Zusatz">
+                        <input type="text" name="land" id="land" placeholder="Land *"></p>
+                        
+                        <label for="inputKontakt">Kontaktdaten:</label>
+                        <P><input type="text" name="telefonNr" id="telefonNr" placeholder="Telefonnummer">
+                        <input type="text" name="emailAddy" id="emailAddy" placeholder="E-Mail-Adresse *"></P>
+
+                        <label for="inputDatum">Datum:</label>
+                        <div class="form-group">
+                            <label for="inputDatumVon">Startdatum:</label>
+                            <input type="date" id="inputDatumVon" size="40"  maxlength="250" name="DatumVon" class="form-control" required>
+                            </div> 
+                            
+                            <div class="form-group">
+                            <label for="inputDatumBis">Enddatum: </label>
+                            <input type="date" id="inputDatumBis" size="40" maxlength="250" name="DatumBis" class="form-control" required>
+                            </div> 
                         <p><div class="modalBoxButton">
                             <button type="button" class="btn btn-secondary" >Close</button>
                             <!-- <button type="submit" class="btn btn-success">Bearbeiten</button> -->
                             <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Delete</button>
                         </div></p>
                     </form>
                 </div>
