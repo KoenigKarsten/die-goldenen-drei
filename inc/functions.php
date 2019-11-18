@@ -1,7 +1,12 @@
 <?php
 include_once('config.php.inc');
 include_once("password.php");
+
+
 $pdo = new PDO('mysql:host=192.168.101.163;dbname=test', 'admin', '1234');
+
+
+
 
 function check_user() {
 	global $pdo;
