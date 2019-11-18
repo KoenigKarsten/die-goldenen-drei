@@ -1,12 +1,13 @@
 <?php
+namespace mapper;
+
 
 class SQLDAOFactory{
 	private static $instance;
 	
 	public static function getInstance(){
-
-
-		include_once ("../inc/config.php.inc");
+		
+		include_once("inc/config.php.inc");
 
 
 		if(!self::$instance){

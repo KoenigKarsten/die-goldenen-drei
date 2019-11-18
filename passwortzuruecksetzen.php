@@ -1,7 +1,7 @@
 <?php 
 session_start();
 require_once("inc/config.inc.php");
-require_once("inc/functions.inc.php");
+require_once("inc/functions.php");
 if(!isset($_GET['userid']) || !isset($_GET['code'])) {
 	error("Leider wurde beim Aufruf dieser Website kein Code zum Zurücksetzen deines Passworts übermittelt");
 }
@@ -52,7 +52,7 @@ if(isset($_GET['send'])) {
 	}
 }
 
-include("templates/header.inc.php");
+include("templates/header.php");
 ?>
 
  <div class="container small-container-500">
@@ -83,5 +83,5 @@ endif;
  
 
 <?php 
-include("templates/footer.inc.php")
+include("templates/footer.php")
 ?>

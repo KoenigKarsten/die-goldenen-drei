@@ -1,9 +1,9 @@
 <?php 
 session_start();
-require_once("inc/config.inc.php");
-require_once("inc/functions.inc.php");
+require_once("inc/config.php.inc");
+require_once("inc/functions.php");
 
-include("templates/header.inc.php")
+include("templates/header.php")
 ?>
 <div class="container main-container registration-form">
 <h1>Reservierung</h1>
@@ -100,5 +100,5 @@ if($showFormular) {
 
 
 <?php 
-include("templates/footer.inc.php")
+include("templates/footer.php")
 ?>
