@@ -4,12 +4,14 @@ namespace mapper;
 use model\Zimmer;
 
 
+
     class ZimmerDAO {
         private $dbConnect;
 
         public function __construct () {
             $this->dbConnect = SQLDAOFactory::getInstance();
         }
+
 
         public function create(Zimmer $zimmer) {
             $id = -1;
@@ -43,18 +45,16 @@ use model\Zimmer;
         }
 
         public function readGebaeude(){
+            $arr = [];
 
-            $sql = "SELECT Gebaeude FROM Zimmer GROUP BY Gebaeude";
-            $ergebnis = $dbConnect->query($sql);
-            var_dump($ergebnis);
+            $stmt = $this->dbConnect->prepare("SELECT Gebaeude FROM zimmer GROUP BY Gebaeude");
 
-            $i = 0;
-            while($zeile = $ergebnis->fetch_array(MYSQLI_ASSOC)){
-                $gebaeude[$i] = $zeile[Gebaeude];
-                $i++;
-            }
-            
-            return $gebaeude;
+           $stmt->execute();
+
+           $stmt->bind_result($res);
+           while ($stmt->fetch()) {
+               array_push($arr, $res);
+           }
+           return $arr;
         }
-
     }
