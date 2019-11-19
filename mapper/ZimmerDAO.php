@@ -58,4 +58,19 @@ class ZimmerDAO
         }
         return $arr;
     }
+
+    public function readEtage()
+    {
+        $arr = [];
+
+        $stmt = $this->dbConnect->prepare("SELECT Etage FROM zimmer GROUP BY Etage");
+
+        $stmt->execute();
+
+        $stmt->bind_result($res);
+        while ($stmt->fetch()) {
+            array_push($arr, $res);
+        }
+        return $arr;
+    }
 }

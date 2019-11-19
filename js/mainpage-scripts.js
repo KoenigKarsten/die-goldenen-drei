@@ -1,5 +1,5 @@
 //////Elemente in Array packen
-let arrRooms = [
+const arrRooms = [
     document.querySelector('#SvgjsPolygon1014'),
     document.querySelector('#SvgjsPolygon1015'),
     document.querySelector('#SvgjsPolygon1016'),
@@ -17,7 +17,7 @@ let arrRooms = [
     document.querySelector('#SvgjsPolygon1033'),
     document.querySelector('#SvgjsPolygon1034'),
     document.querySelector('#SvgjsPolygon1035')
-]
+];
 
 //Page Onload Event Check Roomstatus//
 
@@ -29,7 +29,36 @@ function checkRoomStatus() {
     xhr.send();
     xhr.onreadystatechange = function () {
 
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+            let arrJSON = JSON.parse(xhr.responseText);
+            let i = 0;
+            console.log(arrJSON.length);
+            arrJSON.map((temp) => {
+                setRoomColor(temp, i);
+                i++;
+            });
+        }
+    };
+}
+
+//Event + Function wenn Gebäude oder Etage neu ausgewählt werden
+let elReiterGebaeude = document.querySelector('#gebaeudeReiter');
+let elReiterEtage = document.querySelector('#etageReiter');
+
+elReiterGebaeude.addEventListener('change', refresh);
+elReiterEtage.addEventListener('change', refresh);
+
+console.log(elReiterGebaeude.value);
+
+function refresh(){
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'zimmertest.php');
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(`gebaeude=${elReiterGebaeude.value}&etage=${elReiterEtage.value}`);
+    xhr.onreadystatechange = function () {
+
+        if (xhr.readyState === 4 && xhr.status === 200) {
 
             let arrJSON = JSON.parse(xhr.responseText);
             let i = 0;
@@ -41,7 +70,6 @@ function checkRoomStatus() {
     };
 }
 
-
 ////////////////////Ajax Abfragen, wenn man ein Zimmer anklickt
 //Hier Verbindung zu den unterschiedlichen .html-Dateien.
 
@@ -52,7 +80,7 @@ function openModalFree() {
     xhr.open('GET', 'nextHTML.html');
     xhr.send();
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             elModal.innerHTML = xhr.responseText;
             openModal();
         }
@@ -65,7 +93,7 @@ function openModalBusy() {
     xhr.open('GET', 'busyHTML.html');
     xhr.send();
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             elModal.innerHTML = xhr.responseText;
             openModal();
         }
@@ -78,7 +106,7 @@ function openModalMaintenance() {
     xhr.open('GET', 'nextMaintenance.html');
     xhr.send();
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
             elModal.innerHTML = xhr.responseText;
             openModal();
         }
@@ -100,11 +128,11 @@ function hideInfo() {
 
 function setRoomColor(temp, i) {
 
-    if (temp.Status == 0) {
+    if (temp.Status === 0) {
         arrRooms[i].setAttribute('fill', 'green');
         arrRooms[i].setAttribute('fill-opacity', '1');
         arrRooms[i].addEventListener('click', openModalFree);
-    } else if (temp.Status == 1) {
+    } else if (temp.Status === 1) {
 
         arrRooms[i].setAttribute('fill', '#8B0000');
         arrRooms[i].setAttribute('fill-opacity', '1');
@@ -116,20 +144,20 @@ function setRoomColor(temp, i) {
         arrRooms[i].addEventListener('click', openModalMaintenance);
     }
 
-    i == 0 && arrRooms[i].getAttribute('fill') == 'green' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', 'green') : "";
-    i == 0 && arrRooms[i].getAttribute('fill') == '#8B0000' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', '#8B0000') : "";
-    i == 0 && arrRooms[i].getAttribute('fill') == 'grey' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', 'grey') : "";
+    i === 0 && arrRooms[i].getAttribute('fill') === 'green' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', 'green') : "";
+    i === 0 && arrRooms[i].getAttribute('fill') === '#8B0000' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', '#8B0000') : "";
+    i === 0 && arrRooms[i].getAttribute('fill') === 'grey' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', 'grey') : "";
 
-    i == 3 && arrRooms[i].getAttribute('fill') == 'green' ? document.querySelector('#SvgjsPolygon1029').setAttribute('fill', 'green') : "";
-    i == 3 && arrRooms[i].getAttribute('fill') == '#8B0000' ? document.querySelector('#SvgjsPolygon1029').setAttribute('fill', '#8B0000') : "";
-    i == 3 && arrRooms[i].getAttribute('fill') == 'grey' ? document.querySelector('#SvgjsPolygon1029').setAttribute('fill', 'grey') : "";
+    i === 3 && arrRooms[i].getAttribute('fill') === 'green' ? document.querySelector('#SvgjsPolygon1029').setAttribute('fill', 'green') : "";
+    i === 3 && arrRooms[i].getAttribute('fill') === '#8B0000' ? document.querySelector('#SvgjsPolygon1029').setAttribute('fill', '#8B0000') : "";
+    i === 3 && arrRooms[i].getAttribute('fill') === 'grey' ? document.querySelector('#SvgjsPolygon1029').setAttribute('fill', 'grey') : "";
 
-    i == 6 && arrRooms[i].getAttribute('fill') == 'green' ? document.querySelector('#SvgjsPolygon1024').setAttribute('fill', 'green') : "";
-    i == 6 && arrRooms[i].getAttribute('fill') == '#8B0000' ? document.querySelector('#SvgjsPolygon1024').setAttribute('fill', '#8B0000') : "";
-    i == 6 && arrRooms[i].getAttribute('fill') == 'grey' ? document.querySelector('#SvgjsPolygon1024').setAttribute('fill', 'grey') : "";
+    i === 6 && arrRooms[i].getAttribute('fill') === 'green' ? document.querySelector('#SvgjsPolygon1024').setAttribute('fill', 'green') : "";
+    i === 6 && arrRooms[i].getAttribute('fill') === '#8B0000' ? document.querySelector('#SvgjsPolygon1024').setAttribute('fill', '#8B0000') : "";
+    i === 6 && arrRooms[i].getAttribute('fill') === 'grey' ? document.querySelector('#SvgjsPolygon1024').setAttribute('fill', 'grey') : "";
 
-    i == 10 && arrRooms[i].getAttribute('fill') == 'green' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', 'green') : "";
-    i == 10 && arrRooms[i].getAttribute('fill') == '#8B0000' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', '#8B0000') : "";
-    i == 10 && arrRooms[i].getAttribute('fill') == 'grey' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', 'grey') : "";
+    i === 10 && arrRooms[i].getAttribute('fill') === 'green' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', 'green') : "";
+    i === 10 && arrRooms[i].getAttribute('fill') === '#8B0000' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', '#8B0000') : "";
+    i === 10 && arrRooms[i].getAttribute('fill') === 'grey' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', 'grey') : "";
 
 }

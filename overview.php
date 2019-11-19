@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
@@ -12,10 +11,29 @@ $user = check_user();
 <div class='overviewMainpage'>
     <div class='wahlReiter'>
         <select name="gebaeudeReiter" id="gebaeudeReiter">
+            <?php
 
+            use mapper\ZimmerDAO;
+
+            spl_autoload_register();
+            $objZimmer = new ZimmerDAO();
+            $arrRooms = $objZimmer->readGebaeude();
+            foreach ($arrRooms as $temp) {
+                echo "<option value=\"$temp\">" . $temp . "</option>";
+            }
+            ?>
         </select>
-        <select name="etageReiter" id="etageReiter">
 
+
+        <select name="etageReiter" id="etageReiter">
+            <?php
+            $objZimmer = new ZimmerDAO();
+            $arrRooms = $objZimmer->readEtage();
+            foreach ($arrRooms as $temp) {
+                echo "<option value=\"$temp\">" . $temp . "</option>";
+                var_dump($temp);
+            }
+            ?>
         </select>
     </div>
 
@@ -25,17 +43,6 @@ $user = check_user();
 
     <div class="modal"></div>
 </div>
-
-
-<?php
-
-use mapper\ZimmerDAO;
-
-spl_autoload_register();
-$objZimmer = new ZimmerDAO();
-$arrRooms = $objZimmer->readGebaeude();
-
-?>
 
 
 <script src="js/svg.min.js"></script>
