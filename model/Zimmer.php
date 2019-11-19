@@ -1,15 +1,17 @@
 <?php
 
-class Zimmer {
+class Zimmer
+{
     private $zimmerNr;
-    private $gebaeude; 
+    private $gebaeude;
     private $etage;
-    private $wcBad; 
-    private $barrierefrei; 
+    private $wcBad;
+    private $barrierefrei;
     private $preisTag;
     private $status;
 
-    public function __construct ($zimmerNr, $gebaeude, $etage, $wcBad, $barrierefrei, $preisTag, $status) {
+    public function __construct($zimmerNr, $gebaeude, $etage, $wcBad, $barrierefrei, $preisTag, $status)
+    {
         $this->zimmerNr = $zimmerNr;
         $this->gebaeude = $gebaeude;
         $this->etage = $etage;
@@ -19,59 +21,73 @@ class Zimmer {
         $this->status = $status;
     }
 
-    public function getZimmerNr() {
+    public function getZimmerNr()
+    {
         return $this->zimmerNr;
     }
 
-    public function setZimmerNr($zimmerNr) {
+    public function setZimmerNr($zimmerNr)
+    {
         $this->zimmerNr = $zimmerNr;
     }
 
-    public function getGebaeude() {
+    public function getGebaeude()
+    {
         return $this->gebaeude;
     }
 
-    public function setGebaeude($gebaeude) {
+    public function setGebaeude($gebaeude)
+    {
         $this->gebaeude = $gebaeude;
     }
 
-    public function getEtage() {
+    public function getEtage()
+    {
         return $this->etage;
     }
 
-    public function setEtage($etage) {
+    public function setEtage($etage)
+    {
         $this->etage = $etage;
     }
 
-    public function getWcBad() {
+    public function getWcBad()
+    {
         return $this->wcBad;
     }
 
-    public function setWcBad($wcBad) {
+    public function setWcBad($wcBad)
+    {
         $this->wcBad = $wcBad;
     }
 
-    public function getBarrierefrei() {
+    public function getBarrierefrei()
+    {
         return $this->barrierefrei;
     }
 
-    public function setBarrierefrei($barrierefrei) {
+    public function setBarrierefrei($barrierefrei)
+    {
         $this->barrierefrei = $barrierefrei;
     }
 
-    public function getPreisTag() {
+    public function getPreisTag()
+    {
         return $this->preisTag;
     }
 
-    public function setPreisTag($preisTag) {
+    public function setPreisTag($preisTag)
+    {
         $this->preisTag = $preisTag;
     }
 
-    public function getStatus() {
+    public function getStatus()
+    {
         return $this->status;
     }
 
-    public function setStatus($status) {
+    public function setStatus($status)
+    {
         $this->status = $status;
     }
 }
