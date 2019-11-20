@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
@@ -28,18 +30,18 @@ include("templates/header.php")
                 $error = true;
             }
 
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
-                $error = true;
-            }
-            if (strlen($passwort) == 0) {
-                echo 'Bitte ein Passwort angeben<br>';
-                $error = true;
-            }
-            if ($passwort != $passwort2) {
-                echo 'Die Passwörter müssen übereinstimmen<br>';
-                $error = true;
-            }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
+            $error = true;
+        }
+        if (strlen($passwort) == 0) {
+            echo 'Bitte ein Passwort angeben<br>';
+            $error = true;
+        }
+        if ($passwort != $passwort2) {
+            echo 'Die Passwörter müssen übereinstimmen<br>';
+            $error = true;
+        }
 
             //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
             if (!$error) {
@@ -52,27 +54,28 @@ include("templates/header.php")
                     $error = false;
                 }
             }
-
-            //Keine Fehler, wir können den Nutzer registrieren
-            if (!$error) {
-                $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
-
-                $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname) VALUES (:email, :passwort, :vorname, :nachname)");
-                $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname));
-
-                if ($result) {
-                    echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
-                    $showFormular = false;
-                } else {
-                    echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
-                }
-            }
         }
 
-        if ($showFormular) {
-            ?>
+        //Keine Fehler, wir können den Nutzer registrieren
+        if (!$error) {
+            $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-            <form action="?register=2" method="post">
+            $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname) VALUES (:email, :passwort, :vorname, :nachname)");
+            $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname));
+
+            if ($result) {
+                echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+                $showFormular = false;
+            } else {
+                echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
+            }
+        }
+    }
+
+    if ($showFormular) {
+        ?>
+
+        <form action="?register=2" method="post">
 
             <label for="inputName">Name:</label>
 
@@ -156,9 +159,14 @@ include("templates/header.php")
             <?php
         } //Ende von if($showFormular)
 
+        <?php
+    } //Ende von if($showFormular)
 
-        ?>
-    </div>
+
+    ?>
+</div>
 <?php
 include("templates/footer.php");
+?>
+
 ?>
