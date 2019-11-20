@@ -30,7 +30,6 @@ function checkRoomStatus() {
     xhr.onreadystatechange = function () {
 
         if (xhr.readyState === 4 && xhr.status === 200) {
-
             let arrJSON = JSON.parse(xhr.responseText);
             let i = 0;
             console.log(arrJSON.length);
@@ -51,7 +50,7 @@ elReiterEtage.addEventListener('change', refresh);
 
 console.log(elReiterGebaeude.value);
 
-function refresh(){
+function refresh() {
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'zimmertest.php');
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
