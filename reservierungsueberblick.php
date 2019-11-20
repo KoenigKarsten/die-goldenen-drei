@@ -67,36 +67,36 @@ include("templates/header.php")
     //if ($showFormular) {
     ?>
 
-    <form action="?register=1" method="post">
+    <form action="?register=3" method="post">
 
         <div class="form-group">
             <label for="inputResNr">Reservierungsnummer:</label>
-            <input type="text" id="inputResNr" size="40" maxlength="250" name="ReservierungNr" class="form-control"
-                   required>
+            <input type="text" id="inputResNr" size="10" maxlength="10" name="ReservierungNr" class="form-control">
         </div>
 
         <div class="form-group">
-            <label for="inputZimmerNr">Zimmernummer:</label>
-            <input type="text" id="inputZimmerNr" size="40" maxlength="250" name="ZimmerNr" class="form-control"
+            <label for="inputZimmerNr">Zimmernummer *:</label>
+            <input type="text" id="inputZimmerNr" size="5" maxlength="5" name="ZimmerNr" class="form-control"
                    required>
         </div>
 
         <div class="form-group">
             <label for="inputGastNr">Gästenummer:</label>
-            <input type="text" id="inputGastNr" size="40" maxlength="250" name="GastNr" class="form-control" required>
+            <input type="text" id="inputGastNr" size="10" maxlength="10" name="GastNr" class="form-control">
         </div>
 
         <div class="form-group">
-            <label for="inputDatumVon">Startdatum:</label>
-            <input type="date" id="inputDatumVon" size="40" maxlength="250" name="DatumVon" class="form-control"
+            <label for="inputDatumVon">Startdatum *:</label>
+            <input type="date" id="inputDatumVon" name="DatumVon" class="form-control"
                    required>
         </div>
 
         <div class="form-group">
-            <label for="inputDatumBis">Enddatum:</label>
-            <input type="date" id="inputDatumBis" size="40" maxlength="250" name="DatumBis" class="form-control"
+            <label for="inputDatumBis">Enddatum *:</label>
+            <input type="date" id="inputDatumBis"  name="DatumBis" class="form-control"
                    required>
         </div>
+
             <button type="button" class="btn btn-secondary">Close</button>
             <button type="submit" class="btn btn-success">Search</button>
             <button type="submit" class="btn btn-primary">Delete</button>

@@ -69,6 +69,8 @@ include("templates/header.php")
 
             <form action="?register=2" method="post">
 
+            <label for="inputName">Name:</label>
+
                 <div class="form-group">
                     <select name="anrede" id="anrede">
                         <option value="herr">Herr</option>
@@ -78,46 +80,69 @@ include("templates/header.php")
                 </div>
 
                 <div class="form-group">
-                    <label for="inputVorname">Vorname:</label>
+                    <label for="inputVorname">Vorname *:</label>
                     <input type="text" id="inputVorname" size="40" maxlength="250" name="vorname" class="form-control"
                            required>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputNachname">Nachname:</label>
+                    <label for="inputNachname">Nachname *:</label>
                     <input type="text" id="inputNachname" size="40" maxlength="250" name="nachname" class="form-control"
                            required>
                 </div>
 
+                <label for="inputAdresse">Adresse:</label>
+                
                 <div class="form-group">
-                    <label for="inputEmail">E-Mail:</label>
+                    <label for="inputStrasse">Strasse:</label>
+                    <input type="text" id="inputStrasse" size="40" maxlength="250" name="strasse"
+                           class="form-control">
+                </div>
+                        
+                <div class="form-group">
+                    <label for="inputHausNr">Hausnummer:</label>
+                    <input type="text" id="inputHausNr" size="5" maxlength="250" name="hausnr"
+                         class="form-control">
+                </div>
+                        
+                <div class="form-group">
+                    <label for="inputZusatz">Zusatz:</label>
+                    <input type="text" id="inputZusatz" size="40" maxlength="250" name="zusatz"
+                        class="form-control">
+                </div>
+                        
+                <div class="form-group">
+                    <label for="inputPLZ">PLZ:</label>
+                    <input type="text" id="inputPLZ" size="5" maxlength="5" name="plz"
+                    class="form-control">
+                </div>
+                        
+                <div class="form-group">
+                    <label for="inputOrt">Ort:</label>
+                    <input type="text" id="inputOrt" size="40" maxlength="250" name="ort"
+                    class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="inputLand">Land:</label>
+                    <input type="text" id="inputLand" size="40" maxlength="250" name="Land"
+                    class="form-control">
+                </div>
+                
+                <label for="inputKontakt">Kontaktdaten:</label>
+                
+                <div class="form-group">
+                    <label for="inputEmail">E-Mail *:</label>
                     <input type="email" id="inputEmail" size="40" maxlength="250" name="email" class="form-control"
                            required>
                 </div>
 
                 <div class="form-group">
-                    <label for="inputStrasse">Strasse:</label>
-                    <input type="text" id="inputStrasse" size="40" maxlength="250" name="strasse"
-                           class="form-control">
-                </div>
-                
-                <div class="form-group">
-                    <label for="inputHausNr">Hausnummer:</label>
-                    <input type="text" id="inputHausNr" size="40" maxlength="250" name="hausnr"
-                    class="form-control">
-                </div>
-                
-                <div class="form-group">
-                    <label for="inputStrasse">Strasse:</label>
-                    <input type="text" id="inputStrasse" size="40" maxlength="250" name="strasse"
+                    <label for="inputTelefon">Telefon:</label>
+                    <input type="text" id="inputTelefon" size="40" maxlength="250" name="telefon"
                            class="form-control">
                 </div>
 
-                <div class="form-group">
-                    <label for="inputStrasse">Strasse:</label>
-                    <input type="text" id="inputStrasse" size="40" maxlength="250" name="strasse"
-                           class="form-control">
-                </div>
                     <button type="button" class="btn btn-secondary">Close</button>
                     <button type="submit" class="btn btn-success">Search</button>
                     <button type="submit" class="btn btn-primary">Delete</button>
