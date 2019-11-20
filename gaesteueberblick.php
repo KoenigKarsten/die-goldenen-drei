@@ -10,13 +10,18 @@ include("templates/header.php")
         <?php
         $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 
-        if (isset($_GET['register'])) {
-            $error = false;
-            $vorname = trim($_POST['vorname']);
-            $nachname = trim($_POST['nachname']);
-            $email = trim($_POST['email']);
-            $passwort = $_POST['passwort'];
-            $passwort2 = $_POST['passwort2'];
+        if (isset($_POST['submit'])) {
+            $anrede = $_POST['anrede'];
+            $vorname = $_POST['vorname'];
+            $nachname = $_POST['nachname'];
+            $strasse = $_POST['strasse'];
+            $hausnr = $_POST['hausnummer'];
+            $plz = $_POST['postleitzahl'];
+            $ort = $_POST['ort'];
+            $land = $_POST['land'];
+            $zusatz = $_POST['zusatz'];
+            $telefon = $_POST['telefonNr'];
+            $email = $_POST['emailAddy'];
 
             if (empty($vorname) || empty($nachname) || empty($email)) {
                 echo 'Bitte alle Felder ausfüllen<br>';
@@ -40,11 +45,11 @@ include("templates/header.php")
             if (!$error) {
                 $statement = $pdo->prepare("SELECT * FROM gast WHERE email = :email");
                 $result = $statement->execute(array('email' => $email));
-                $user = $statement->fetch();
+                $gast = $statement->fetch();
 
-                if ($user !== false) {
-                    echo 'Diese E-Mail-Adresse ist bereits vergeben<br>';
-                    $error = true;
+                if ($gast !== true) {
+                    echo 'Diese E-Mail-Adresse ist nicht vergeben<br>';
+                    $error = false;
                 }
             }
 
@@ -143,7 +148,6 @@ include("templates/header.php")
                            class="form-control">
                 </div>
 
-                    <button type="button" class="btn btn-secondary">Close</button>
                     <button type="submit" class="btn btn-success">Search</button>
                     <button type="submit" class="btn btn-primary">Delete</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>

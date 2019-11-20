@@ -38,7 +38,7 @@ include("templates/header.php")
 
         //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
         if (!$error) {
-            $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+            $statement = $pdo->prepare("SELECT * FROM reservierung WHERE email = :email");
             $result = $statement->execute(array('email' => $email));
             $user = $statement->fetch();
 
@@ -70,14 +70,14 @@ include("templates/header.php")
     <form action="?register=3" method="post">
 
         <div class="form-group">
-            <label for="inputResNr">Reservierungsnummer:</label>
-            <input type="text" id="inputResNr" size="10" maxlength="10" name="ReservierungNr" class="form-control">
-        </div>
-
-        <div class="form-group">
             <label for="inputZimmerNr">Zimmernummer *:</label>
             <input type="text" id="inputZimmerNr" size="5" maxlength="5" name="ZimmerNr" class="form-control"
                    required>
+        </div>
+        
+        <div class="form-group">
+            <label for="inputResNr">Reservierungsnummer:</label>
+            <input type="text" id="inputResNr" size="10" maxlength="10" name="ReservierungNr" class="form-control">
         </div>
 
         <div class="form-group">
@@ -97,7 +97,6 @@ include("templates/header.php")
                    required>
         </div>
 
-            <button type="button" class="btn btn-secondary">Close</button>
             <button type="submit" class="btn btn-success">Search</button>
             <button type="submit" class="btn btn-primary">Delete</button>
             <button type="submit" class="btn btn-primary">Save changes</button>
