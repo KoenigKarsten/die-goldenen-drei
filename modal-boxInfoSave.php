@@ -1,8 +1,9 @@
 <?php
 
-include("mapper/GastDAO.php");
-include("model/Gast.php");
-include_once("mapper/SQLDAOFactory.php");
+spl_autoload_register();
+use mapper\GastDAO;
+use model\Gast;
+use mapper\SQLDAOFactory;
 
 $anrede = "";
 $vorname = "";
@@ -32,7 +33,11 @@ if (isset($_POST['submit'])) {
     $gast = new Gast($anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
     $gastDao = new GastDAO();
 
+    //Gastnr. aus der Datenbank auslesen und in die Reservierungstabelle eintragen (neue DAO?)
+    $reservierung = new Reservierung();
+    $reservierungDao = new ReservierungDAO();
 
+    var_dump($gast);
     $gastDao->create($gast);
     $reservierungDao->create($reservierung);
     $gastDao->read($gast);

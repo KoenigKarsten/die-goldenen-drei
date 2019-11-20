@@ -1,6 +1,6 @@
 <?php
-
-class Reserierung
+namespace model;
+class Reservierung
 {
     private $zimmernr;
     private $gastnr;

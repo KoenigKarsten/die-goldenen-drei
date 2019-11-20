@@ -2,7 +2,8 @@
 
 namespace mapper;
 
-include_once("../model/Gast.php");
+use model\Gast;
+// include_once("../model/Gast.php");
 
 class GastDAO
 {
@@ -40,7 +41,7 @@ class GastDAO
                 if (!$preStmt->execute()) {
                     echo "Fehler beim Ausführen (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                 } else {
-                    header("Location: success.php?signup=success"); //success.php nur zu Testzwecken, muss eventuell noch geändert werden zu overview.php
+                    header("Location: overview.php?signup=success"); //success.php nur zu Testzwecken, muss eventuell noch geändert werden zu overview.php
 
                 }
             }

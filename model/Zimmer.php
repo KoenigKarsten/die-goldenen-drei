@@ -1,5 +1,5 @@
 <?php
-
+namespace model;
 class Zimmer
 {
     private $zimmerNr;
