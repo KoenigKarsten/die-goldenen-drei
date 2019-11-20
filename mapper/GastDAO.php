@@ -18,7 +18,7 @@ class GastDAO
     {
         $id = -1;
 
-        $sql = ("INSERT INTO gast (anrede, vorname, nachname, strasse, hausnr, plz, land, ort, zusatz, telefon, email) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+        $sql = ("INSERT INTO gast (anrede, vorname, nachname, strasse, hausnr, zusatz, plz, ort, land, telefon, email) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 
         $anrede = $gast->getAnrede();
         $vorname = $gast->getVorname();
