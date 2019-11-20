@@ -70,8 +70,8 @@ function getSiteURL()
 
 function error($error_msg)
 {
-    include("templates/header.inc.php");
-    include("templates/error.inc.php");
+    include("templates/header.php");
+    include("templates/error.php");
     exit();
 }
 

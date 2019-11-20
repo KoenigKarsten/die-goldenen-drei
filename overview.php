@@ -8,7 +8,12 @@ $user = check_user();
 ?>
 
 
+
+
+
 <div class='overviewMainpage'>
+    Hallo <?php echo htmlentities($user['vorname'])  ." ".  htmlentities($user['nachname']); ?><br>
+    <br><br>
     <div class='wahlReiter'>
         <select name="gebaeudeReiter" id="gebaeudeReiter">
             <?php
@@ -36,6 +41,10 @@ $user = check_user();
             ?>
         </select>
     </div>
+
+
+
+
 
     <div class='polygonZeichnung'>
         <div id='polygon_1'></div>
