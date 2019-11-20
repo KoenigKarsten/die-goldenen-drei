@@ -32,9 +32,8 @@ function checkRoomStatus() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             let arrJSON = JSON.parse(xhr.responseText);
             let i = 0;
-            console.log(arrJSON.length);
             arrJSON.map((temp) => {
-                setRoomColor(temp, i);
+                setAttribute(temp, i);
                 i++;
             });
         }
@@ -48,7 +47,6 @@ let elReiterEtage = document.querySelector('#etageReiter');
 elReiterGebaeude.addEventListener('change', refresh);
 elReiterEtage.addEventListener('change', refresh);
 
-console.log(elReiterGebaeude.value);
 
 function refresh() {
     let xhr = new XMLHttpRequest();
@@ -62,7 +60,7 @@ function refresh() {
             let arrJSON = JSON.parse(xhr.responseText);
             let i = 0;
             arrJSON.map((temp) => {
-                setRoomColor(temp, i);
+                setAttribute(temp, i);
                 i++
             });
         }
@@ -75,6 +73,7 @@ function refresh() {
 let elModal = document.querySelector(".modal");
 
 function openModalFree() {
+
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'nextHTML.html');
     xhr.send();
@@ -82,6 +81,8 @@ function openModalFree() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             elModal.innerHTML = xhr.responseText;
             openModal();
+            let zimmerNrAnzeigeModalBox = document.querySelector('.zimmerNrAnzeige');
+            zimmerNrAnzeigeModalBox.innerHTML = this.hallo;
         }
     };
 }
@@ -95,6 +96,7 @@ function openModalBusy() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             elModal.innerHTML = xhr.responseText;
             openModal();
+            let zimmerNrAnzeigeModalBox = document.querySelector('.zimmerNrAnzeige');
         }
     };
 }
@@ -108,6 +110,7 @@ function openModalMaintenance() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             elModal.innerHTML = xhr.responseText;
             openModal();
+            let zimmerNrAnzeigeModalBox = document.querySelector('.zimmerNrAnzeige');
         }
     };
 }
@@ -118,6 +121,7 @@ function openModal() {
     elSpan.addEventListener('click', hideInfo);
     document.querySelector('.btn.btn-secondary').addEventListener('click', hideInfo);
     elModal.style.display = 'block';
+    
 }
 
 function hideInfo() {
@@ -125,14 +129,24 @@ function hideInfo() {
 }
 
 
-function setRoomColor(temp, i) {
+function setAttribute(temp, i) {
+
+    arrRooms[i].setAttribute('hallo', temp.ZimmerNr);
+    // const newP = document.createElement('p');
+    // newP.style.zIndex = '500';
+    
+
+    // newP.innerText = temp.ZimmerNr;
+    // arrRooms[i].appendChild(newP);
+    
+    
 
     if (temp.Status === 0) {
         arrRooms[i].setAttribute('fill', 'green');
         arrRooms[i].setAttribute('fill-opacity', '1');
-        arrRooms[i].addEventListener('click', openModalFree);
-    } else if (temp.Status === 1) {
+        arrRooms[i].addEventListener('click', (e) =>{openModalFree(e)});
 
+    } else if (temp.Status === 1) {
         arrRooms[i].setAttribute('fill', '#8B0000');
         arrRooms[i].setAttribute('fill-opacity', '1');
         arrRooms[i].addEventListener('click', openModalBusy);
