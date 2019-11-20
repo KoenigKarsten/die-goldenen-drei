@@ -70,12 +70,18 @@ include("templates/header.php")
                 echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
             }
         }
-    }
+    
 
     if ($showFormular) {
         ?>
 
         <form action="?register=2" method="post">
+
+                <div class="form-group">
+                    <label for="inputGastNr">Gastnummer:</label>
+                    <input type="text" id="inputGastNr" size="5" maxlength="10" name="gastnr"
+                         class="form-control">
+                </div>
 
             <label for="inputName">Name:</label>
 
@@ -109,7 +115,7 @@ include("templates/header.php")
                         
                 <div class="form-group">
                     <label for="inputHausNr">Hausnummer:</label>
-                    <input type="text" id="inputHausNr" size="5" maxlength="250" name="hausnr"
+                    <input type="text" id="inputHausNr" size="5" maxlength="10" name="hausnr"
                          class="form-control">
                 </div>
                         
@@ -159,10 +165,7 @@ include("templates/header.php")
             <?php
         } //Ende von if($showFormular)
 
-        <?php
-    } //Ende von if($showFormular)
-
-
+      
     ?>
 </div>
 <?php
