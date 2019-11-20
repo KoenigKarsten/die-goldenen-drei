@@ -50,7 +50,7 @@
         <ul class="ulNavbarRechts">
             <li><a href="overview.php">Übersicht</a></li>
             <li><a href="gaesteueberblick.php">Gäste</a></li>
-            <li><a href="reservierung.php">Reservierung</a></li>
+            <li><a href="reservierungsueberblick.php">Reservierungen</a></li>
             <li><a href="internal.php">Interner Bereich</a></li>
             <li><a href="settings.php">Einstellungen</a></li>
             <li><a href="logout.php">Logout</a></li>
