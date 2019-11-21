@@ -18,7 +18,7 @@ else {
 
 <div class="container main-container">
 
-    <h1>Herzlich Willkommen!</h1>
+    <h1>Benutzer löschen</h1>
 
     Hallo <?php echo htmlentities($user['vorname']); ?>,<br>
     Herzlich Willkommen im internen Bereich!<br><br>
@@ -41,18 +41,16 @@ else {
                 echo "<td>" . $count++ . "</td>";
                 echo "<td>" . $row['vorname'] . "</td>";
                 echo "<td>" . $row['nachname'] . "</td>";
-                echo '<td><a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a></td>';
+                echo '<td><a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a></td>
+                <td>
+                    <div class="form-group">
+                        <label for="deleteUser">    </label>
+                        <input type="checkbox" id="deleteUser" name="deleteUser" class="form-control">
+                    </div>
+                </td>';
                 echo "</tr>";
             }
+            echo "<br><p><a class=\"btn btn-primary btn-lg\" href=\"delete.php\" role=\"butten\">Benutzer löschen</a></p>";
             ?>
         </table>
     </div>
-
-    <p><a class="btn btn-primary btn-lg" href="register.php" role="button">Jetzt registrieren</a></p>
-    <br><p><a class="btn btn-primary btn-lg" href="delete.php" role="butten">Benutzer löschen</a></p>
-
-</div>
-
-<?php
-include("templates/footer.php")
-?>
