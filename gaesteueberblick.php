@@ -1,16 +1,42 @@
 <?php
 
-
 session_start();
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
 
-include("templates/header.php")
+//Überprüfe, dass der User eingeloggt ist
+//Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
+//Mit der If-Abfrage überprüfen ob der User Adminrechte hat und entsprechend den Adminheader miteinbinden
+$user = check_user();
+if ($user['admin'] == true) {
+    include("admin/header.php");
+}
+else {
+    include("templates/header.php");
+}
+
+
+spl_autoload_register();
+use mapper\GastDAO;
+use model\Gast;
+use mapper\SQLDAOFactory;
 ?>
     <div class="container main-container registration-form">
         <h1>Gäste</h1>
         <?php
         $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
+
+        $anrede = "";
+        $vorname = "";
+        $nachname = "";
+        $strasse = "";
+        $hausnr = "";
+        $zusatz = "";
+        $plz = "";
+        $ort = "";
+        $land = "";
+        $telefon = "";
+        $email = "";
 
         if (isset($_POST['submit'])) {
             $anrede = $_POST['anrede'];
@@ -24,6 +50,11 @@ include("templates/header.php")
             $zusatz = $_POST['zusatz'];
             $telefon = $_POST['telefonNr'];
             $email = $_POST['emailAddy'];
+
+            $gast = new Gast($anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
+            $gastDao = new GastDAO();
+            $gastDao->read($gast);
+            $gastDao->create($gast);
 
             if (empty($vorname) || empty($nachname) || empty($email)) {
                 echo 'Bitte alle Felder ausfüllen<br>';

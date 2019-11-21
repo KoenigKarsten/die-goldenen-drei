@@ -43,6 +43,7 @@ function check_user()
     return $user;
 }
 
+
 function is_checked_in()
 {
     return isset($_SESSION['userid']);
