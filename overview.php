@@ -2,9 +2,19 @@
 session_start();
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
-include_once("templates/header.php");
 include_once("mapper/SQLDAOFactory.php");
+
+//Überprüfe, dass der User eingeloggt ist
+//Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
+//Mit der If-Abfrage überprüfen ob der User Adminrechte hat und entsprechend den Adminheader miteinbinden
 $user = check_user();
+if ($user['admin'] == true) {
+    include_once("./admin/header.php");
+}
+else {
+    include_once("templates/header.php");
+}
+
 ?>
 
 
@@ -12,7 +22,11 @@ $user = check_user();
 
 
 <div class='overviewMainpage'>
-    Hallo <?php echo htmlentities($user['vorname'])  ." ".  htmlentities($user['nachname']); ?><br>
+    Hallo <?php echo htmlentities($user['vorname'])  ." ".  htmlentities($user['nachname']); 
+    if ($user['admin'] == true) {
+        echo "<br>Willkommen im Adminbereich, hier können Sie im internen Bereich neue Benutzer eingeben.";
+    }
+    ?><br>
     <br><br>
     <div class='wahlReiter'>
         <select name="gebaeudeReiter" id="gebaeudeReiter">
