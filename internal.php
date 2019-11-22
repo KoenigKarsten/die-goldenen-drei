@@ -30,17 +30,25 @@ else {
                 <th>#</th>
                 <th>Vorname</th>
                 <th>Nachname</th>
+                <th>Admin</th>
                 <th>E-Mail</th>
             </tr>
             <?php
             $statement = $pdo->prepare("SELECT * FROM users ORDER BY id");
             $result = $statement->execute();
             $count = 1;
+            
             while ($row = $statement->fetch()) {
                 echo "<tr>";
                 echo "<td>" . $count++ . "</td>";
                 echo "<td>" . $row['vorname'] . "</td>";
                 echo "<td>" . $row['nachname'] . "</td>";
+                if ($row['admin'] == 1) {
+                    echo "<td>ja</td>";
+                } 
+                else {
+                    echo "<td>nein</td>"; 
+                }
                 echo '<td><a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a></td>';
                 echo "</tr>";
             }
@@ -49,7 +57,7 @@ else {
     </div>
 
     <p><a class="btn btn-primary btn-lg" href="register.php" role="button">Jetzt registrieren</a></p>
-    <br><p><a class="btn btn-primary btn-lg" href="delete.php" role="butten">Benutzer löschen</a></p>
+    <br><p><a class="btn btn-primary btn-lg" href="delete.php" role="button">Benutzer löschen</a></p>
 
 </div>
 

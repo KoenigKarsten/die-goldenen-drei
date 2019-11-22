@@ -14,6 +14,13 @@ if ($user['admin'] == true) {
 else {
     include_once("templates/header.php");
 }
+             
+    if (isset($_GET['deleteUser'])) {
+        $statement = $pdo->prepare("DELETE FROM users WHERE id = ? AND id != 1");
+        $statement->bindParam(1,$_GET['deleteUser']); 
+        $result = $statement->execute();              
+    }
+                              
 ?>
 
 <div class="container main-container">
@@ -28,29 +35,42 @@ else {
         <table class="table">
             <tr>
                 <th>#</th>
+                <th>ID</th>
                 <th>Vorname</th>
                 <th>Nachname</th>
                 <th>E-Mail</th>
+                <th></th>
             </tr>
             <?php
             $statement = $pdo->prepare("SELECT * FROM users ORDER BY id");
             $result = $statement->execute();
             $count = 1;
+           
             while ($row = $statement->fetch()) {
                 echo "<tr>";
                 echo "<td>" . $count++ . "</td>";
+                echo "<td>" . $row['id'] . "</td>";
                 echo "<td>" . $row['vorname'] . "</td>";
                 echo "<td>" . $row['nachname'] . "</td>";
-                echo '<td><a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a></td>
-                <td>
-                    <div class="form-group">
-                        <label for="deleteUser">    </label>
-                        <input type="checkbox" id="deleteUser" name="deleteUser" class="form-control">
-                    </div>
+                if ($row['admin'] == 1) {
+                    echo "<td>ja</td>";
+                } 
+                else {
+                    echo "<td>nein</td>"; 
+                }
+                echo '<td><a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a></td>';
+                echo '<td>
+                
+                <br><p><a class="btn btn-primary btn-lg" href="delete.php?deleteUser=' . $row['id'] . '" role="button">löschen</a></p>
+               
                 </td>';
-                echo "</tr>";
+                echo "</tr>"; 
             }
-            echo "<br><p><a class=\"btn btn-primary btn-lg\" href=\"delete.php\" role=\"butten\">Benutzer löschen</a></p>";
             ?>
+           
+            
+                   
         </table>
+        
     </div>
+</div>
