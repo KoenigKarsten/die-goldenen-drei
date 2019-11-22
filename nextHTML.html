@@ -2,7 +2,6 @@
     <span class="close">&times;</span>
     <div class="roomInfoFree">
         <div class="modal-Box">
-            <header>
                 <div class='header'>
                     <form id='radioStatus'>
                         <label for="radioVermietet">
@@ -15,7 +14,6 @@
                         </label>
                     </form>
                 </div>
-            </header>
 
             <div class='modal-boxInfo'>
                 <form action="modal-boxInfoSave.php" method="post">
@@ -46,20 +44,20 @@
                     <div class="form-group">
                         <label for="inputDatumVon">Startdatum:</label>
                         <input type="date" id="inputDatumVon" name="DatumVon"
-                               class="form-control" required>
+                               class="form-control" >
                     </div>
 
                     <div class="form-group">
                         <label for="inputDatumBis">Enddatum:</label>
                         <input type="date" id="inputDatumBis" name="DatumBis"
-                               class="form-control" required>
+                               class="form-control" >
                     </div>
                     <p>
                     <div class="modalBoxButton">
                         <button type="button" class="btn btn-secondary">Close</button>
                         <!-- <button type="submit" class="btn btn-success">Bearbeiten</button> -->
                         <!-- <button type="submit" name="submit" class="btn btn-primary">Save changes</button> -->
-                        <input type="submit" name="submit" class="btn btn-primary" value="Save changes">
+                        <button type="submit" name="submit" class="btn btn-primary" value>Save Changes2</button>
                     </div>
                     </p>
                 </form>

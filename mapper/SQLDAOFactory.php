@@ -2,6 +2,8 @@
 namespace mapper;
 
 
+use mysqli;
+
 class SQLDAOFactory
 {
     private static $instance;
@@ -14,7 +16,7 @@ class SQLDAOFactory
 
         if (!self::$instance) {
             try {
-                self::$instance = new \mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
+                self::$instance = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
                 self::$instance->set_charset("utf8");
             } catch (Exception $e) {
                 echo self::$instance->connect_error;

@@ -72,8 +72,7 @@ function refresh() {
 
 let elModal = document.querySelector(".modal");
 
-function openModalFree() {
-
+function openModalFree(e) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'nextHTML.html');
     xhr.send();
@@ -81,14 +80,12 @@ function openModalFree() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             elModal.innerHTML = xhr.responseText;
             openModal();
-            let zimmerNrAnzeigeModalBox = document.querySelector('.zimmerNrAnzeige');
-            zimmerNrAnzeigeModalBox.innerHTML = this.hallo;
+            showRoomInModal(e);
         }
     };
 }
+function openModalBusy(e) {
 
-
-function openModalBusy() {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'busyHTML.html');
     xhr.send();
@@ -96,13 +93,12 @@ function openModalBusy() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             elModal.innerHTML = xhr.responseText;
             openModal();
-            let zimmerNrAnzeigeModalBox = document.querySelector('.zimmerNrAnzeige');
+            showRoomInModal(e);
         }
     };
 }
+function openModalMaintenance(e) {
 
-
-function openModalMaintenance() {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'nextMaintenance.html');
     xhr.send();
@@ -110,7 +106,7 @@ function openModalMaintenance() {
         if (xhr.readyState === 4 && xhr.status === 200) {
             elModal.innerHTML = xhr.responseText;
             openModal();
-            let zimmerNrAnzeigeModalBox = document.querySelector('.zimmerNrAnzeige');
+            showRoomInModal(e);
         }
     };
 }
@@ -121,7 +117,6 @@ function openModal() {
     elSpan.addEventListener('click', hideInfo);
     document.querySelector('.btn.btn-secondary').addEventListener('click', hideInfo);
     elModal.style.display = 'block';
-    
 }
 
 function hideInfo() {
@@ -129,32 +124,36 @@ function hideInfo() {
 }
 
 
+function showRoomInModal(e){
+    const zimmerNrAnzeigeModalBox = document.querySelector('.zimmerNrAnzeige');
+    const submitButtonInModal =  document.querySelector('.btn.btn-primary');
+    zimmerNrAnzeigeModalBox.innerHTML = e.getAttribute('room');
+    submitButtonInModal.setAttribute('value', e.getAttribute('room'));
+}
+
 function setAttribute(temp, i) {
-
-    arrRooms[i].setAttribute('hallo', temp.ZimmerNr);
-    // const newP = document.createElement('p');
-    // newP.style.zIndex = '500';
-    
-
-    // newP.innerText = temp.ZimmerNr;
-    // arrRooms[i].appendChild(newP);
-    
-    
+    arrRooms[i].setAttribute('room', temp.ZimmerNr);
 
     if (temp.Status === 0) {
         arrRooms[i].setAttribute('fill', 'green');
         arrRooms[i].setAttribute('fill-opacity', '1');
-        arrRooms[i].addEventListener('click', (e) =>{openModalFree(e)});
+        arrRooms[i].addEventListener('click', function () {
+            openModalFree(this);
+        });
 
     } else if (temp.Status === 1) {
         arrRooms[i].setAttribute('fill', '#8B0000');
         arrRooms[i].setAttribute('fill-opacity', '1');
-        arrRooms[i].addEventListener('click', openModalBusy);
+        arrRooms[i].addEventListener('click', function () {
+            openModalBusy(this)
+        });
 
     } else {
         arrRooms[i].setAttribute('fill', 'grey');
         arrRooms[i].setAttribute('fill-opacity', '1');
-        arrRooms[i].addEventListener('click', openModalMaintenance);
+        arrRooms[i].addEventListener('click', function () {
+            openModalMaintenance(this)
+        });
     }
 
     i === 0 && arrRooms[i].getAttribute('fill') === 'green' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', 'green') : "";

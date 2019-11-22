@@ -37,36 +37,8 @@ if (isset($_POST['email']) && isset($_POST['passwort'])) {
 $email_value = "";
 if (isset($_POST['email']))
     $email_value = htmlentities($_POST['email']);
-
 include("templates/header.php");
 ?>
-    <div class="container small-container-330 form-signin">
-        <form action="login.php" method="post">
-            <h2 class="form-signin-heading">Login</h2>
-
-            <?php
-            if (isset($error_msg) && !empty($error_msg)) {
-                echo $error_msg;
-            }
-            ?>
-            <label for="inputEmail" class="sr-only">E-Mail</label>
-            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="E-Mail"
-                   value="<?php echo $email_value; ?>" required autofocus>
-            <label for="inputPassword" class="sr-only">Passwort</label>
-            <input type="password" name="passwort" id="inputPassword" class="form-control" placeholder="Passwort"
-                   required>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="remember-me" name="angemeldet_bleiben" value="1" checked> Angemeldet
-                    bleiben
-                </label>
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-            <br>
-            <a href="passwortvergessen.php">Passwort vergessen</a>
-        </form>
-
-    </div> <!-- /container -->
 
 
 <?php

@@ -9,54 +9,52 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet" type="text/css" media="screen">
 </head>
-<body>
-<!-- <?php if (!is_checked_in()): ?> -->
-<div class="loginPage">
+<?php if (!is_checked_in()): ?>
+    <div class="mainContainer">
 
-    <div class="navbar-collapse collapse">
-        <form class="navbar-form navbar-right" action="login.php" method="post">
-            <table class="login" role="presentation">
-                <tbody>
-                <tr>
-                    <td>
-                        <div class="input-group">
-                            <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                            <input class="form-control" placeholder="E-Mail" name="email" type="email" required>
-                        </div>
-                    </td>
-                    <td><input class="form-control" placeholder="Passwort" name="passwort" type="password" value=""
-                               required></td>
-                    <td>
-                        <button type="submit" class="btn btn-success">Login</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label><input type="checkbox" name="angemeldet_bleiben" value="remember-me"
-                                      title="Angemeldet bleiben" checked="checked"
-                                      style="margin: 0; vertical-align: middle;"/> <small>Angemeldet
-                                bleiben</small></label></td>
-                    <td><small><a href="passwortvergessen.php">Passwort vergessen</a></small></td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
+        <div id="login-box">
+            <form action="login.php" method="post">
+                <h2 class="form-signin-heading">Login</h2>
+                <?php
+                if (isset($error_msg) && !empty($error_msg)) {
+                    echo $error_msg;
+                }
+                ?>
+                <label for="inputEmail" class="sr-only">E-Mail</label>
+                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="E-Mail" required
+                       autofocus>
+                <label for="inputPassword" class="sr-only">Passwort</label>
+                <input type="password" name="passwort" id="inputPassword" class="form-control" placeholder="Passwort"
+                       required>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me" name="angemeldet_bleiben" value="1" checked>
+                        Angemeldet
+                        bleiben
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                <br>
+                <a href="passwortvergessen.php">Passwort vergessen</a>
+            </form>
 
-
-        </form>
-    </div><!--/.navbar-collapse -->
-    <!-- <?php else: ?> -->
+        </div>
+    </div>
+<?php else: ?>
 
     <header>
-        <ul class="ulNavbarRechts">
-            <li><a href="overview.php">Übersicht</a></li>
-            <li><a href="gaesteueberblick.php">Gäste</a></li>
-            <li><a href="reservierungsueberblick.php">Reservierungen</a></li>
-            <li><a href="internal.php">Interner Bereich</a></li>
-            <li><a href="settings.php">Einstellungen</a></li>
-            <li><a href="logout.php">Logout</a></li>
-        </ul>
+        <nav>
+            <ul class="ulNavbarRechts">
+                <li><a href="overview.php">Übersicht</a></li>
+                <li><a href="gaesteueberblick.php">Gäste</a></li>
+                <li><a href="reservierungsueberblick.php">Reservierungen</a></li>
+                <li><a href="internal.php">Intern</a></li>
+                <li><a href="settings.php">Einstellungen</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- <?php endif; ?> -->
+<?php endif; ?>
 </div>
 </div>

@@ -1,5 +1,6 @@
 <?php
 namespace model;
+
 class Gast
 {
     private $gastnr;

@@ -12,8 +12,7 @@ class ReservierungDAO
         $this->dbConnect = SQLDAOFactory::getInstance();
     }
 
-    public function create(Reservierung $reservierung)
-    {
+    public function create(Reservierung $reservierung){
         $id = -1;
 
         $sql = ("INSERT INTO reservierung (zimmerNr, gastNr, mitarbeiterNr, datumVon, datumBis) VALUES(?,?,?,?,?)");
@@ -44,5 +43,5 @@ class ReservierungDAO
 
 
 }
-}
+
 ?>

@@ -9,8 +9,7 @@ require_once("inc/functions.php");
 $user = check_user();
 if ($user['admin'] == true) {
     include("admin/header.php");
-}
-else {
+} else {
     include("templates/header.php");
 }
 
@@ -74,151 +73,155 @@ $user = check_user();
 
 ?>
 
-<div class="container main-container">
+<div class="mainContainer">
+    <div class="settingForm">
 
-    <h1>Einstellungen</h1>
+        <h1>Einstellungen</h1>
 
-    <?php
-    if (isset($success_msg) && !empty($success_msg)):
+        <?php
+        if (isset($success_msg) && !empty($success_msg)):
+            ?>
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <?php echo $success_msg; ?>
+            </div>
+        <?php
+        endif;
         ?>
-        <div class="alert alert-success">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <?php echo $success_msg; ?>
-        </div>
-    <?php
-    endif;
-    ?>
 
-    <?php
-    if (isset($error_msg) && !empty($error_msg)):
+        <?php
+        if (isset($error_msg) && !empty($error_msg)):
+            ?>
+            <div class="alert alert-danger">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <?php echo $error_msg; ?>
+            </div>
+        <?php
+        endif;
         ?>
-        <div class="alert alert-danger">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <?php echo $error_msg; ?>
-        </div>
-    <?php
-    endif;
-    ?>
 
-    <div>
+        <div>
 
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#data" aria-controls="home" role="tab" data-toggle="tab">Persönliche
-                    Daten</a></li>
-            <li role="presentation"><a href="#email" aria-controls="profile" role="tab" data-toggle="tab">E-Mail</a>
-            </li>
-            <li role="presentation"><a href="#passwort" aria-controls="messages" role="tab"
-                                       data-toggle="tab">Passwort</a></li>
-        </ul>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#data" aria-controls="home" role="tab"
+                                                          data-toggle="tab">Persönliche
+                        Daten</a></li>
+                <li role="presentation"><a href="#email" aria-controls="profile" role="tab" data-toggle="tab">E-Mail</a>
+                </li>
+                <li role="presentation"><a href="#passwort" aria-controls="messages" role="tab"
+                                           data-toggle="tab">Passwort</a></li>
+            </ul>
 
-        <!-- Persönliche Daten-->
-        <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="data">
-                <br>
-                <form action="?save=personal_data" method="post" class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputVorname" class="col-sm-2 control-label">Vorname</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="inputVorname" name="vorname" type="text"
-                                   value="<?php echo htmlentities($user['vorname']); ?>" required>
+            <!-- Persönliche Daten-->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="data">
+                    <br>
+                    <form action="?save=personal_data" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputVorname" class="col-sm-2 control-label">Vorname</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputVorname" name="vorname" type="text"
+                                       value="<?php echo htmlentities($user['vorname']); ?>" required>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="inputNachname" class="col-sm-2 control-label">Nachname</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="inputNachname" name="nachname" type="text"
-                                   value="<?php echo htmlentities($user['nachname']); ?>" required>
+                        <div class="form-group">
+                            <label for="inputNachname" class="col-sm-2 control-label">Nachname</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputNachname" name="nachname" type="text"
+                                       value="<?php echo htmlentities($user['nachname']); ?>" required>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Speichern</button>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Speichern</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+
+                <!-- Änderung der E-Mail-Adresse -->
+                <div role="tabpanel" class="tab-pane" id="email">
+                    <br>
+                    <p>Zum Änderen deiner E-Mail-Adresse gib bitte dein aktuelles Passwort sowie die neue E-Mail-Adresse
+                        ein.</p>
+                    <form action="?save=email" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputPasswort" class="col-sm-2 control-label">Passwort</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputPasswort" name="passwort" type="password" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail" class="col-sm-2 control-label">E-Mail</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputEmail" name="email" type="email"
+                                       value="<?php echo htmlentities($user['email']); ?>" required>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputEmail2" class="col-sm-2 control-label">E-Mail (wiederholen)</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputEmail2" name="email2" type="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Speichern</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Änderung des Passworts -->
+                <div role="tabpanel" class="tab-pane" id="passwort">
+                    <br>
+                    <p>Zum Änderen deines Passworts gib bitte dein aktuelles Passwort sowie das neue Passwort ein.</p>
+                    <form action="?save=passwort" method="post" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputPasswort" class="col-sm-2 control-label">Altes Passwort</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputPasswort" name="passwortAlt" type="password"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPasswortNeu" class="col-sm-2 control-label">Neues Passwort</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputPasswortNeu" name="passwortNeu" type="password"
+                                       required>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputPasswortNeu2" class="col-sm-2 control-label">Neues Passwort
+                                (wiederholen)</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" id="inputPasswortNeu2" name="passwortNeu2" type="password"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Speichern</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
 
-            <!-- Änderung der E-Mail-Adresse -->
-            <div role="tabpanel" class="tab-pane" id="email">
-                <br>
-                <p>Zum Änderen deiner E-Mail-Adresse gib bitte dein aktuelles Passwort sowie die neue E-Mail-Adresse
-                    ein.</p>
-                <form action="?save=email" method="post" class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputPasswort" class="col-sm-2 control-label">Passwort</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="inputPasswort" name="passwort" type="password" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputEmail" class="col-sm-2 control-label">E-Mail</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="inputEmail" name="email" type="email"
-                                   value="<?php echo htmlentities($user['email']); ?>" required>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="inputEmail2" class="col-sm-2 control-label">E-Mail (wiederholen)</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="inputEmail2" name="email2" type="email" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Speichern</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Änderung des Passworts -->
-            <div role="tabpanel" class="tab-pane" id="passwort">
-                <br>
-                <p>Zum Änderen deines Passworts gib bitte dein aktuelles Passwort sowie das neue Passwort ein.</p>
-                <form action="?save=passwort" method="post" class="form-horizontal">
-                    <div class="form-group">
-                        <label for="inputPasswort" class="col-sm-2 control-label">Altes Passwort</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="inputPasswort" name="passwortAlt" type="password" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="inputPasswortNeu" class="col-sm-2 control-label">Neues Passwort</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="inputPasswortNeu" name="passwortNeu" type="password"
-                                   required>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label for="inputPasswortNeu2" class="col-sm-2 control-label">Neues Passwort
-                            (wiederholen)</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="inputPasswortNeu2" name="passwortNeu2" type="password"
-                                   required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Speichern</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
         </div>
 
     </div>
-
 
 </div>
 <?php
