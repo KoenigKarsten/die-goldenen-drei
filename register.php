@@ -2,16 +2,7 @@
 session_start();
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
-//Überprüfe, dass der User eingeloggt ist
-//Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
-//Mit der If-Abfrage überprüfen ob der User Adminrechte hat und entsprechend den Adminheader miteinbinden
-$user = check_user();
-if ($user['admin'] == true) {
-    include_once("./admin/header.php");
-}
-else {
-    include_once("templates/header.php");
-}
+include_once("templates/header.php");
 ?>
     <div class="container main-container registration-form">
         <h1>Registrierung</h1>
@@ -68,8 +59,8 @@ else {
                 $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname));
 
                 if ($admin == true) {
-                    $statement = $pdo->prepare("UPDATE users SET admin = 1 WHERE email = '$email'");
-                    $resultAdmin = $statement->execute(array('admin'));
+                    $stmt = $pdo->prepare("UPDATE users SET admin = 1 WHERE email = '$email'");
+                    $resultAdmin = $stmt->execute(array('admin'));
                               
                     if ($resultAdmin) {
                         echo 'Du wurdest erfolgreich als Admin registriert. <a href="login.php">Zum Login</a>';

@@ -49,6 +49,18 @@
                 <li><a href="overview.php">Übersicht</a></li>
                 <li><a href="gaesteueberblick.php">Gäste</a></li>
                 <li><a href="reservierungsueberblick.php">Reservierungen</a></li>
+
+                <?php
+                //Mit der If-Abfrage überprüfen ob der User Adminrechte hat und entsprechend den internen Link miteinbinden
+                    $user = check_user();
+
+                    if ($user['admin'] == true) {
+                ?> 
+                <li><a href="internal.php">Intern</a></li> 
+                <?php
+                    }
+                ?>
+                
                 <li><a href="settings.php">Einstellungen</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>

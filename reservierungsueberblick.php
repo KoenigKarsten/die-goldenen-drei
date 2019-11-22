@@ -2,18 +2,9 @@
 session_start();
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
-
-//Überprüfe, dass der User eingeloggt ist
-//Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
-//Mit der If-Abfrage überprüfen ob der User Adminrechte hat und entsprechend den Adminheader miteinbinden
-
-$user = check_user();
-if ($user['admin'] == true) {
-    include_once("./admin/header.php");
-} else {
-    include_once("templates/header.php");
-}
+include_once("templates/header.php");
 ?>
+
 <div class="mainContainer">
     <div class="reservierungForm">
 
