@@ -2,9 +2,7 @@
 
 spl_autoload_register();
 use mapper\GastDAO;
-use mapper\ReservierungDAO;
 use model\Gast;
-use model\Reservierung;
 use mapper\SQLDAOFactory;
 
 $anrede = "";
@@ -18,8 +16,6 @@ $ort = "";
 $land = "";
 $telefon = "";
 $email = "";
-$datumVon = "";
-$datumBis ="";
 
 if (isset($_POST['submit'])) {
     $anrede = $_POST['anrede'];
@@ -35,7 +31,6 @@ if (isset($_POST['submit'])) {
     $email = $_POST['emailAddy'];
     $datumVon = $_POST['datumVon'];
     $datumBis = $_POST['datumBis'];
-    $zimmernr = 
 
     $gast = new Gast($anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
     $gastDao = new GastDAO();

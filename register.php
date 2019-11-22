@@ -17,7 +17,6 @@ include("templates/header.php")
             $email = trim($_POST['email']);
             $passwort = $_POST['passwort'];
             $passwort2 = $_POST['passwort2'];
-            $admin = isset($_POST['chooseAdmin']);
 
             if (empty($vorname) || empty($nachname) || empty($email)) {
                 echo 'Bitte alle Felder ausfüllen<br>';
@@ -36,7 +35,6 @@ include("templates/header.php")
                 echo 'Die Passwörter müssen übereinstimmen<br>';
                 $error = true;
             }
-            
 
             //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
             if (!$error) {
@@ -49,8 +47,6 @@ include("templates/header.php")
                     $error = true;
                 }
             }
-            
-            
 
             //Keine Fehler, wir können den Nutzer registrieren
             if (!$error) {
@@ -59,26 +55,12 @@ include("templates/header.php")
                 $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname) VALUES (:email, :passwort, :vorname, :nachname)");
                 $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname));
 
-                if ($admin == true) {
-                    $statement = $pdo->prepare("UPDATE users SET admin = 1 WHERE email = '$email'");
-                    $resultAdmin = $statement->execute(array('admin'));
-                              
-                    if ($resultAdmin) {
-                        echo 'Du wurdest erfolgreich als Admin registriert. <a href="login.php">Zum Login</a>';
-                        $showFormular = false;
-                    } 
-                    else {
-                        echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
-                    } 
-                }
-
-                elseif ($result) {
-                        echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
-                        $showFormular = false;
-                }
-                else {
+                if ($result) {
+                    echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+                    $showFormular = false;
+                } else {
                     echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
-                } 
+                }
             }
         }
 
@@ -116,12 +98,6 @@ include("templates/header.php")
                     <input type="password" id="inputPasswort2" size="40" maxlength="250" name="passwort2"
                            class="form-control" required>
                 </div>
-
-                <div class="form-group">
-                    <label for="chooseAdmin">Adminrechte:</label>
-                    <input type="checkbox" id="chooseAdmin" name="chooseAdmin" class="form-control">
-                </div>
-
                 <button type="submit" class="btn btn-lg btn-primary btn-block">Registrieren</button>
             </form>
 

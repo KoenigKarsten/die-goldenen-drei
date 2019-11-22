@@ -49,7 +49,6 @@ else {
     </div>
 
     <p><a class="btn btn-primary btn-lg" href="register.php" role="button">Jetzt registrieren</a></p>
-    <br><p><a class="btn btn-primary btn-lg" href="delete.php" role="butten">Benutzer löschen</a></p>
 
 </div>
 
