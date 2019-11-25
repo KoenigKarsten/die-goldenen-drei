@@ -3,19 +3,25 @@ session_start();
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
 include_once("mapper/SQLDAOFactory.php");
-include_once("templates/header.php");
+include_once('templates/header.php');
+
+//Überprüfe, dass der User eingeloggt ist
+//Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
+//Mit der If-Abfrage überprüfen ob der User Adminrechte hat und entsprechend den Adminheader miteinbinden
+$user = check_user();
 ?>
 
 
 <div class="mainContainer">
-
     <div class='overviewMainpage'>
         Hallo <?php echo htmlentities($user['vorname']) . " " . htmlentities($user['nachname']);
         if ($user['admin'] == true) {
             echo "<br>Willkommen im Adminbereich, hier können Sie im internen Bereich neue Benutzer eingeben.";
         }
-        ?><br>
-        <br><br>
+        ?>
+        <br>
+        <br>
+        <br>
         <div class='wahlReiter'>
             <select name="gebaeudeReiter" id="gebaeudeReiter">
                 <?php
@@ -31,7 +37,6 @@ include_once("templates/header.php");
                 ?>
             </select>
 
-
             <select name="etageReiter" id="etageReiter">
                 <?php
                 $objZimmer = new ZimmerDAO();
@@ -43,12 +48,9 @@ include_once("templates/header.php");
                 ?>
             </select>
         </div>
-
-
         <div class='polygonZeichnung'>
             <div id='polygon_1'></div>
         </div>
-
         <div class="modal"></div>
     </div>
 </div>

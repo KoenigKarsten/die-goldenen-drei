@@ -2,50 +2,339 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    text-decoration: none;
-    list-style: none;
 }
 
-/*body {*/
-/*    height: 100vh;*/
-/*}*/
+body, html {
+    height: 100%;
+    font-family: sans-serif;
+    font-weight: 400;
+    background-image: url("../img/bfw-blackandwhite.jpeg");
+    height: 100vh; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
 
-.mainContainer {
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+/*ANFANG LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
+/*ANFANG LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
+/*ANFANG LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
+/*ANFANG LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
+
+
+.container-login {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+    background-color: #fff;
+}
+
+#bfwLogo {
+    margin: 10px;
+    height: auto;
+}
+
+.loginBox {
+    width: 500px;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.loginForm {
+    width: 100%;
+    position: relative;
+    padding-right: 55px;
+    padding-left: 55px;
+    padding-top: 178px;
+}
+
+.formUeberschrift {
+    font-size: 30px;
+    color: #fff;
+    line-height: 1.2;
+    text-align: center;
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #e95d0f;
+    padding-top: 50px;
+    padding-bottom: 39px;
+}
+
+.emailWrap {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 27px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 16px;
+}
+
+.inputEmail {
+    font-size: 15px;
+    font-weight: bold;
+    color: #e95d0f;
+    line-height: 1.2;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 55px;
+    background: #ebebeb;
+    border-radius: 27px;
+    padding: 0 35px;
+    border: none;
+}
+
+.focusEmail {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 31px;
+    background-color: #ebebeb;
+    pointer-events: none;
+    transition: all .4s;
+}
+
+.passwordWrap {
+    position: relative;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 27px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+}
+
+.inputPassword {
+    font-size: 15px;
+    font-weight: bold;
+    color: #e95d0f;
+    line-height: 1.2;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 55px;
+    background: #ebebeb;
+    border-radius: 27px;
+    padding: 0 35px;
+    border: none;
+}
+
+.focusPassword {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 31px;
+    background-color: #ebebeb;
+    pointer-events: none;
+    transition: all .4s;
+}
+
+.loginBtn {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.loginFormBtn {
+    font-weight: bold;
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+    background-color: #e95d0f;
+    border-radius: 25px;
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    transition: all .4s;
+    outline: none;
+    border: none;
+    margin-bottom: 40px;
 }
+
+.loginFormBtn:hover {
+    background-color: #001f47;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"] + label {
+    width: 60px;
+    border-radius: 30px;
+    border: 2px solid #ddd;
+    background-color: #EEE;
+    display: inline-block;
+    content: "";
+    float: left;
+    margin-right: 5px;
+    transition: background-color 0.5s linear;
+    margin-bottom: 22px;
+}
+
+input[type="checkbox"] + label:hover {
+    cursor: pointer;
+}
+
+input[type="checkbox"] + label::before {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #fff;
+    display: block;
+    content: "";
+    float: left;
+    margin-right: 5px;
+    transition: margin 0.1s linear;
+    box-shadow: 0px 0px 5px #aaa;
+}
+
+input[type="checkbox"]:checked + label {
+    background-color: #e95d0f;
+}
+
+input[type="checkbox"]:checked + label::before {
+    margin: 0 0 0 30px;
+}
+
+input[type="checkbox"] + label {
+    position: relative;
+}
+
+input[type="checkbox"] + label::after {
+    top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    content: "Angemeldet bleiben";
+    color: #e95d0f;
+    position: absolute;
+    left: 70px;
+}
+
+
+/*ENDE LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
+/*ENDE LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
+/*ENDE LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
+/*ENDE LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
+
 
 
 nav {
-    width: 100vw;
-    height: 50px;
-    background: aliceblue;
-    border-top: 1px solid rgba(255, 255, 255, .2);
-    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    width: 100%;
+    height: 60px;
 }
-
 
 nav ul {
     display: flex;
     justify-content: space-around;
-    margin: 0;
-    padding: 0 20px;
 }
 
-nav ul li {
+nav ul li{
+    list-style-type: none;
+    width: 100%;
+}
+nav ul li a{
+    border-bottom: 3px solid white;
+    border-right: 3px solid white;
+    border-left: 3px solid white;
+    background-color: #e95d0f;
+    display: block;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    height: 60px;
+    transition: height 1s;
 }
 
-#login-box {
-    background-color: #ff8d1a;
+nav ul li a:hover{
+    background-color: #001f47;
+
+    height: 150px;
 }
 
+nav ul li a.active{
+    background-color: #001f47;
+}
+
+
+
+
+/*ul {*/
+/*    display: flex;*/
+/*    list-style-type: none;*/
+/*}*/
+
+/*nav ul li{*/
+/*    background-color: #e95d0f;*/
+/*    width: 100%;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    height: 60px;*/
+/*    !*border-left: 1px solid #201c29;*!*/
+/*    !*border-right: 1px solid #201c29;*!*/
+/*    !*border-bottom: 1px solid #201c29;*!*/
+/*    text-align: center;*/
+/*    text-transform: uppercase;*/
+/*}*/
+
+/*nav ul li a.active{*/
+/*    background-color: #001f47;*/
+/*}*/
 
 .footer {
     height: 50px;
+    background-color: #e95d0f;
     position: absolute;
     width: 100%;
     bottom: 0;
+}
+
+
+.mainContainer {
+    position: relative;
+    top: 35%;
+    display: flex;
+    height: auto;
+    /*justify-content: center;*/
+    flex-direction: column;
+    align-items: center;
 }
 
 .buttons {
@@ -65,14 +354,13 @@ nav ul li {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-
 }
 
 .modalContentFree {
     background: linear-gradient(to right, Azure, WhiteSmoke);
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #001f47;
     width: 80%;
     height: 300px;
     display: flex;
@@ -80,15 +368,23 @@ nav ul li {
 }
 
 .close {
-    color: #aaaaaa;
+    position: relative;
+    right: -50%;
+    color: #e95d0f;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    transition: transform .8s ease-in-out;
+
 }
+
 
 .close:hover,
 .close:focus {
-    color: #000;
+    transform:rotate(45deg);
+    transform-origin: center;
+    color: #001f47;
     text-decoration: none;
     cursor: pointer;
 }
+
