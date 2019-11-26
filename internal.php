@@ -7,7 +7,7 @@ require_once ('templates/header.php');
 
 //Überprüfe, dass der User eingeloggt ist
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
-//Mit der If-Abfrage überprüfen ob der User Adminrechte hat und entsprechend den Adminheader miteinbinden
+
 $user = check_user();
 ?>
 <div class="container main-container">

@@ -7,7 +7,7 @@ include_once ('templates/header.php');
 
 //Überprüfe, dass der User eingeloggt ist
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
-//Mit der If-Abfrage überprüfen ob der User Adminrechte hat und entsprechend den Adminheader miteinbinden
+
 $user = check_user();
 
 
@@ -84,22 +84,6 @@ use model\Gast;
                 }
             }
         }
-
-        //Keine Fehler, wir können den Nutzer registrieren
-        if (!$error) {
-            $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
-
-            $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname) VALUES (:email, :passwort, :vorname, :nachname)");
-            $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname));
-
-            if ($result) {
-                echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
-                $showFormular = false;
-            } else {
-                echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
-            }
-        }
-
 
         if ($showFormular) {
             ?>
@@ -200,6 +184,4 @@ use model\Gast;
 </div>
 <?php
 include("templates/footer.php");
-?>
-
 ?>

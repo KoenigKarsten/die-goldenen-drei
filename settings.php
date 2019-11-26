@@ -5,7 +5,7 @@ require_once("inc/functions.php");
 include_once ('templates/header.php');
 //Überprüfe, dass der User eingeloggt ist
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
-//Mit der If-Abfrage überprüfen ob der User Adminrechte hat und entsprechend den Adminheader miteinbinden
+
 $user = check_user();
 
 if (isset($_GET['save'])) {
