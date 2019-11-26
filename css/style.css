@@ -335,11 +335,6 @@ nav ul li a.active {
     align-items: center;
 }
 
-.buttons {
-    position: relative;
-    left: 900px;
-    bottom: 15px;
-}
 
 
 .modal {
@@ -355,20 +350,15 @@ nav ul li a.active {
 }
 
 .modalContentFree {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #e5e5e5;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #001f47;
-    width: 50%;
-    height: auto;
-    border-radius: 50px 20px;
+    background-color: #dddddd;
+    width: 60%;
 }
+
+
 
 .close {
     position: relative;
-    right: -50%;
+    right: +50%;
     color: #e95d0f;
     float: right;
     font-size: 28px;
@@ -378,6 +368,7 @@ nav ul li a.active {
     transition: transform .8s ease-in-out;
 
 }
+
 
 
 .close:hover,

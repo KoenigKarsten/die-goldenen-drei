@@ -84,6 +84,7 @@ function openModalFree(e) {
         }
     };
 }
+
 function openModalBusy(e) {
 
     let xhr = new XMLHttpRequest();
@@ -97,6 +98,7 @@ function openModalBusy(e) {
         }
     };
 }
+
 function openModalMaintenance(e) {
 
     let xhr = new XMLHttpRequest();
@@ -124,9 +126,9 @@ function hideInfo() {
 }
 
 
-function showRoomInModal(e){
+function showRoomInModal(e) {
     const zimmerNrAnzeigeModalBox = document.querySelector('.zimmerNrAnzeige');
-    const submitButtonInModal =  document.querySelector('.btn.btn-primary');
+    const submitButtonInModal = document.querySelector('.btn.btn-primary');
     zimmerNrAnzeigeModalBox.innerHTML = e.getAttribute('room');
     submitButtonInModal.setAttribute('value', e.getAttribute('room'));
 }
