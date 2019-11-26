@@ -14,7 +14,10 @@
 
 </head>
 <body>
-<?php if (!is_checked_in()): ?>
+<?php 
+
+require_once('./inc/functions.php');
+if (!is_checked_in()): ?>
     <div class="limiter">
         <div class="container-login">
 
