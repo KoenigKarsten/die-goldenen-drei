@@ -1,23 +1,23 @@
 <div class="modalContentFree">
-    <div class="close">&times;</div>
+    <i class="fas fa-times">X</i>
     <div class="roomInfoFree">
         <div class="modal-Box">
-                <div class='header'>
-                    <form id='radioStatus'>
-                        <label for="radioVermietet">
-                            <input type="radio" id="radioVermietet" name="bookingOrMaintaince" value="vermieten"
-                                   checked> vermieten<br>
-                        </label>
-                        <label for="radioOOO">
-                            <input type="radio" id="radioOOO" name="bookingOrMaintaince" value="in Wartung"> in
-                            Wartung<br>
-                        </label>
-                    </form>
-                </div>
+            <div class='radioButton'>
+                <form id='radioStatus'>
+                    <label for="radioVermietet">
+                        <input type="radio" id="radioVermietet" name="bookingOrMaintaince" value="vermieten"
+                               checked> Buchen<br>
+                    </label>
+                    <label for="radioOOO">
+                        <input type="radio" id="radioOOO" name="bookingOrMaintaince" value="in Wartung">
+                        Wartung<br>
+                    </label>
+                </form>
+            </div>
 
             <div class='modal-boxInfo'>
                 <form action="modal-boxInfoSave.php" method="post">
-                        <p class="zimmerNrAnzeige"></p>
+                    <p class="zimmerNrAnzeige"></p>
 
                     <label for="inputName">Name:</label>
                     <p><select name="anrede" id="anrede">
@@ -25,32 +25,53 @@
                         <option value="frau">Frau</option>
                         <option value="divers">Divers</option>
                     </select>
-                        <input type="text" name="vorname" id="vorname" placeholder="Vorname *" required>
-                        <input type="text" name="nachname" id="nachname" placeholder="Nachname *" required></p>
+                        <label class="wrapVornameBuchung">
+                            <input type="text" name="vorname" id="vornameBuchung" class="vornameBuchung"
+                                   placeholder="Vorname *" required>
+                            <span class="focusVornameBuchung"></span>
+                        </label>
 
-                    <label for="inputAdresse">Adresse:</label>
-                    <p><input type="text" name="strasse" id="strasse" placeholder="Strasse *" required>
-                        <input type="text" name="hausnummer" id="hausnummer" placeholder="Hausnummer *" required>
+                        <label class="wrapNachnameBuchung">
+                            <input type="text" name="nachname" id="nachnameBuchung" class="nachnameBuchung"
+                                   placeholder="Nachname *" required>
+                            <span class="focusNachnameBuchung"></span>
+                        </label>
+
+                        <label class="wrapAdresseBuchung">
+                            <input type="text" name="adresse" id="adresseBuchung" class="adresseBuchung" placeholder="Adresse *" required>
+                            <span class="focusAdresseBuchung"></span>
+                        </label>
+
+                        <label class="wrapStrasseBuchung">
+                        <input type="text" name="strasse" id="strasseBuchung" class="strasseBuchung" placeholder="Strasse *" required>
+                            <span class="focusStrasseBuchung"></span>
+                        </label>
+
+                        <label class="wrapHausnummerBuchung">
+                        <input type="text" name="hausnummer" id="hausnummerBuchung" class="hausnummerBuchung" placeholder="Hausnummer *" required>
+                            <span class="focusHausnummerBuchung"></span>
+                        </label>
+
                         <input type="text" name="postleitzahl" id="postleitzahl" placeholder="Postleitzahl *" required>
                         <input type="text" name="ort" id="ort" placeholder="Ort *" required>
                         <input type="text" name="zusatz" id="zusatz" placeholder="Zusatz">
                         <input type="text" name="land" id="land" placeholder="Land *" required></p>
 
                     <label for="inputKontakt">Kontaktdaten:</label>
-                    <P><input type="text" name="telefonNr" id="telefonNr" placeholder="Telefonnummer">
-                        <input type="text" name="emailAddy" id="emailAddy" placeholder="E-Mail-Adresse *" required></P>
+                    <input type="text" name="telefonNr" id="telefonNr" placeholder="Telefonnummer">
+                    <input type="text" name="emailAddy" id="emailAddy" placeholder="E-Mail-Adresse *" required></P>
 
                     <label for="inputDatum">Datum:</label>
                     <div class="form-group">
                         <label for="inputDatumVon">Startdatum:</label>
                         <input type="date" id="inputDatumVon" name="DatumVon"
-                               class="form-control" >
+                               class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="inputDatumBis">Enddatum:</label>
                         <input type="date" id="inputDatumBis" name="DatumBis"
-                               class="form-control" >
+                               class="form-control">
                     </div>
                     <p>
                     <div class="modalBoxButton">
