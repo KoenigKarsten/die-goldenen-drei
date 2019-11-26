@@ -87,6 +87,37 @@ class GastDAO
 
         return $gast;
     }
+
+    public function readAll(Gast $gast) {
+        include("./model/gast.php");
+
+        $sql = ("SELECT * FROM gast");
+
+        if (!$preStmt = $this->dbConnect->prepare($sql)) {
+            echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
+        } else {
+            if (!$preStmt->bind_param("s", $gast)) {
+                echo "Fehler beim Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
+            } else {
+                if (!$preStmt->execute()) {
+                    echo "Fehler beim Ausführen (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
+                } else {
+                    if (!$preStmt->bind_result($gastnr, $anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email)) {
+                        echo "Fehler beim Ergebnis-Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
+                    } else {
+                        if ($preStmt->fetch()) {
+                            $gast = new Gast($gastnr, $anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
+                        }
+                        $preStmt->free_result();
+                    }
+                }
+            }
+
+            $preStmt->close();
+        }
+
+        return $gast;
+    }
 }
 
 ?>

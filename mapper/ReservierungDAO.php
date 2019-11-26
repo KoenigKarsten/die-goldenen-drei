@@ -21,7 +21,7 @@ class ReservierungDAO
         $gastnr = $reservierung->getGastnr();
         $mitarbeiternr = $reservierung->getMitarbeiternr();
         $datumVon = $reservierung->getDatumVon();
-        $datumBis = $reservierung->getDatumBis();
+        $l = $reservierung->getDatumBis();
 
         if (!$preStmt = $this->dbConnect->prepare($sql)) {
             echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
@@ -40,6 +40,41 @@ class ReservierungDAO
         $preStmt->close();
     }
 
+    public function read(Reservierung $reservierung)
+    {
+        include("./model/Reservierung.php");
+
+        $sql = ("SELECT ZimmerNr, ReservierungNr, GastNr, MitarbeiterNr, DatumVon, DatumBis
+                        FROM Reservierung 
+                        WHERE ZimmerNr = $Zimmernr
+                        AND DatumVon = $datumVon
+                        AND DatumBis = $datumBis");
+
+        if (!$preStmt = $this->dbConnect->prepare($sql)) {
+            echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
+        } else {
+            if (!$preStmt->bind_param("s", $reservierung)) {
+                echo "Fehler beim Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
+            } else {
+                if (!$preStmt->execute()) {
+                    echo "Fehler beim Ausführen (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
+                } else {
+                    if (!$preStmt->bind_result($zimmernr, $gastnr, $mitarbeiternr, $datumVon, $datumBis)) {
+                        echo "Fehler beim Ergebnis-Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
+                    } else {
+                        if ($preStmt->fetch()) {
+                            $reservierung = new Reservierung($zimmernr, $gastnr, $mitarbeiternr, $datumVon, $datumBis);
+                        }
+                        $preStmt->free_result();
+                    }
+                }
+            }
+
+            $preStmt->close();
+        }
+
+        return $reservierung;
+    }
 
 }
 
