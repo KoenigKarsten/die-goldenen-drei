@@ -5,10 +5,10 @@ require_once("inc/functions.php");
 
 include_once ('templates/header.php');
 
-//Überprüfe, dass der User eingeloggt ist
-//Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
+spl_autoload_register();
 
-$user = check_user();
+use mapper\ReservierungsDAO;
+use model\Reservierung;
 
 ?>
 <div class="mainContainer">
@@ -16,31 +16,15 @@ $user = check_user();
 
         <h1>Reservierung</h1>
         <?php
-        $showFormular = true; //Variable ob das Reservierungsformular anezeigt werden soll
-
+        
         if (isset($_GET['register'])) {
-            $error = false;
-            $vorname = trim($_POST['vorname']);
-            $nachname = trim($_POST['nachname']);
-            $email = trim($_POST['email']);
-            $passwort = $_POST['passwort'];
-            $passwort2 = $_POST['passwort2'];
+            $zimmernr = trim($_POST['ZimmerNr']);
+            $gastnr = trim($_POST['GastNr']);
+            $datumVon = $_POST['DatumVon'];
+            $datumBis = $_POST['DatumBis'];
 
-            if (empty($vorname) || empty($nachname) || empty($email)) {
+            if (empty($zimmernr) || empty($datumVon) || empty($datumBis)) {
                 echo 'Bitte alle Felder ausfüllen<br>';
-                $error = true;
-            }
-
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
-                $error = true;
-            }
-            if (strlen($passwort) == 0) {
-                echo 'Bitte ein Passwort angeben<br>';
-                $error = true;
-            }
-            if ($passwort != $passwort2) {
-                echo 'Die Passwörter müssen übereinstimmen<br>';
                 $error = true;
             }
 
@@ -60,7 +44,7 @@ $user = check_user();
             if (!$error) {
                 $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-                $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname) VALUES (:email, :passwort, :vorname, :nachname)");
+                $statement = $pdo->prepare("INSERT INTO reservierung (email, passwort, vorname, nachname) VALUES (:email, :passwort, :vorname, :nachname)");
                 $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname));
 
                 if ($result) {
