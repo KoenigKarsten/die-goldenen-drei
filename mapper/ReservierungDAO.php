@@ -21,7 +21,7 @@ class ReservierungDAO
         $gastnr = $reservierung->getGastnr();
         $mitarbeiternr = $reservierung->getMitarbeiternr();
         $datumVon = $reservierung->getDatumVon();
-        $l = $reservierung->getDatumBis();
+        $datumBis = $reservierung->getDatumBis();
 
         if (!$preStmt = $this->dbConnect->prepare($sql)) {
             echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
@@ -77,6 +77,17 @@ class ReservierungDAO
         return $reservierung;
     }
 
+    public function update(Reservierung $reservierung){
+		$ok = false;
+
+		return $ok;
+	}
+	
+	public function delete(Reservierung $reservierung){
+		$ok = false;
+
+		return $ok;
+	}
 }
 
 ?>

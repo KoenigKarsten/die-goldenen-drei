@@ -16,12 +16,25 @@ use model\Reservierung;
 
         <h1>Reservierung</h1>
         <?php
+
+        $zimmernr = "";
+        $reservierungsnr = "";
+        $gastnr = "";
+        $datumVon = "";
+        $datumBis = "";
+        
         
         if (isset($_GET['register'])) {
             $zimmernr = trim($_POST['ZimmerNr']);
             $gastnr = trim($_POST['GastNr']);
             $datumVon = $_POST['DatumVon'];
             $datumBis = $_POST['DatumBis'];
+
+            $reservierung = new reservierung($zimmernr, $reservierungsnr, $gastnr, $datumVon, $datumBis);
+            $ReservierungDao = new ReservierungDAO();
+            $ReservierungDao->read($reservierung);
+            $ReservierungDao->create($reservierung);
+            $ReservierungDao->delete($reservierung);
 
             if (empty($zimmernr) || empty($datumVon) || empty($datumBis)) {
                 echo 'Bitte alle Felder ausfüllen<br>';
@@ -41,20 +54,20 @@ use model\Reservierung;
             }
 
             //Keine Fehler, wir können den Nutzer registrieren
-            if (!$error) {
-                $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
+        //     if (!$error) {
+        //         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-                $statement = $pdo->prepare("INSERT INTO reservierung (email, passwort, vorname, nachname) VALUES (:email, :passwort, :vorname, :nachname)");
-                $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname));
+        //         $statement = $pdo->prepare("INSERT INTO reservierung (email, passwort, vorname, nachname) VALUES (:email, :passwort, :vorname, :nachname)");
+        //         $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname));
 
-                if ($result) {
-                    echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
-                    $showFormular = false;
-                } else {
-                    echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
-                }
-            }
-        }
+        //         if ($result) {
+        //             echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+        //             $showFormular = false;
+        //         } else {
+        //             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
+        //         }
+        //     }
+        // }
 
         //if ($showFormular) {
         ?>
