@@ -1,11 +1,12 @@
 <?php
 
-spl_autoload_register();
+require_once('mapper/ReservierungDAO.php');
+require_once("mapper/GastDAO.php");
+require_once('model/Gast.php');
+require_once('model/Reservierung.php');
+
 use mapper\GastDAO;
-use mapper\ReservierungDAO;
 use model\Gast;
-use model\Reservierung;
-use mapper\SQLDAOFactory;
 
 $anrede = "";
 $vorname = "";
@@ -18,8 +19,8 @@ $ort = "";
 $land = "";
 $telefon = "";
 $email = "";
-$datumVon = "";
-$datumBis ="";
+//$datumVon = "";
+//$datumBis ="";
 
 if (isset($_POST['submit'])) {
     $anrede = $_POST['anrede'];
@@ -33,16 +34,16 @@ if (isset($_POST['submit'])) {
     $land = $_POST['land'];
     $telefon = $_POST['telefonNr'];
     $email = $_POST['emailAddy'];
-    $datumVon = $_POST['datumVon'];
-    $datumBis = $_POST['datumBis'];
-    $zimmernr = 
+//    $datumVon = $_POST['datumVon'];
+//    $datumBis = $_POST['datumBis'];
+//    $zimmernr =
 
     $gast = new Gast($anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
     $gastDao = new GastDAO();
 
     //Gastnr. aus der Datenbank auslesen und in die Reservierungstabelle eintragen (neue DAO?)
-    $reservierung = new Reservierung($zimmernr, $gastnr, $mitarbeiternr, $datumVon, $datumBis);
-    $reservierungDao = new ReservierungDAO();
+//    $reservierung = new Reservierung($zimmernr, $gastnr, $mitarbeiternr, $datumVon, $datumBis);
+//    $reservierungDao = new ReservierungDAO();
 
    
     $gastDao->create($gast);

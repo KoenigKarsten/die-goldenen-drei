@@ -113,7 +113,7 @@ function openModalMaintenance(e) {
 
 
 function openModal() {
-    let elSpan = document.querySelector(".close");
+    let elSpan = document.querySelector(".fas.fa-times");
     elSpan.addEventListener('click', hideInfo);
     document.querySelector('.btn.btn-secondary').addEventListener('click', hideInfo);
     elModal.style.display = 'block';
@@ -145,14 +145,14 @@ function setAttribute(temp, i) {
         arrRooms[i].setAttribute('fill', '#8B0000');
         arrRooms[i].setAttribute('fill-opacity', '1');
         arrRooms[i].addEventListener('click', function () {
-            openModalBusy(this)
+            openModalBusy(this);
         });
 
     } else {
         arrRooms[i].setAttribute('fill', 'grey');
         arrRooms[i].setAttribute('fill-opacity', '1');
         arrRooms[i].addEventListener('click', function () {
-            openModalMaintenance(this)
+            openModalMaintenance(this);
         });
     }
 
@@ -173,3 +173,6 @@ function setAttribute(temp, i) {
     i === 10 && arrRooms[i].getAttribute('fill') === 'grey' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', 'grey') : "";
 
 }
+
+
+

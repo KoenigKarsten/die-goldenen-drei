@@ -1,19 +1,18 @@
 <div class="modalContentFree">
-    <span class="close">&times;</span>
+    <i class="fas fa-times"></i>
     <div class="roomInfoFree">
         <div class="modal-Box">
-                <div class='header'>
-                    <form id='radioStatus'>
-                        <label for="radioVermietet">
-                            <input type="radio" id="radioVermietet" name="bookingOrMaintaince" value="vermieten"
-                                   checked> vermieten<br>
-                        </label>
-                        <label for="radioOOO">
-                            <input type="radio" id="radioOOO" name="bookingOrMaintaince" value="in Wartung"> in
-                            Wartung<br>
-                        </label>
-                    </form>
-                </div>
+            <div class='radioButton'>
+                <form id='radioStatus'>
+                    <label for="radioVermietet">
+                        <input type="radio" id="radioVermietet" name="bookingOrMaintaince" value="vermieten"
+                               checked> Zimmer frei<br>
+                    </label>
+                    <label for="radioOOO">
+                        <input type="radio" id="radioOOO" name="bookingOrMaintaince" value="in wartung"> Buchen<br>
+                    </label>
+                </form>
+            </div>
             <div class='modal-boxInfo'>
                 <form action="modal-boxInfoSave.php" method="post">
                     <p class="zimmerNrAnzeige"></p>

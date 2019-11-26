@@ -7,7 +7,11 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Loginscript</title>
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="./css/style.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="./css/fontawesome.min.css" rel="stylesheet">
+
+
+
 </head>
 <body>
 <?php if (!is_checked_in()): ?>

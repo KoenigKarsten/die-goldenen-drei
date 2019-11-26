@@ -1,8 +1,10 @@
 <?php
 
 namespace mapper;
+require_once("SQLDAOFactory.php");
 
 use model\Gast;
+
 // include_once("../model/Gast.php");
 
 class GastDAO
