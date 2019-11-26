@@ -250,7 +250,6 @@ input[type="checkbox"] + label::after {
 /*ENDE LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
 
 
-
 nav {
     width: 100%;
     height: 60px;
@@ -261,11 +260,12 @@ nav ul {
     justify-content: space-around;
 }
 
-nav ul li{
+nav ul li {
     list-style-type: none;
     width: 100%;
 }
-nav ul li a{
+
+nav ul li a {
     border-bottom: 3px solid white;
     border-right: 3px solid white;
     border-left: 3px solid white;
@@ -283,17 +283,15 @@ nav ul li a{
     transition: height 1s;
 }
 
-nav ul li a:hover{
+nav ul li a:hover {
     background-color: #001f47;
 
     height: 150px;
 }
 
-nav ul li a.active{
+nav ul li a.active {
     background-color: #001f47;
 }
-
-
 
 
 /*ul {*/
@@ -358,6 +356,7 @@ nav ul li a.active{
 
 .modalContentFree {
     display: flex;
+    flex-wrap: wrap;
     background-color: #e5e5e5;
     margin: auto;
     padding: 20px;
@@ -383,8 +382,8 @@ nav ul li a.active{
 
 .close:hover,
 .close:focus {
-    transform: scale(1.4);
-    transform: scale(x,y);
+    transform: scale(1.1, 1.1);
+    /*transform: scale(x, y);*/
     color: #001f47;
     text-decoration: none;
     cursor: pointer;
@@ -394,21 +393,29 @@ nav ul li a.active{
 .wrapNachnameBuchung,
 .wrapAdresseBuchung,
 .wrapStrasseBuchung,
-.wrapHausnummerBuchung{
+.wrapHausnummerBuchung,
+.wrapPostleitzahlBuchung,
+.wrapOrtBuchung,
+.wrapZusatzBuchung,
+.wrapLandBuchung {
     position: relative;
     width: 100%;
     background-color: #fff;
     border-radius: 27px;
     position: relative;
     z-index: 1;
-    margin-bottom: 30px;
+
 }
 
 .vornameBuchung,
 .nachnameBuchung,
 .adresseBuchung,
 .strasseBuchung,
-.hausnummerBuchung{
+.hausnummerBuchung,
+.postleitzahlBuchung,
+.ortBuchung,
+.zusatzBuchung,
+.landBuchung {
     font-size: 15px;
     font-weight: bold;
     color: #e95d0f;
@@ -427,7 +434,11 @@ nav ul li a.active{
 .focusNachnameBuchung,
 .focusAdresseBuchung,
 .focusStrasseBuchung,
-.focusHausnummerBuchung{
+.focusHausnummerBuchung,
+.focusPostleitzahlBuchung,
+.focusOrtBuchung,
+.focusZusatzBuchung,
+.focusLandBuchung {
     display: block;
     position: absolute;
     z-index: -1;
@@ -442,9 +453,15 @@ nav ul li a.active{
     transition: all .4s;
 }
 
+
 .nachnameBuchung,
 .adresseBuchung,
 .strasseBuchung,
-.hausnummerBuchung{
+.hausnummerBuchung,
+.postleitzahlBuchung,
+.ortBuchung,
+.zusatzBuchung,
+.landBuchung {
+
     margin: 10px 0px 10px 0px;
 }

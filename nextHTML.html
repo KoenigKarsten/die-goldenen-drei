@@ -1,5 +1,5 @@
 <div class="modalContentFree">
-    <i class="fas fa-times">X</i>
+    <div class="close">X</div>
     <div class="roomInfoFree">
         <div class="modal-Box">
             <div class='radioButton'>
@@ -37,31 +37,48 @@
                             <span class="focusNachnameBuchung"></span>
                         </label>
 
-                        <label class="wrapAdresseBuchung">
-                            <input type="text" name="adresse" id="adresseBuchung" class="adresseBuchung" placeholder="Adresse *" required>
-                            <span class="focusAdresseBuchung"></span>
-                        </label>
-
                         <label class="wrapStrasseBuchung">
-                        <input type="text" name="strasse" id="strasseBuchung" class="strasseBuchung" placeholder="Strasse *" required>
+                            <input type="text" name="strasse" id="strasseBuchung" class="strasseBuchung"
+                                   placeholder="Strasse *" required>
                             <span class="focusStrasseBuchung"></span>
                         </label>
 
                         <label class="wrapHausnummerBuchung">
-                        <input type="text" name="hausnummer" id="hausnummerBuchung" class="hausnummerBuchung" placeholder="Hausnummer *" required>
+                            <input type="text" name="hausnummer" id="hausnummerBuchung" class="hausnummerBuchung"
+                                   placeholder="Hausnummer *" required>
                             <span class="focusHausnummerBuchung"></span>
                         </label>
 
-                        <input type="text" name="postleitzahl" id="postleitzahl" placeholder="Postleitzahl *" required>
-                        <input type="text" name="ort" id="ort" placeholder="Ort *" required>
-                        <input type="text" name="zusatz" id="zusatz" placeholder="Zusatz">
-                        <input type="text" name="land" id="land" placeholder="Land *" required></p>
+                        <label class="wrapPostleitzahlBuchung">
+                            <input type="text" name="postleitzahl" id="postleitzahlBuchung" class="postleitzahlBuchung"
+                                   placeholder="Postleitzahl *"
+                                   required>
+                            <span class="focusPostleitzahlBuchung"></span>
+                        </label>
 
-                    <label for="inputKontakt">Kontaktdaten:</label>
-                    <input type="text" name="telefonNr" id="telefonNr" placeholder="Telefonnummer">
-                    <input type="text" name="emailAddy" id="emailAddy" placeholder="E-Mail-Adresse *" required></P>
+                        <label class="wrapOrtBuchung">
+                            <input type="text" name="ort" id="ortBuchung" class="ortBuchung" placeholder="Ort *"
+                                   required>
+                            <span class="focusOrtBuchung"></span>
+                        </label>
 
-                    <label for="inputDatum">Datum:</label>
+                        <label class="wrapZusatzBuchung">
+                            <input type="text" name="zusatz" id="zusatzBuchung" class="zusatzBuchung"
+                                   placeholder="Zusatz">
+                            <span class="focusZusatzBuchung"></span>
+                        </label>
+
+                        <label class="wrapLandBuchung">
+                            <input type="text" name="land" id="landBuchung" class="landBuchung" placeholder="Land *"
+                                   required>
+                            <span class="focusLandBuchung"></span>
+                        </label>
+
+                        <label for="inputKontakt">Kontaktdaten:</label>
+                        <input type="text" name="telefonNr" id="telefonNr" placeholder="Telefonnummer">
+                        <input type="text" name="emailAddy" id="emailAddy" placeholder="E-Mail-Adresse *" required>
+
+                        <label for="inputDatum">Datum:</label>
                     <div class="form-group">
                         <label for="inputDatumVon">Startdatum:</label>
                         <input type="date" id="inputDatumVon" name="DatumVon"
@@ -73,14 +90,10 @@
                         <input type="date" id="inputDatumBis" name="DatumBis"
                                class="form-control">
                     </div>
-                    <p>
                     <div class="modalBoxButton">
                         <button type="button" class="btn btn-secondary">Close</button>
-                        <!-- <button type="submit" class="btn btn-success">Bearbeiten</button> -->
-                        <!-- <button type="submit" name="submit" class="btn btn-primary">Save changes</button> -->
-                        <button type="submit" name="submit" class="btn btn-primary" value>Save Changes2</button>
+                        <button type="submit" name="submit" class="btn btn-primary" value>Absenden</button>
                     </div>
-                    </p>
                 </form>
             </div>
         </div>

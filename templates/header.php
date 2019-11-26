@@ -67,6 +67,8 @@
                 if ($user['admin'] == TRUE) {
                     echo "<li><a href=\"internal.php\">Intern</a></li>";
                 } ?>
+                <li><a href="settings.php">Einstellung</a></li>
+
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
