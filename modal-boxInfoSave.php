@@ -23,6 +23,7 @@ $email = "";
 //$datumBis ="";
 
 if (isset($_POST['submit'])) {
+    $zimmerNr = $_POST['submit'];
     $anrede = $_POST['anrede'];
     $vorname = $_POST['vorname'];
     $nachname = $_POST['nachname'];
@@ -36,7 +37,6 @@ if (isset($_POST['submit'])) {
     $email = $_POST['emailAddy'];
 //    $datumVon = $_POST['datumVon'];
 //    $datumBis = $_POST['datumBis'];
-//    $zimmernr =
 
     $gast = new Gast($anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
     $gastDao = new GastDAO();
@@ -46,6 +46,7 @@ if (isset($_POST['submit'])) {
 //    $reservierungDao = new ReservierungDAO();
 
    
+
     $gastDao->create($gast);
     $reservierungDao->create($reservierung);
     $gastDao->read($gast);

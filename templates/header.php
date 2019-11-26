@@ -14,7 +14,10 @@
 
 </head>
 <body>
-<?php if (!is_checked_in()): ?>
+<?php 
+
+require_once('./inc/functions.php');
+if (!is_checked_in()): ?>
     <div class="limiter">
         <div class="container-login">
 
@@ -67,6 +70,8 @@
                 if ($user['admin'] == TRUE) {
                     echo "<li><a href=\"internal.php\">Intern</a></li>";
                 } ?>
+                <li><a href="settings.php">Einstellung</a></li>
+
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>

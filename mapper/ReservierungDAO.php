@@ -33,7 +33,6 @@ class ReservierungDAO
                     echo "Fehler beim Ausführen (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                 } else {
                     header("Location: overview.php?signup=success");
-
                 }
             }
         }

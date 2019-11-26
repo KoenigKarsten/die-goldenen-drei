@@ -113,7 +113,7 @@ function openModalMaintenance(e) {
 
 
 function openModal() {
-    let elSpan = document.querySelector(".fas.fa-times");
+    let elSpan = document.querySelector(".close");
     elSpan.addEventListener('click', hideInfo);
     document.querySelector('.btn.btn-secondary').addEventListener('click', hideInfo);
     elModal.style.display = 'block';
