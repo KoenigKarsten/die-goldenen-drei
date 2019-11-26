@@ -3,7 +3,7 @@ function drawRooms() {
     let width = 1170;
     let height = 330;
     draw.size(width, height);
-    let background = draw.rect(width, height).attr({fill: 'rgb(71, 69, 66)'});
+    let background = draw.rect(width, height).attr({fill: '#e5e5e5'});
 
 
     let treppenhaus1 = draw.polygon([[64, 30], [205, 30], [205, 95], [64, 95]]);

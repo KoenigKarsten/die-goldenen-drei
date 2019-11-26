@@ -353,11 +353,11 @@ nav ul li a.active{
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .modalContentFree {
-    background: linear-gradient(to right, Azure, WhiteSmoke);
+    background-color: #e5e5e5;
     margin: auto;
     padding: 20px;
     border: 1px solid #001f47;
@@ -373,6 +373,8 @@ nav ul li a.active{
     color: #e95d0f;
     float: right;
     font-size: 28px;
+    height: auto;
+    width: auto;
     font-weight: bold;
     transition: transform .8s ease-in-out;
 
