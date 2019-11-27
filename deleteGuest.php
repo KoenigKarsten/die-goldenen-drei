@@ -3,17 +3,29 @@ session_start();
 
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
-require_once ('templates/header.php');
+require_once('templates/header.php');
 
 //Überprüfe, dass der User eingeloggt ist
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
 
 $user = check_user();
-
+             
+    if (isset($_GET['deleteGuest'])) {
+        $statement = $pdo->prepare("DELETE FROM gast WHERE GastNr = ?");
+        $statement->bindParam(1,$_GET['deleteGuest']); 
+        $result = $statement->execute(); 
+        if (!$result) {
+            ?> 
+            <script>alert("Dieser Gast kann nicht gelöscht werden, weil noch eine Reservierung besteht.");</script>
+            <?php
+        }             
+    }
+                              
 ?>
+
 <div class="container main-container">
 
-    <h1>Herzlich Willkommen!</h1>
+    <h1>Benutzer löschen</h1>
 
     Hallo <?php echo htmlentities($user['vorname']); ?>,<br>
     Herzlich Willkommen im internen Bereich!<br><br>
@@ -22,7 +34,7 @@ $user = check_user();
 
         <table class="table">
             <tr>
-                <th>#</th>
+            <th>#</th>
                 <th>GastNr</th>
                 <th>Anrede</th>
                 <th>Vorname</th>
@@ -35,13 +47,12 @@ $user = check_user();
                 <th>Land</th>
                 <th>Telefon</th>
                 <th>Email</th>
-             
             </tr>
             <?php
-            $statement = $pdo->prepare("SELECT * FROM gast ORDER BY gastnr");
+            $statement = $pdo->prepare("SELECT * FROM gast ORDER BY GastNr");
             $result = $statement->execute();
             $count = 1;
-            
+           
             while ($row = $statement->fetch()) {
                 echo "<tr>";
                 echo "<td>" . $count++ . "</td>";
@@ -57,16 +68,19 @@ $user = check_user();
                 echo "<td>" . $row['Land'] . "</td>";
                 echo "<td>" . $row['Telefon'] . "</td>";
                 echo '<td><a href="mailto:' . $row['Email'] . '">' . $row['Email'] . '</a></td>';
-                echo "</tr>";
+                
+                echo '<td>
+                
+                <br><p><a class="btn btn-primary btn-lg" href="deleteGuest.php?deleteGuest=' . $row['GastNr'] . '" role="button">löschen</a></p>
+               
+                </td>';
+                echo "</tr>"; 
             }
             ?>
-        </table>
-    </div>
-    <p><a class="btn btn-primary btn-lg" href="changeGuest.php" role="button">Ändern</a></p>
-    <br><p><a class="btn btn-primary btn-lg" href="deleteGuest.php" role="button">Gast löschen</a></p>
            
+            
+                   
+        </table>
+        
+    </div>
 </div>
-
-<?php
-include("templates/footer.php")
-?>

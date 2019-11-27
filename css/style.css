@@ -187,9 +187,9 @@ body, html {
     background-color: #001f47;
 }
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
     display: none;
-}
+} */
 
 input[type="checkbox"] + label {
     width: 60px;
