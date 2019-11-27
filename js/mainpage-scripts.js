@@ -86,7 +86,6 @@ function openModalFree(e) {
 }
 
 function openModalBusy(e) {
-
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'busyHTML.html');
     xhr.send();
@@ -100,7 +99,6 @@ function openModalBusy(e) {
 }
 
 function openModalMaintenance(e) {
-
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'nextMaintenance.html');
     xhr.send();
