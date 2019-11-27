@@ -3,23 +3,8 @@
 
 <div class="modalContent">
     <form action="modal-boxInfoSave.php" method="post">
-        <div class='radioButton1'>
-            <label for="radioVermietet">
-                <input type="radio" id="radioVermietet" name="bookingOrMaintaince" value="vermieten"
-                > Buchen<br>
-            </label>
-        </div>
-
-        <div class='radioButton2'>
-            <label for="radioOOO">
-                <input type="radio" id="radioOOO" name="bookingOrMaintaince" value="in Wartung">
-                Wartung<br>
-            </label>
-        </div>
-
 
         <div class="wrapFormModal">
-
             <div class="row0">
                 <select name="anrede" id="anrede">
                     <option value="herr">Herr</option>
@@ -105,15 +90,12 @@
             </div>
         </div>
 
-
-
         <div class="inputWartung">
             <textarea rows="14" cols="50"> </textarea>
         </div>
         <div class="modalBoxButtons">
             <button type="button" class="btn btn-secondary">Close</button>
             <button type="submit" name="submit" class="btn btn-primary" value>Absenden</button>
-            <button type="submit">yolo</button>
         </div>
     </form>
 </div>

@@ -100,24 +100,9 @@ function openModalBusy(e) {
 
 function openModal() {
     const elSpan = document.querySelector(".close");
-    const radioButton2 = document.querySelector(".radioButton2");
-    const radioButton1 = document.querySelector('.radioButton1');
     elSpan.addEventListener('click', hideInfo);
-    radioButton2.addEventListener('click', hideBuchen);
-    radioButton1.addEventListener('click', hideWartung);
     document.querySelector('.btn.btn-secondary').addEventListener('click', hideInfo);
     elModal.style.display = 'block';
-}
-
-function hideBuchen(){
-    document.querySelector('.wrapFormModal').style.display = 'none';
-    document.querySelector('.inputWartung').style.display = 'block';
-}
-
-function hideWartung(){
-    document.querySelector('.inputWartung').style.display = 'none';
-    document.querySelector('.wrapFormModal').style.display = 'block';
-
 }
 
 
