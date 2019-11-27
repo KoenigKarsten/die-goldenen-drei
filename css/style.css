@@ -447,11 +447,17 @@ nav ul li a.active {
 }
 
 .zimmerNrAnzeige{
-    text-align: center;
-    position: relative;
-    top: 40px;
+    width: 70px;
+    position: absolute;
+    top: 130px;
+    left: 600px;
     font-size: 33px;
     font-weight: bold;
     color: #001f47;
+}
+
+
+.inputWartung{
+    display: none;
 }
 /*MODAL BOX ENDE*/

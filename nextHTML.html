@@ -3,11 +3,14 @@
 
 <div class="modalContent">
     <form action="modal-boxInfoSave.php" method="post">
-        <div class='radioButton'>
+        <div class='radioButton1'>
             <label for="radioVermietet">
                 <input type="radio" id="radioVermietet" name="bookingOrMaintaince" value="vermieten"
-                       checked> Buchen<br>
+                > Buchen<br>
             </label>
+        </div>
+
+        <div class='radioButton2'>
             <label for="radioOOO">
                 <input type="radio" id="radioOOO" name="bookingOrMaintaince" value="in Wartung">
                 Wartung<br>
@@ -15,94 +18,102 @@
         </div>
 
 
-        <div class="row0">
-            <select name="anrede" id="anrede">
-                <option value="herr">Herr</option>
-                <option value="frau">Frau</option>
-                <option value="divers">Sorek</option>
-            </select>
-        </div>
+        <div class="wrapFormModal">
 
-
-        <div class="row1">
-            <label class="wrapVornameBuchung">
-                <input type="text" name="vorname" id="vornameBuchung" class="vornameBuchung"
-                       placeholder="Vorname *" required>
-                <span class="focusVornameBuchung"></span>
-            </label>
-
-            <label class="wrapNachnameBuchung">
-                <input type="text" name="nachname" id="nachnameBuchung" class="nachnameBuchung"
-                       placeholder="Nachname *" required>
-                <span class="focusNachnameBuchung"></span>
-            </label>
-        </div>
-
-        <div class="row2">
-            <label class="wrapStrasseBuchung">
-                <input type="text" name="strasse" id="strasseBuchung" class="strasseBuchung"
-                       placeholder="Strasse *" required>
-                <span class="focusStrasseBuchung"></span>
-            </label>
-            <label class="wrapHausnummerBuchung">
-                <input type="text" name="hausnummer" id="hausnummerBuchung" class="hausnummerBuchung"
-                       placeholder="Hausnummer *" required>
-                <span class="focusHausnummerBuchung"></span>
-            </label>
-        </div>
-
-        <div class="row3">
-            <label class="wrapPostleitzahlBuchung">
-                <input type="text" name="postleitzahl" id="postleitzahlBuchung" class="postleitzahlBuchung"
-                       placeholder="Postleitzahl *"
-                       required>
-                <span class="focusPostleitzahlBuchung"></span>
-            </label>
-            <label class="wrapOrtBuchung">
-                <input type="text" name="ort" id="ortBuchung" class="ortBuchung" placeholder="Ort *"
-                       required>
-                <span class="focusOrtBuchung"></span>
-            </label>
-        </div>
-
-
-        <div class="row4">
-            <label class="wrapZusatzBuchung">
-                <input type="text" name="zusatz" id="zusatzBuchung" class="zusatzBuchung"
-                       placeholder="Zusatz">
-                <span class="focusZusatzBuchung"></span>
-            </label>
-
-            <label class="wrapLandBuchung">
-                <input type="text" name="land" id="landBuchung" class="landBuchung" placeholder="Land *"
-                       required>
-                <span class="focusLandBuchung"></span>
-            </label>
-        </div>
-
-        <div class="row5">
-            <input type="text" name="telefonNr" id="telefonNr" placeholder="Telefonnummer">
-            <input type="text" name="emailAddy" id="emailAddy" placeholder="E-Mail-Adresse *" required>
-        </div>
-
-
-        <div class="row6">
-            <div class="form-group">
-                <label for="inputDatumVon">Startdatum:</label>
-                <input type="date" id="inputDatumVon" name="DatumVon"
-                       class="form-control">
+            <div class="row0">
+                <select name="anrede" id="anrede">
+                    <option value="herr">Herr</option>
+                    <option value="frau">Frau</option>
+                    <option value="divers">Sorek</option>
+                </select>
             </div>
-            <div class="form-group">
-                <label for="inputDatumBis">Enddatum:</label>
-                <input type="date" id="inputDatumBis" name="DatumBis"
-                       class="form-control">
+
+
+            <div class="row1">
+                <label class="wrapVornameBuchung">
+                    <input type="text" name="vorname" id="vornameBuchung" class="vornameBuchung"
+                           placeholder="Vorname *" required>
+                    <span class="focusVornameBuchung"></span>
+                </label>
+
+                <label class="wrapNachnameBuchung">
+                    <input type="text" name="nachname" id="nachnameBuchung" class="nachnameBuchung"
+                           placeholder="Nachname *" required>
+                    <span class="focusNachnameBuchung"></span>
+                </label>
+            </div>
+
+            <div class="row2">
+                <label class="wrapStrasseBuchung">
+                    <input type="text" name="strasse" id="strasseBuchung" class="strasseBuchung"
+                           placeholder="Strasse *" required>
+                    <span class="focusStrasseBuchung"></span>
+                </label>
+                <label class="wrapHausnummerBuchung">
+                    <input type="text" name="hausnummer" id="hausnummerBuchung" class="hausnummerBuchung"
+                           placeholder="Hausnummer *" required>
+                    <span class="focusHausnummerBuchung"></span>
+                </label>
+            </div>
+
+            <div class="row3">
+                <label class="wrapPostleitzahlBuchung">
+                    <input type="text" name="postleitzahl" id="postleitzahlBuchung" class="postleitzahlBuchung"
+                           placeholder="Postleitzahl *"
+                           required>
+                    <span class="focusPostleitzahlBuchung"></span>
+                </label>
+                <label class="wrapOrtBuchung">
+                    <input type="text" name="ort" id="ortBuchung" class="ortBuchung" placeholder="Ort *"
+                           required>
+                    <span class="focusOrtBuchung"></span>
+                </label>
+            </div>
+
+
+            <div class="row4">
+                <label class="wrapZusatzBuchung">
+                    <input type="text" name="zusatz" id="zusatzBuchung" class="zusatzBuchung"
+                           placeholder="Zusatz">
+                    <span class="focusZusatzBuchung"></span>
+                </label>
+
+                <label class="wrapLandBuchung">
+                    <input type="text" name="land" id="landBuchung" class="landBuchung" placeholder="Land *"
+                           required>
+                    <span class="focusLandBuchung"></span>
+                </label>
+            </div>
+
+            <div class="row5">
+                <input type="text" name="telefonNr" id="telefonNr" placeholder="Telefonnummer">
+                <input type="text" name="emailAddy" id="emailAddy" placeholder="E-Mail-Adresse *" required>
+            </div>
+
+
+            <div class="row6">
+                <div class="form-group">
+                    <label for="inputDatumVon">Startdatum:</label>
+                    <input type="date" id="inputDatumVon" name="DatumVon"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="inputDatumBis">Enddatum:</label>
+                    <input type="date" id="inputDatumBis" name="DatumBis"
+                           class="form-control">
+                </div>
             </div>
         </div>
 
 
-        <div class="mmodalBoxButtons">
+
+        <div class="inputWartung">
+            <textarea rows="14" cols="50"> </textarea>
+        </div>
+        <div class="modalBoxButtons">
             <button type="button" class="btn btn-secondary">Close</button>
             <button type="submit" name="submit" class="btn btn-primary" value>Absenden</button>
+            <button type="submit">yolo</button>
         </div>
     </form>
 </div>
