@@ -23,7 +23,7 @@ $user = check_user();
                               
 ?>
 
-<div class="container main-container">
+<div class="mainContainer">
 
     <h1>Gast löschen</h1>
 
