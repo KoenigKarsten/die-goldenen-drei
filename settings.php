@@ -72,7 +72,6 @@ $user = check_user();
     <div class="settingForm">
 
         <h1>Einstellungen</h1>
-
         <?php
         if (isset($success_msg) && !empty($success_msg)):
             ?>
@@ -97,16 +96,6 @@ $user = check_user();
 
         <div>
 
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#data" aria-controls="home" role="tab"
-                                                          data-toggle="tab">Persönliche
-                        Daten</a></li>
-                <li role="presentation"><a href="#email" aria-controls="profile" role="tab" data-toggle="tab">E-Mail</a>
-                </li>
-                <li role="presentation"><a href="#passwort" aria-controls="messages" role="tab"
-                                           data-toggle="tab">Passwort</a></li>
-            </ul>
 
             <!-- Persönliche Daten-->
             <div class="tab-content">

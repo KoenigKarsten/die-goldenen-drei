@@ -1,28 +1,44 @@
 <?php
+
 session_start();
 
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
-require_once ('templates/header.php');
+require_once('templates/header.php');
 
 //Überprüfe, dass der User eingeloggt ist
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
 
 $user = check_user();
+$showFormular = "";  
+
+if (isset($_GET['changeGuest'])) {
+    $statement = $pdo->prepare("SELECT * FROM gast WHERE GastNr = ?");
+    $statement->bindParam(1,$_GET['changeGuest']); 
+    $result = $statement->execute();
+
+    $statement = $pdo->prepare("UPDATE FROM gast WHERE GastNr = ?");
+    $statement->bindParam(1,$_GET['changeGuest']); 
+    $result = $statement->execute(); 
+    echo '<style type="text/css">table.table {
+        display:none;}
+        </style>';
+    }
 
 ?>
+
 <div class="mainContainer">
 
-    <h1>Herzlich Willkommen!</h1>
+    <h1>Gastdaten ändern</h1>
 
     Hallo <?php echo htmlentities($user['vorname']); ?>,<br>
-    Herzlich Willkommen im Gästebereich!<br><br>
+    Herzlich Willkommen im internen Bereich!<br><br>
 
     <div class="panel panel-default">
 
         <table class="table">
             <tr>
-                <th>#</th>
+            <th>#</th>
                 <th>GastNr</th>
                 <th>Anrede</th>
                 <th>Vorname</th>
@@ -42,7 +58,7 @@ $user = check_user();
             $statement = $pdo->prepare("SELECT gast.*, reservierung.ZimmerNr, reservierung.DatumVon, reservierung.DatumBis FROM gast LEFT JOIN reservierung ON gast.GastNr = reservierung.GastNr");
             $result = $statement->execute();
             $count = 1;
-            
+           
             while ($row = $statement->fetch()) {
                 echo "<tr>";
                 echo "<td>" . $count++ . "</td>";
@@ -60,17 +76,12 @@ $user = check_user();
                 echo "<td>" . $row['ZimmerNr'] . "</td>";
                 echo "<td>" . $row['DatumVon'] . "</td>";
                 echo "<td>" . $row['DatumBis'] . "</td>";
-                echo '<td><input type="checkbox" name="guest" value="guest"></td>';
-                echo "</tr>";
+                echo '<td>
+                <br><p><a class="btn btn-primary btn-lg" href="changeGuest.php?changeGuest=' . $row['GastNr'] . '" role="button">ändern</a></p>
+                    </td>';
+                echo "</tr>"; 
             }
             ?>
-        </table>
+            </table>
     </div>
-    <p><a class="btn btn-primary btn-lg" href="changeGuest.php" role="button">Daten ändern</a></p>
-    <br><p><a class="btn btn-primary btn-lg" href="deleteGuest.php" role="button">Gast löschen</a></p>
-           
 </div>
-
-<?php
-include("templates/footer.php")
-?>

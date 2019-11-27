@@ -74,7 +74,7 @@ let elModal = document.querySelector(".modal");
 
 function openModalFree(e) {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'nextHTML.html');
+    xhr.open('GET', 'src/modalBox.html');
     xhr.send();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -86,9 +86,8 @@ function openModalFree(e) {
 }
 
 function openModalBusy(e) {
-
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'busyHTML.html');
+    xhr.open('GET', 'src/roomBusy.html');
     xhr.send();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -98,28 +97,14 @@ function openModalBusy(e) {
         }
     };
 }
-
-function openModalMaintenance(e) {
-
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'nextMaintenance.html');
-    xhr.send();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            elModal.innerHTML = xhr.responseText;
-            openModal();
-            showRoomInModal(e);
-        }
-    };
-}
-
 
 function openModal() {
-    let elSpan = document.querySelector(".close");
+    const elSpan = document.querySelector(".close");
     elSpan.addEventListener('click', hideInfo);
     document.querySelector('.btn.btn-secondary').addEventListener('click', hideInfo);
     elModal.style.display = 'block';
 }
+
 
 function hideInfo() {
     elModal.style.display = 'none';
@@ -131,7 +116,11 @@ function showRoomInModal(e) {
     const submitButtonInModal = document.querySelector('.btn.btn-primary');
     zimmerNrAnzeigeModalBox.innerHTML = e.getAttribute('room');
     submitButtonInModal.setAttribute('value', e.getAttribute('room'));
+
 }
+
+
+
 
 function setAttribute(temp, i) {
     arrRooms[i].setAttribute('room', temp.ZimmerNr);
@@ -150,31 +139,23 @@ function setAttribute(temp, i) {
             openModalBusy(this);
         });
 
-    } else {
-        arrRooms[i].setAttribute('fill', 'grey');
-        arrRooms[i].setAttribute('fill-opacity', '1');
-        arrRooms[i].addEventListener('click', function () {
-            openModalMaintenance(this);
-        });
     }
 
     i === 0 && arrRooms[i].getAttribute('fill') === 'green' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', 'green') : "";
     i === 0 && arrRooms[i].getAttribute('fill') === '#8B0000' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', '#8B0000') : "";
-    i === 0 && arrRooms[i].getAttribute('fill') === 'grey' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', 'grey') : "";
 
     i === 3 && arrRooms[i].getAttribute('fill') === 'green' ? document.querySelector('#SvgjsPolygon1029').setAttribute('fill', 'green') : "";
     i === 3 && arrRooms[i].getAttribute('fill') === '#8B0000' ? document.querySelector('#SvgjsPolygon1029').setAttribute('fill', '#8B0000') : "";
-    i === 3 && arrRooms[i].getAttribute('fill') === 'grey' ? document.querySelector('#SvgjsPolygon1029').setAttribute('fill', 'grey') : "";
 
     i === 6 && arrRooms[i].getAttribute('fill') === 'green' ? document.querySelector('#SvgjsPolygon1024').setAttribute('fill', 'green') : "";
     i === 6 && arrRooms[i].getAttribute('fill') === '#8B0000' ? document.querySelector('#SvgjsPolygon1024').setAttribute('fill', '#8B0000') : "";
-    i === 6 && arrRooms[i].getAttribute('fill') === 'grey' ? document.querySelector('#SvgjsPolygon1024').setAttribute('fill', 'grey') : "";
 
     i === 10 && arrRooms[i].getAttribute('fill') === 'green' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', 'green') : "";
     i === 10 && arrRooms[i].getAttribute('fill') === '#8B0000' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', '#8B0000') : "";
-    i === 10 && arrRooms[i].getAttribute('fill') === 'grey' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', 'grey') : "";
 
 }
+
+
 
 
 
