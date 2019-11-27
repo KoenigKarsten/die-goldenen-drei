@@ -9,6 +9,7 @@
     <!-- Custom styles for this template -->
     <link href="./css/style.css" rel="stylesheet" type="text/css" media="screen">
     <link href="./css/fontawesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome.min.css"
 
 
 
