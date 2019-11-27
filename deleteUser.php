@@ -13,8 +13,14 @@ $user = check_user();
     if (isset($_GET['deleteUser'])) {
         $statement = $pdo->prepare("DELETE FROM users WHERE id = ? AND id != 1");
         $statement->bindParam(1,$_GET['deleteUser']); 
-        $result = $statement->execute();              
+        $result = $statement->execute();   
+        if (!$result) {
+            ?> 
+            <script>alert("Dieser Admin kann nicht gelöscht werden.");</script>
+            <?php
+        }            
     }
+        
                               
 ?>
 
@@ -56,7 +62,7 @@ $user = check_user();
                 echo '<td><a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a></td>';
                 echo '<td>
                 
-                <br><p><a class="btn btn-primary btn-lg" href="delete.php?deleteUser=' . $row['id'] . '" role="button">löschen</a></p>
+                <br><p><a class="btn btn-primary btn-lg" href="deleteUser.php?deleteUser=' . $row['id'] . '" role="button">löschen</a></p>
                
                 </td>';
                 echo "</tr>"; 
