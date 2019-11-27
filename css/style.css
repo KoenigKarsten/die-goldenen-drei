@@ -187,9 +187,9 @@ body, html {
     background-color: #001f47;
 }
 
-input[type="checkbox"] {
+/* input[type="checkbox"] {
     display: none;
-}
+} */
 
 input[type="checkbox"] + label {
     width: 60px;
@@ -330,7 +330,6 @@ nav ul li a.active {
     top: 35%;
     display: flex;
     height: auto;
-    /*justify-content: center;*/
     flex-direction: column;
     align-items: center;
 }
@@ -351,6 +350,7 @@ nav ul li a.active {
 
 .modalContentFree {
     background-color: #dddddd;
+    border-radius: 40px 10px;
     width: 60%;
 }
 
@@ -370,11 +370,20 @@ nav ul li a.active {
 }
 
 
+.row1,
+.row2,
+.row3,
+.row4,
+.row5{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 
 .close:hover,
 .close:focus {
     transform: scale(1.1, 1.1);
-    /*transform: scale(x, y);*/
     color: #001f47;
     text-decoration: none;
     cursor: pointer;
@@ -453,6 +462,5 @@ nav ul li a.active {
 .ortBuchung,
 .zusatzBuchung,
 .landBuchung {
-
     margin: 10px 0px 10px 0px;
 }
