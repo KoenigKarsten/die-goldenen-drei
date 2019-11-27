@@ -40,16 +40,18 @@ $user = check_user();
                 <th>Vorname</th>
                 <th>Nachname</th>
                 <th>Strasse</th>
-                <th>Hausnr</th>
-                <th>Zusatz</th>
+                <th>Hausnr</th>              
                 <th>PLZ</th>
                 <th>Ort</th>
                 <th>Land</th>
                 <th>Telefon</th>
                 <th>Email</th>
+                <th>Zimmernr</th>
+                <th>Reserviert von</th>
+                <th>bis</th>
             </tr>
             <?php
-            $statement = $pdo->prepare("SELECT * FROM gast ORDER BY GastNr");
+            $statement = $pdo->prepare("SELECT gast.*, reservierung.ZimmerNr, reservierung.DatumVon, reservierung.DatumBis FROM gast LEFT JOIN reservierung ON gast.GastNr = reservierung.GastNr");
             $result = $statement->execute();
             $count = 1;
            
@@ -62,12 +64,14 @@ $user = check_user();
                 echo "<td>" . $row['Nachname'] . "</td>";
                 echo "<td>" . $row['Strasse'] . "</td>";
                 echo "<td>" . $row['Hausnr'] . "</td>";
-                echo "<td>" . $row['Zusatz'] . "</td>";
                 echo "<td>" . $row['PLZ'] . "</td>";
                 echo "<td>" . $row['Ort'] . "</td>";
                 echo "<td>" . $row['Land'] . "</td>";
                 echo "<td>" . $row['Telefon'] . "</td>";
                 echo '<td><a href="mailto:' . $row['Email'] . '">' . $row['Email'] . '</a></td>';
+                echo "<td>" . $row['ZimmerNr'] . "</td>";
+                echo "<td>" . $row['DatumVon'] . "</td>";
+                echo "<td>" . $row['DatumBis'] . "</td>";
                 
                 echo '<td>
                 
