@@ -69,7 +69,7 @@ $user = check_user();
 ?>
 
 <div class="mainContainer">
-    <div class="settingForm">
+    <div class="textAusgabeRest">
 
         <h1>Einstellungen</h1>
         <?php

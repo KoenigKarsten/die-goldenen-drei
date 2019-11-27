@@ -12,6 +12,7 @@ $user = check_user();
 
 ?>
 <div class="mainContainer">
+<div class="textAusgabeRest">
 
     <h1>Herzlich Willkommen!</h1>
 
@@ -28,7 +29,7 @@ $user = check_user();
                 <th>Vorname</th>
                 <th>Nachname</th>
                 <th>Strasse</th>
-                <th>Hausnr</th>              
+                <th>Hausnr</th>
                 <th>PLZ</th>
                 <th>Ort</th>
                 <th>Land</th>
@@ -42,7 +43,7 @@ $user = check_user();
             $statement = $pdo->prepare("SELECT gast.*, reservierung.ZimmerNr, reservierung.DatumVon, reservierung.DatumBis FROM gast LEFT JOIN reservierung ON gast.GastNr = reservierung.GastNr");
             $result = $statement->execute();
             $count = 1;
-            
+
             while ($row = $statement->fetch()) {
                 echo "<tr>";
                 echo "<td>" . $count++ . "</td>";
@@ -68,9 +69,10 @@ $user = check_user();
     </div>
     <p><a class="btn btn-primary btn-lg" href="changeGuest.php" role="button">Daten ändern</a></p>
     <br><p><a class="btn btn-primary btn-lg" href="deleteGuest.php" role="button">Gast löschen</a></p>
-           
+
 </div>
 
+</div>
 <?php
 include("templates/footer.php")
 ?>
