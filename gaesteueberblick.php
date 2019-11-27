@@ -1,187 +1,73 @@
 <?php
-
 session_start();
+
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
-include_once ('templates/header.php');
+require_once ('templates/header.php');
 
 //Überprüfe, dass der User eingeloggt ist
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
 
 $user = check_user();
-
-
-spl_autoload_register();
-
-use mapper\GastDAO;
-use model\Gast;
-
 ?>
-<div class="mainContainer">
-    <div class="gaesteueberblickForm">
+<div class="container main-container">
 
-        <h1>Gäste</h1>
-        <?php
-        $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
+    <h1>Herzlich Willkommen!</h1>
 
-        $anrede = "";
-        $vorname = "";
-        $nachname = "";
-        $strasse = "";
-        $hausnr = "";
-        $zusatz = "";
-        $plz = "";
-        $ort = "";
-        $land = "";
-        $telefon = "";
-        $email = "";
+    Hallo <?php echo htmlentities($user['vorname']); ?>,<br>
+    Herzlich Willkommen im internen Bereich!<br><br>
 
-        if (isset($_POST['submit'])) {
-            $anrede = $_POST['anrede'];
-            $vorname = $_POST['vorname'];
-            $nachname = $_POST['nachname'];
-            $strasse = $_POST['strasse'];
-            $hausnr = $_POST['hausnummer'];
-            $plz = $_POST['postleitzahl'];
-            $ort = $_POST['ort'];
-            $land = $_POST['land'];
-            $zusatz = $_POST['zusatz'];
-            $telefon = $_POST['telefonNr'];
-            $email = $_POST['emailAddy'];
+    <div class="panel panel-default">
 
-            $gast = new Gast($anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
-            $gastDao = new GastDAO();
-            $gastDao->read($gast);
-            $gastDao->create($gast);
-
-            if (empty($vorname) || empty($nachname) || empty($email)) {
-                echo 'Bitte alle Felder ausfüllen<br>';
-                $error = true;
-            }
-
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
-                $error = true;
-            }
-            if (strlen($passwort) == 0) {
-                echo 'Bitte ein Passwort angeben<br>';
-                $error = true;
-            }
-            if ($passwort != $passwort2) {
-                echo 'Die Passwörter müssen übereinstimmen<br>';
-                $error = true;
-            }
-
-            //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
-            if (!$error) {
-                $statement = $pdo->prepare("SELECT * FROM gast WHERE email = :email");
-                $result = $statement->execute(array('email' => $email));
-                $gast = $statement->fetch();
-
-                if ($gast !== true) {
-                    echo 'Diese E-Mail-Adresse ist nicht vergeben<br>';
-                    $error = false;
-                }
-            }
-        }
-
-        if ($showFormular) {
-            ?>
-
-            <form action="?register=2" method="post">
-
-                <div class="form-group">
-                    <label for="inputGastNr">Gastnummer:</label>
-                    <input type="text" id="inputGastNr" size="5" maxlength="10" name="gastnr"
-                           class="form-control">
-                </div>
-
-                <label for="inputName">Name:</label>
-
-                <div class="form-group">
-                    <select name="anrede" id="anrede">
-                        <option value="herr">Herr</option>
-                        <option value="frau">Frau</option>
-                        <option value="divers">Divers</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="inputVorname">Vorname *:</label>
-                    <input type="text" id="inputVorname" size="40" maxlength="250" name="vorname" class="form-control"
-                           required>
-                </div>
-
-                <div class="form-group">
-                    <label for="inputNachname">Nachname *:</label>
-                    <input type="text" id="inputNachname" size="40" maxlength="250" name="nachname" class="form-control"
-                           required>
-                </div>
-
-                <label for="inputAdresse">Adresse:</label>
-
-                <div class="form-group">
-                    <label for="inputStrasse">Strasse:</label>
-                    <input type="text" id="inputStrasse" size="40" maxlength="250" name="strasse"
-                           class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="inputHausNr">Hausnummer:</label>
-                    <input type="text" id="inputHausNr" size="5" maxlength="10" name="hausnr"
-                           class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="inputZusatz">Zusatz:</label>
-                    <input type="text" id="inputZusatz" size="40" maxlength="250" name="zusatz"
-                           class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="inputPLZ">PLZ:</label>
-                    <input type="text" id="inputPLZ" size="5" maxlength="5" name="plz"
-                           class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="inputOrt">Ort:</label>
-                    <input type="text" id="inputOrt" size="40" maxlength="250" name="ort"
-                           class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="inputLand">Land:</label>
-                    <input type="text" id="inputLand" size="40" maxlength="250" name="Land"
-                           class="form-control">
-                </div>
-
-                <label for="inputKontakt">Kontaktdaten:</label>
-
-                <div class="form-group">
-                    <label for="inputEmail">E-Mail *:</label>
-                    <input type="email" id="inputEmail" size="40" maxlength="250" name="email" class="form-control"
-                           required>
-                </div>
-
-                <div class="form-group">
-                    <label for="inputTelefon">Telefon:</label>
-                    <input type="text" id="inputTelefon" size="40" maxlength="250" name="telefon"
-                           class="form-control">
-                </div>
-
-                <button type="submit" class="btn btn-success">Search</button>
-                <button type="submit" class="btn btn-primary">Delete</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-            </form>
-
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>GastNr</th>
+                <th>Anrede</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Strasse</th>
+                <th>Hausnr</th>
+                <th>Zusatz</th>
+                <th>PLZ</th>
+                <th>Ort</th>
+                <th>Land</th>
+                <th>Telefon</th>
+                <th>Email</th>
+            </tr>
             <?php
-        } //Ende von if($showFormular)
-
-
-        ?>
+            $statement = $pdo->prepare("SELECT * FROM gast ORDER BY gastnr");
+            $result = $statement->execute();
+            $count = 1;
+            
+            while ($row = $statement->fetch()) {
+                echo "<tr>";
+                echo "<td>" . $count++ . "</td>";
+                echo "<td>" . $row['GastNr'] . "</td>";
+                echo "<td>" . $row['Anrede'] . "</td>";
+                echo "<td>" . $row['Vorname'] . "</td>";
+                echo "<td>" . $row['Nachname'] . "</td>";
+                echo "<td>" . $row['Strasse'] . "</td>";
+                echo "<td>" . $row['Hausnr'] . "</td>";
+                echo "<td>" . $row['Zusatz'] . "</td>";
+                echo "<td>" . $row['PLZ'] . "</td>";
+                echo "<td>" . $row['Ort'] . "</td>";
+                echo "<td>" . $row['Land'] . "</td>";
+                echo "<td>" . $row['Telefon'] . "</td>";
+                echo '<td><a href="mailto:' . $row['Email'] . '">' . $row['Email'] . '</a></td>';
+                echo "</tr>";
+            }
+            ?>
+        </table>
     </div>
+    <!-- <p><a class="btn btn-primary btn-lg" href="register.php" role="button">Ändern</a></p>
+    <br><p><a class="btn btn-primary btn-lg" href="delete.php" role="button">Gast löschen</a></p> -->
+    
+    <button type="button" id="change" class="btn btn-success">ändern</button>
+    <button type="button" id="deleteGuest" class="btn btn-primary">löschen</button>
+           
 </div>
+
 <?php
-include("templates/footer.php");
+include("templates/footer.php")
 ?>
