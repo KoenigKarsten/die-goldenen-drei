@@ -10,7 +10,7 @@ require_once ('templates/header.php');
 
 $user = check_user();
 ?>
-<div class="container main-container">
+<div class="mainContainer">
 
     <h1>Herzlich Willkommen!</h1>
 
