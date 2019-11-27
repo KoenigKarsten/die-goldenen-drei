@@ -41,8 +41,8 @@ function checkRoomStatus() {
 }
 
 //Event + Function wenn Gebäude oder Etage neu ausgewählt werden
-let elReiterGebaeude = document.querySelector('#gebaeudeReiter');
-let elReiterEtage = document.querySelector('#etageReiter');
+let elReiterGebaeude = document.querySelector('.gebaeudeReiter');
+let elReiterEtage = document.querySelector('.etageReiter');
 
 elReiterGebaeude.addEventListener('change', refresh);
 elReiterEtage.addEventListener('change', refresh);
@@ -138,7 +138,6 @@ function setAttribute(temp, i) {
         arrRooms[i].addEventListener('click', function () {
             openModalBusy(this);
         });
-
     }
 
     i === 0 && arrRooms[i].getAttribute('fill') === 'green' ? document.querySelector('#SvgjsPolygon1032').setAttribute('fill', 'green') : "";
@@ -154,8 +153,3 @@ function setAttribute(temp, i) {
     i === 10 && arrRooms[i].getAttribute('fill') === '#8B0000' ? document.querySelector('#SvgjsPolygon1019').setAttribute('fill', '#8B0000') : "";
 
 }
-
-
-
-
-
