@@ -74,7 +74,7 @@ let elModal = document.querySelector(".modal");
 
 function openModalFree(e) {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'nextHTML.html');
+    xhr.open('GET', 'src/modalBox.html');
     xhr.send();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -87,7 +87,7 @@ function openModalFree(e) {
 
 function openModalBusy(e) {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'busyHTML.html');
+    xhr.open('GET', 'src/roomBusy.html');
     xhr.send();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
