@@ -23,9 +23,9 @@ $user = check_user();
                               
 ?>
 
-<div class="container main-container">
+<div class="mainContainer">
 
-    <h1>Benutzer löschen</h1>
+    <h1>Gast löschen</h1>
 
     Hallo <?php echo htmlentities($user['vorname']); ?>,<br>
     Herzlich Willkommen im internen Bereich!<br><br>
