@@ -10,14 +10,12 @@ require_once('templates/header.php');
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
 
 $user = check_user();
-$showFormular = "";
+// $showFormular = "";
 
 if (isset($_GET['changeGuest'])) {
-    $statement = $pdo->prepare("SELECT * FROM gast WHERE GastNr = ?");
-    $statement->bindParam(1, $_GET['changeGuest']);
-    $result = $statement->execute();
 
-    $statement = $pdo->prepare("UPDATE FROM gast WHERE GastNr = ?");
+    $statement = $pdo->prepare("UPDATE gast, reservierung SET gast.* = ?, reservierung.ZimmerNr = ?, reservierung.DatumVon = ?, reservierung.DatumBis = ?
+                                WHERE GastNr = ?");
     $statement->bindParam(1, $_GET['changeGuest']);
     $result = $statement->execute();
     echo '<style type="text/css">table.table {
@@ -58,7 +56,8 @@ if (isset($_GET['changeGuest'])) {
                     <th>bis</th>
                 </tr>
                 <?php
-                $statement = $pdo->prepare("SELECT gast.*, reservierung.ZimmerNr, reservierung.DatumVon, reservierung.DatumBis FROM gast LEFT JOIN reservierung ON gast.GastNr = reservierung.GastNr");
+                $statement = $pdo->prepare("SELECT gast.*, reservierung.ZimmerNr, reservierung.DatumVon, reservierung.DatumBis 
+                                            FROM gast LEFT JOIN reservierung ON gast.GastNr = reservierung.GastNr");
                 $result = $statement->execute();
                 $count = 1;
 
@@ -66,19 +65,28 @@ if (isset($_GET['changeGuest'])) {
                     echo "<tr>";
                     echo "<td>" . $count++ . "</td>";
                     echo "<td>" . $row['GastNr'] . "</td>";
-                    echo "<td>" . $row['Anrede'] . "</td>";
-                    echo "<td>" . $row['Vorname'] . "</td>";
-                    echo "<td>" . $row['Nachname'] . "</td>";
-                    echo "<td>" . $row['Strasse'] . "</td>";
-                    echo "<td>" . $row['Hausnr'] . "</td>";
-                    echo "<td>" . $row['PLZ'] . "</td>";
-                    echo "<td>" . $row['Ort'] . "</td>";
-                    echo "<td>" . $row['Land'] . "</td>";
-                    echo "<td>" . $row['Telefon'] . "</td>";
-                    echo '<td><a href="mailto:' . $row['Email'] . '">' . $row['Email'] . '</a></td>';
-                    echo "<td>" . $row['ZimmerNr'] . "</td>";
-                    echo "<td>" . $row['DatumVon'] . "</td>";
-                    echo "<td>" . $row['DatumBis'] . "</td>";
+                    ?> 
+                    <td>
+                    <select name="anrede" id="anrede">
+                        <option value="herr">Herr</option>
+                        <option value="frau">Frau</option>
+                        <option value="divers">Divers</option>
+                    </select> 
+                    </td>  
+                    <td><input type="text" name="Vorname" value="<?php echo htmlentities($row['Vorname'])?>"></td>
+                    <td><input type="text" name="Nachname" value="<?php echo htmlentities($row['Nachname'])?>"></td> 
+                    <td><input type="text" name="Strasse" value="<?php echo htmlentities($row['Strasse'])?>"></td>
+                    <td><input type="text" name="Hausnr" value="<?php echo htmlentities($row['Hausnr'])?>"></td>
+                    <td><input type="text" name="PLZ" value="<?php echo htmlentities($row['PLZ'])?>"></td>
+                    <td><input type="text" name="Ort" value="<?php echo htmlentities($row['Ort'])?>"></td>
+                    <td><input type="text" name="Land" value="<?php echo htmlentities($row['Land'])?>"></td>
+                    <td><input type="text" name="Telefon" value="<?php echo htmlentities($row['Telefon'])?>"></td>
+                    <td><input type="text" name="Email" value=" <?php echo htmlentities($row['Email'])?>"></td>
+                    <td><input type="text" name="Zimmernr" value="<?php echo htmlentities($row['ZimmerNr'])?>"></td>
+                    <td><input type="text" name="Reserviert von" value="<?php echo htmlentities($row['DatumVon'])?>"></td>
+                    <td><input type="text" name="bis" value="<?php echo htmlentities($row['DatumBis'])?>"></td>
+                    <?php
+       
                     echo '<td>
                 <br><p><a class="btn btn-primary btn-lg" href="changeGuest.php?changeGuest=' . $row['GastNr'] . '" role="button">ändern</a></p>
                     </td>';
