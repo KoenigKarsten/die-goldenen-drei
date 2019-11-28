@@ -51,7 +51,8 @@ $user = check_user();
                 <th>bis</th>
             </tr>
             <?php
-            $statement = $pdo->prepare("SELECT gast.*, reservierung.ZimmerNr, reservierung.DatumVon, reservierung.DatumBis FROM gast LEFT JOIN reservierung ON gast.GastNr = reservierung.GastNr");
+            $statement = $pdo->prepare("SELECT gast.*, reservierung.ZimmerNr, reservierung.DatumVon, reservierung.DatumBis 
+                                        FROM gast LEFT JOIN reservierung ON gast.GastNr = reservierung.GastNr");
             $result = $statement->execute();
             $count = 1;
            
