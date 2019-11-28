@@ -45,7 +45,6 @@ if (isset($_GET['changeReservation'])) {
                     <th>Reservierungsnummer |</th>
                     <th>Zimmernummer |</th>
                     <th>Gastnummer |</th>
-                    <th>Mitarbeiternummer |</th>
                     <th>Datum von |</th>
                     <th>Datum bis</th>
                 </tr>
@@ -57,12 +56,13 @@ if (isset($_GET['changeReservation'])) {
 
                 while ($row = $statement->fetch()) {
                     echo "<tr>";
-                    echo "<td>" . $row['ReservierungNr'] . "</td>";
-                    echo "<td>" . $row['ZimmerNr'] . "</td>";
-                    echo "<td>" . $row['GastNr'] . "</td>";
-                    echo "<td>" . $row['MitarbeiterNr'] . "</td>";
-                    echo "<td>" . $row['DatumVon'] . "</td>";
-                    echo "<td>" . $row['DatumBis'] . "</td>";
+                    ?>
+                    <td><input type="text" name="Reservierungsnummer" value="<?php echo htmlentities($row['ReservierungNr'])?>"></td>
+                    <td><input type="text" name="Zimmernummer" value="<?php echo htmlentities($row['ZimmerNr'])?>"></td>
+                    <td><input type="text" name="Gastnummer" value="<?php echo htmlentities($row['GastNr'])?>"></td>
+                    <td><input type="text" name="DatumVon" value="<?php echo htmlentities($row['DatumVon'])?>"></td>
+                    <td><input type="text" name="DatumBis" value="<?php echo htmlentities($row['DatumBis'])?>"></td>
+                    <?php
                     echo "</tr>";
 
                     echo '<td>
