@@ -425,8 +425,14 @@ nav ul li a.active {
     background: #eeeeee;
 }
 
-select {
-    z-index: 10;
+.polygonZeichnung{
+    background: #e5e5e5;
+    border-radius: 30px;
+    width: 1240px;
+    padding: 40px;
+}
+
+.reiter {
     position: relative;
     left: 470px;
     -moz-appearance: none;
@@ -435,7 +441,6 @@ select {
     border: none;
     padding: 10px;
     margin: 20px;
-    background: url(fff-0-2.png) repeat;
     color: #001f47;
     background-color: #e95d0f;
     font-family: 'Open Sans', sans-serif;
@@ -461,16 +466,9 @@ select {
 .modalContent {
     background-color: #dddddd;
     border-radius: 40px 10px;
-    margin: auto;
-    padding: 20px;
-    width: 80%;
+    width: auto;
+    height: auto;
 }
-
-.modal-BoxInfo {
-    display: flex;
-    justify-content: space-between;
-}
-
 
 .close {
     float: right;
@@ -494,16 +492,6 @@ select {
     color: #001f47;
     text-decoration: none;
     cursor: pointer;
-}
-
-.row1,
-.row2,
-.row3,
-.row4,
-.row5 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
 }
 
 .wrapVornameBuchung,

@@ -22,8 +22,8 @@ $user = check_user();
 //        }
 //        ?>
         </div>
-        <div class='wahlReiter'>
-            <select name="gebaeudeReiter" class="gebaeudeReiter">
+        <div id='wahlReiter'>
+            <select name="gebaeudeReiter" class="reiter" id="gebaeudeReiter">
                 <?php
 
                 use mapper\ZimmerDAO;
@@ -37,7 +37,7 @@ $user = check_user();
                 ?>
             </select>
 
-            <select name="etageReiter" class="etageReiter">
+            <select name="etageReiter" class="reiter" id="etageReiter">
                 <?php
                 $objZimmer = new ZimmerDAO();
                 $arrRooms = $objZimmer->readEtage();

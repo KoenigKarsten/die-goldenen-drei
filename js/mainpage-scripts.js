@@ -41,8 +41,8 @@ function checkRoomStatus() {
 }
 
 //Event + Function wenn Gebäude oder Etage neu ausgewählt werden
-let elReiterGebaeude = document.querySelector('.gebaeudeReiter');
-let elReiterEtage = document.querySelector('.etageReiter');
+let elReiterGebaeude = document.querySelector('#gebaeudeReiter');
+let elReiterEtage = document.querySelector('#etageReiter');
 
 elReiterGebaeude.addEventListener('change', refresh);
 elReiterEtage.addEventListener('change', refresh);
