@@ -40,7 +40,8 @@ $user = check_user();
                 <th>bis</th>
             </tr>
             <?php
-            $statement = $pdo->prepare("SELECT gast.*, reservierung.ZimmerNr, reservierung.DatumVon, reservierung.DatumBis FROM gast LEFT JOIN reservierung ON gast.GastNr = reservierung.GastNr");
+            $statement = $pdo->prepare("SELECT gast.*, reservierung.ZimmerNr, reservierung.DatumVon, reservierung.DatumBis 
+                                        FROM gast LEFT JOIN reservierung ON gast.GastNr = reservierung.GastNr");
             $result = $statement->execute();
             $count = 1;
 
@@ -74,5 +75,16 @@ $user = check_user();
 
 </div>
 <?php
+         
+         if (isset($_GET['deleteGuest=1'])) {
+            $statement = $pdo->prepare("DELETE FROM gast WHERE GastNr = ?");
+            $statement->bindParam(1,$_GET['deleteGuest']); 
+            $result = $statement->execute(); 
+            if (!$result) {
+                ?> 
+                <script>alert("Dieser Gast kann nicht gelöscht werden, weil noch eine Reservierung besteht.");</script>
+                <?php
+            }          
+         }   
 include("templates/footer.php")
 ?>
