@@ -12,13 +12,13 @@ require_once('templates/header.php');
 $user = check_user();
 $showFormular = "";
 
-if (isset($_GET['changeGuest'])) {
+if (isset($_GET['changeReservation'])) {
     $statement = $pdo->prepare("SELECT * FROM reservierung WHERE ReservierungNr = ?");
-    $statement->bindParam(1, $_GET['changeGuest']);
+    $statement->bindParam(1, $_GET['changeReservation']);
     $result = $statement->execute();
 
-    $statement = $pdo->prepare("UPDATE FROM rservierung WHERE ReservierungNr = ?");
-    $statement->bindParam(1, $_GET['changeGuest']);
+    $statement = $pdo->prepare("UPDATE FROM reservierung WHERE ReservierungNr = ?");
+    $statement->bindParam(1, $_GET['changeReservation']);
     $result = $statement->execute();
     echo '<style type="text/css">table.table {
         display:none;}
@@ -67,10 +67,10 @@ if (isset($_GET['changeGuest'])) {
 
                     echo '<td>
 
-                <br><p><a class="btn btn-primary btn-lg" href="changeReservation.php?changeReservation=' . $row['ReservierungNr'] . '" role="button">ändern</a></p>
-                    </td>';
+                        <br><p><a class="btn btn-primary btn-lg" href="changeReservation.php?changeReservation=' . $row['ReservierungNr'] . '" role="button">ändern</a></p>
+                    
+                        </td>';
 
-                
                     echo "</tr>";
                 }
                 ?>
