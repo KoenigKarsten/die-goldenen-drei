@@ -62,7 +62,7 @@ $user = check_user();
                 echo "<td>" . $row['ZimmerNr'] . "</td>";
                 echo "<td>" . $row['DatumVon'] . "</td>";
                 echo "<td>" . $row['DatumBis'] . "</td>";
-                echo '<td><input type="checkbox" name="guest" value="guest"></td>';
+                // echo '<td><input type="checkbox" name="guest" value="guest"></td>';
                 echo "</tr>";
             }
             ?>
