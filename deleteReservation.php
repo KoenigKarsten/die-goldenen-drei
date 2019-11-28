@@ -70,7 +70,6 @@ if (isset($_GET['deleteReservation'])) {
                 }
                 ?>
 
-
             </table>
         </div>
 
