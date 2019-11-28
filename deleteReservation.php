@@ -1,25 +1,39 @@
 <?php
 session_start();
+
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
-
 require_once('templates/header.php');
 
-spl_autoload_register();
+//Überprüfe, dass der User eingeloggt ist
+//Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
 
-use mapper\ReservierungsDAO;
+$user = check_user();
+
+if (isset($_GET['deleteReservation'])) {
+    $statement = $pdo->prepare("DELETE FROM reservierung WHERE ReservierungNr = ?");
+    $statement->bindParam(1, $_GET['deleteReservation']);
+    $result = $statement->execute();
+    if (!$result) {
+        ?>
+        <script>alert("Diese Reservierung kann nicht gelöscht werden.");</script>
+        <?php
+    }
+}
 
 ?>
+
 <div class="mainContainer">
     <div class="textAusgabeRest">
 
 
-        <h1>Reservierung</h1>
+        <h1>Reservierung löschen</h1>
 
         Hallo <?php echo htmlentities($user['vorname']); ?>,<br>
         Herzlich Willkommen im Reservierungsbereich!<br><br>
 
         <div class="panel panel-default">
+
 
             <table class="table">
 
@@ -46,19 +60,18 @@ use mapper\ReservierungsDAO;
                     echo "<td>" . $row['DatumVon'] . "</td>";
                     echo "<td>" . $row['DatumBis'] . "</td>";
                     echo "</tr>";
+
+                    echo '<td>
+                
+                <br><p><a class="btn btn-primary btn-lg" href="deleteReservation.php?deleteReservation=' . $row['ReservierungNr'] . '" role="button">löschen</a></p>
+               
+                </td>';
+                    echo "</tr>";
                 }
                 ?>
+
             </table>
         </div>
 
-        <p><a class="btn btn-primary btn-lg" href="changeReservation.php" role="button">Reservierung ändern</a></p>
-        <br>
-        <p><a class="btn btn-primary btn-lg" href="deleteReservation.php" role="button">Reservierung löschen</a></p>
-
     </div>
-
 </div>
-
-<?php
-include("templates/footer.php")
-?>

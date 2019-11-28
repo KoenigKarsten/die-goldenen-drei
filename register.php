@@ -2,13 +2,15 @@
 session_start();
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
-require_once ('templates/header.php');
+require_once('templates/header.php');
 //Überprüfe, dass der User eingeloggt ist
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
 
 $user = check_user();
 ?>
-    <div class="container main-container registration-form">
+<div class="mainContainer">
+    <div class="textAusgabeRest">
+
         <h1>Registrierung</h1>
         <?php
         $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
@@ -39,7 +41,7 @@ $user = check_user();
                 echo 'Die Passwörter müssen übereinstimmen<br>';
                 $error = true;
             }
-            
+
 
             //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
             if (!$error) {
@@ -52,8 +54,7 @@ $user = check_user();
                     $error = true;
                 }
             }
-            
-            
+
 
             //Keine Fehler, wir können den Nutzer registrieren
             if (!$error) {
@@ -65,23 +66,19 @@ $user = check_user();
                 if ($admin == true) {
                     $statement = $pdo->prepare("UPDATE users SET admin = 1 WHERE email = '$email'");
                     $resultAdmin = $statement->execute(array('admin'));
-                              
+
                     if ($resultAdmin) {
                         echo 'Du wurdest erfolgreich als Admin registriert. <a href="login.php">Zum Login</a>';
                         $showFormular = false;
-                    } 
-                    else {
+                    } else {
                         echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
-                    } 
-                }
-
-                elseif ($result) {
-                        echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
-                        $showFormular = false;
-                }
-                else {
+                    }
+                } elseif ($result) {
+                    echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
+                    $showFormular = false;
+                } else {
                     echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
-                } 
+                }
             }
         }
 
@@ -134,6 +131,7 @@ $user = check_user();
 
         ?>
     </div>
+</div>
 <?php
 include("templates/footer.php");
 ?>

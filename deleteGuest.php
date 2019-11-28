@@ -9,21 +9,22 @@ require_once('templates/header.php');
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
 
 $user = check_user();
-             
-    if (isset($_GET['deleteGuest'])) {
-        $statement = $pdo->prepare("DELETE FROM gast WHERE GastNr = ?");
-        $statement->bindParam(1,$_GET['deleteGuest']); 
-        $result = $statement->execute(); 
-        if (!$result) {
-            ?> 
-            <script>alert("Dieser Gast kann nicht gelöscht werden, weil noch eine Reservierung besteht.");</script>
-            <?php
-        }             
+
+if (isset($_GET['deleteGuest'])) {
+    $statement = $pdo->prepare("DELETE FROM gast WHERE GastNr = ?");
+    $statement->bindParam(1, $_GET['deleteGuest']);
+    $result = $statement->execute();
+    if (!$result) {
+        ?>
+        <script>alert("Dieser Gast kann nicht gelöscht werden, weil noch eine Reservierung besteht.");</script>
+        <?php
     }
-                              
+}
+
 ?>
 
 <div class="mainContainer">
+    <div class="textAusgabeRest">
 
     <h1>Gast löschen</h1>
 
@@ -79,13 +80,13 @@ $user = check_user();
                 <br><p><a class="btn btn-primary btn-lg" href="deleteGuest.php?deleteGuest=' . $row['GastNr'] . '" role="button">löschen</a></p>
                
                 </td>';
-                echo "</tr>"; 
-            }
-            ?>
-           
-            
-                   
-        </table>
-        
+                    echo "</tr>";
+                }
+                ?>
+
+
+            </table>
+
+        </div>
     </div>
 </div>

@@ -14,16 +14,16 @@ $user = check_user();
 
 <div class="mainContainer">
     <div class='overviewMainpage'>
-        Hallo <?php echo htmlentities($user['vorname']) . " " . htmlentities($user['nachname']);
-        if ($user['admin'] == true) {
-            echo "<br>Willkommen im Adminbereich, hier können Sie im internen Bereich neue Benutzer eingeben.";
-        }
-        ?>
-        <br>
-        <br>
-        <br>
-        <div class='wahlReiter'>
-            <select name="gebaeudeReiter" id="gebaeudeReiter">
+        <div class="textAusgabeOverview">
+
+        Hallo <?php echo htmlentities($user['vorname']) . " " . htmlentities($user['nachname']).", <br> bitte wähle das Gebäude und die Etage aus.";
+//        if ($user['admin'] == true) {
+//            echo "<br>Willkommen im Adminbereich, hier können Sie im internen Bereich neue Benutzer eingeben.";
+//        }
+//        ?>
+        </div>
+        <div id='wahlReiter'>
+            <select name="gebaeudeReiter" class="reiter" id="gebaeudeReiter">
                 <?php
 
                 use mapper\ZimmerDAO;
@@ -37,7 +37,7 @@ $user = check_user();
                 ?>
             </select>
 
-            <select name="etageReiter" id="etageReiter">
+            <select name="etageReiter" class="reiter" id="etageReiter">
                 <?php
                 $objZimmer = new ZimmerDAO();
                 $arrRooms = $objZimmer->readEtage();

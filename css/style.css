@@ -242,6 +242,7 @@ body, html {
     position: absolute;
     left: 70px;
 }
+
 /*input[type="checkbox"] {*/
 /*    display: none;*/
 /*}*/
@@ -381,8 +382,6 @@ nav ul li a.active {
 
 
 .mainContainer {
-    position: relative;
-    top: 35%;
     display: flex;
     height: auto;
     flex-direction: column;
@@ -390,6 +389,65 @@ nav ul li a.active {
 }
 
 
+.overviewMainpage {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    justify-content: center;
+    top: 200px;
+    background-color: #d5d5d5;
+    height: auto;
+    width: auto;
+    padding: 30px;
+    border-radius: 40px;
+}
+
+.wahlReiter {
+    padding-bottom: 10px;
+}
+
+.textAusgabeOverview {
+    text-align: center;
+    font-size: 40px;
+    color: #001f47;
+    background-color: #eeeeee;
+    border-radius: 5px;
+}
+
+.textAusgabeRest{
+    border-radius: 40px;
+    padding: 30px;
+    text-decoration: none;
+    position: relative;
+    top: 100px;
+    text-align: center;
+    color: #001f47;
+    background: #eeeeee;
+}
+
+.polygonZeichnung{
+    background: #e5e5e5;
+    border-radius: 30px;
+    width: 1240px;
+    padding: 40px;
+}
+
+.reiter {
+    position: relative;
+    left: 470px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    padding: 10px;
+    margin: 20px;
+    color: #001f47;
+    background-color: #e95d0f;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
 
 /*MODAL BOX ANFANG*/
 
@@ -404,19 +462,13 @@ nav ul li a.active {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
 }
+
 .modalContent {
     background-color: #dddddd;
     border-radius: 40px 10px;
-    margin: auto;
-    padding: 20px;
-    width: 80%;
+    width: auto;
+    height: auto;
 }
-.modal-BoxInfo{
-    display: flex;
-    justify-content: space-between;
-}
-
-
 
 .close {
     float: right;
@@ -434,7 +486,6 @@ nav ul li a.active {
 }
 
 
-
 .close:hover,
 .close:focus {
     transform: scale(1.1, 1.1);
@@ -443,15 +494,6 @@ nav ul li a.active {
     cursor: pointer;
 }
 
-.row1,
-.row2,
-.row3,
-.row4,
-.row5{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
 .wrapVornameBuchung,
 .wrapNachnameBuchung,
 .wrapAdresseBuchung,
@@ -501,7 +543,7 @@ nav ul li a.active {
 .landBuchung {
 }
 
-.zimmerNrAnzeige{
+.zimmerNrAnzeige {
     width: 70px;
     position: absolute;
     top: 130px;
@@ -512,7 +554,8 @@ nav ul li a.active {
 }
 
 
-.inputWartung{
+.inputWartung {
     display: none;
 }
+
 /*MODAL BOX ENDE*/

@@ -3,7 +3,7 @@ session_start();
 
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
-require_once ('templates/header.php');
+require_once('templates/header.php');
 
 //Überprüfe, dass der User eingeloggt ist
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
@@ -11,50 +11,53 @@ require_once ('templates/header.php');
 $user = check_user();
 ?>
 <div class="mainContainer">
+    <div class="textAusgabeRest">
 
-    <h1>Herzlich Willkommen!</h1>
 
-    Hallo <?php echo htmlentities($user['vorname']); ?>,<br>
-    Herzlich Willkommen im internen Bereich!<br><br>
+        <h1>Herzlich Willkommen!</h1>
 
-    <div class="panel panel-default">
+        Hallo <?php echo htmlentities($user['vorname']); ?>,<br>
+        Herzlich Willkommen im internen Bereich!<br><br>
 
-        <table class="table">
-            <tr>
-                <th>#</th>
-                <th>Vorname</th>
-                <th>Nachname</th>
-                <th>Admin</th>
-                <th>E-Mail</th>
-            </tr>
-            <?php
-            $statement = $pdo->prepare("SELECT * FROM users ORDER BY id");
-            $result = $statement->execute();
-            $count = 1;
-            
-            while ($row = $statement->fetch()) {
-                echo "<tr>";
-                echo "<td>" . $count++ . "</td>";
-                echo "<td>" . $row['vorname'] . "</td>";
-                echo "<td>" . $row['nachname'] . "</td>";
-                if ($row['admin'] == 1) {
-                    echo "<td>ja</td>";
-                } 
-                else {
-                    echo "<td>nein</td>"; 
+        <div class="panel panel-default">
+
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Admin</th>
+                    <th>E-Mail</th>
+                </tr>
+                <?php
+                $statement = $pdo->prepare("SELECT * FROM users ORDER BY id");
+                $result = $statement->execute();
+                $count = 1;
+
+                while ($row = $statement->fetch()) {
+                    echo "<tr>";
+                    echo "<td>" . $count++ . "</td>";
+                    echo "<td>" . $row['vorname'] . "</td>";
+                    echo "<td>" . $row['nachname'] . "</td>";
+                    if ($row['admin'] == 1) {
+                        echo "<td>ja</td>";
+                    } else {
+                        echo "<td>nein</td>";
+                    }
+                    echo '<td><a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a></td>';
+                    echo "</tr>";
                 }
-                echo '<td><a href="mailto:' . $row['email'] . '">' . $row['email'] . '</a></td>';
-                echo "</tr>";
-            }
-            ?>
-        </table>
+                ?>
+            </table>
+        </div>
+
+        <p><a class="btn btn-primary btn-lg" href="register.php" role="button">Jetzt registrieren</a></p>
+        <br>
+        <p><a class="btn btn-primary btn-lg" href="deleteUser.php" role="button">Benutzer löschen</a></p>
+
     </div>
 
-    <p><a class="btn btn-primary btn-lg" href="register.php" role="button">Jetzt registrieren</a></p>
-    <br><p><a class="btn btn-primary btn-lg" href="deleteUser.php" role="button">Benutzer löschen</a></p>
-
 </div>
-
 <?php
 include("templates/footer.php")
 ?>

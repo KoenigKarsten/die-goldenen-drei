@@ -1,20 +1,38 @@
 <?php
+
 session_start();
+
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
-
 require_once('templates/header.php');
 
-spl_autoload_register();
+//Überprüfe, dass der User eingeloggt ist
+//Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
 
-use mapper\ReservierungsDAO;
+$user = check_user();
+$showFormular = "";
+
+if (isset($_GET['changeGuest'])) {
+    $statement = $pdo->prepare("SELECT * FROM reservierung WHERE ReservierungNr = ?");
+    $statement->bindParam(1, $_GET['changeGuest']);
+    $result = $statement->execute();
+
+    $statement = $pdo->prepare("UPDATE FROM rservierung WHERE ReservierungNr = ?");
+    $statement->bindParam(1, $_GET['changeGuest']);
+    $result = $statement->execute();
+    echo '<style type="text/css">table.table {
+        display:none;}
+        </style>';
+}
 
 ?>
+
 <div class="mainContainer">
+
     <div class="textAusgabeRest">
 
 
-        <h1>Reservierung</h1>
+        <h1>Reservierungsdaten ändern</h1>
 
         Hallo <?php echo htmlentities($user['vorname']); ?>,<br>
         Herzlich Willkommen im Reservierungsbereich!<br><br>
@@ -46,19 +64,18 @@ use mapper\ReservierungsDAO;
                     echo "<td>" . $row['DatumVon'] . "</td>";
                     echo "<td>" . $row['DatumBis'] . "</td>";
                     echo "</tr>";
+
+                    echo '<td>
+
+                <br><p><a class="btn btn-primary btn-lg" href="changeReservation.php?changeReservation=' . $row['ReservierungNr'] . '" role="button">ändern</a></p>
+                    </td>';
+
+                
+                    echo "</tr>";
                 }
                 ?>
+
             </table>
         </div>
-
-        <p><a class="btn btn-primary btn-lg" href="changeReservation.php" role="button">Reservierung ändern</a></p>
-        <br>
-        <p><a class="btn btn-primary btn-lg" href="deleteReservation.php" role="button">Reservierung löschen</a></p>
-
     </div>
-
 </div>
-
-<?php
-include("templates/footer.php")
-?>
