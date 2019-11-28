@@ -37,19 +37,18 @@ if (isset($_POST['submit'])) {
     $email = $_POST['emailAddy'];
 //    $datumVon = $_POST['datumVon'];
 //    $datumBis = $_POST['datumBis'];
-
     $gast = new Gast($anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
     $gastDao = new GastDAO();
 
     //Gastnr. aus der Datenbank auslesen und in die Reservierungstabelle eintragen (neue DAO?)
-//    $reservierung = new Reservierung($zimmernr, $gastnr, $mitarbeiternr, $datumVon, $datumBis);
+//    $reservierung = new Reservierung($zimmerNr, $gastnr, $datumVon, $datumBis);
 //    $reservierungDao = new ReservierungDAO();
 
    
 
-    $gastDao->create($gast);
-    $reservierungDao->create($reservierung);
-    $gastDao->read($gast);
+    $objGastDao1 = $gastDao->create($gast);
+    $objReservierungDao = $reservierungDao->create($reservierung);
+    $objGastDao2 = $gastDao->read($gast);
 
 } else {
     echo "Fehler";

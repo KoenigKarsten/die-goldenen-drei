@@ -74,7 +74,7 @@ let elModal = document.querySelector(".modal");
 
 function openModalFree(e) {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'src/modalBox.html');
+    xhr.open('GET', 'modalBox.html');
     xhr.send();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -87,7 +87,7 @@ function openModalFree(e) {
 
 function openModalBusy(e) {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'src/roomBusy.html');
+    xhr.open('GET', 'roomBusy.html');
     xhr.send();
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -99,8 +99,6 @@ function openModalBusy(e) {
 }
 
 function openModal() {
-    const elSpan = document.querySelector(".close");
-    elSpan.addEventListener('click', hideInfo);
     document.querySelector('.btn.btn-secondary').addEventListener('click', hideInfo);
     elModal.style.display = 'block';
 }
@@ -115,8 +113,20 @@ function showRoomInModal(e) {
     const zimmerNrAnzeigeModalBox = document.querySelector('.zimmerNrAnzeige');
     const submitButtonInModal = document.querySelector('.btn.btn-primary');
     zimmerNrAnzeigeModalBox.innerHTML = e.getAttribute('room');
+    let zimmerNr = e.getAttribute('room');
     submitButtonInModal.setAttribute('value', e.getAttribute('room'));
-
+    if(e.getAttribute('fill') === '#8B0000'){
+        let xhrBusy = new XMLHttpRequest();
+        xhrBusy.open('POST', 'roomBusyOutput.php');
+        xhrBusy.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhrBusy.send(`zimmerNr=${zimmerNr}`);
+        xhrBusy.onreadystatechange = function () {
+            if (xhrBusy.readyState === 4 && xhrBusy.status === 200) {
+                let modalBusyOutput = xhrBusy.responseText;
+                console.log(modalBusyOutput);
+            }
+        };
+    }
 }
 
 

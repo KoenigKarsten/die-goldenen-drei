@@ -4,6 +4,7 @@ namespace mapper;
 require_once("SQLDAOFactory.php");
 
 use model\Gast;
+use model\Reservierung;
 
 // include_once("../model/Gast.php");
 
@@ -16,7 +17,7 @@ class GastDAO
         $this->dbConnect = SQLDAOFactory::getInstance();
     }
 
-    public function create(Gast $gast)
+    public function create(Gast $gast, Reservierung $reservierung)
     {
         $id = -1;
 
@@ -43,7 +44,8 @@ class GastDAO
                 if (!$preStmt->execute()) {
                     echo "Fehler beim Ausführen (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                 } else {
-                    header("Location: overview.php?signup=success"); //success.php nur zu Testzwecken, muss eventuell noch geändert werden zu overview.php
+                    //success.php nur zu Testzwecken, muss eventuell noch geändert werden zu overview.php
+                    header("Location: overview.php?signup=success");
 
                 }
             }
@@ -53,14 +55,13 @@ class GastDAO
     }
 
 
-    public function read(Gast $gast)
+    public function read($zimmerNr)
     {
         include("./model/gast.php");
 
-        $sql = ("SELECT g.gastnr, g.anrede, g.vorname, g.nachname, g.strasse, g.hausnr, g.plz, g.land, g.ort, g.zusatz, g.telefon, g.email, r.datumVon, r.datumBis
+        $sql = ("SELECT r.zimmerNr, g.anrede, g.vorname, g.nachname, g.strasse, g.hausnr, g.plz, g.land, g.ort,  g.telefon, g.email, r.datumVon, r.datumBis
                         FROM gast g, reservierung r
-                        WHERE r.zimmerNr = $zimmernr
-                        AND r.gastNr = g.gastNr");
+                        WHERE r.ZimmerNrr = $zimmerNr");
 
         if (!$preStmt = $this->dbConnect->prepare($sql)) {
             echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
@@ -75,7 +76,7 @@ class GastDAO
                         echo "Fehler beim Ergebnis-Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                     } else {
                         if ($preStmt->fetch()) {
-                            $gast = new Gast($gastnr, $anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
+                            $gast = new Gast($gastnr, $anrede, $vorname, $nachname, $strasse, $hausnr, $plz, $ort, $land, $telefon, $email, $datumVon, $datumBis);
                         }
                         $preStmt->free_result();
                     }
@@ -85,7 +86,7 @@ class GastDAO
             $preStmt->close();
         }
 
-        return $gast;
+        return  json_decode($gast);
     }
 
     public function readAll(Gast $gast) {
