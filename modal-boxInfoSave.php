@@ -7,6 +7,7 @@ require_once('model/Reservierung.php');
 
 use mapper\GastDAO;
 use model\Gast;
+use model\Reservierung;
 
 $anrede = "";
 $vorname = "";
@@ -19,8 +20,9 @@ $ort = "";
 $land = "";
 $telefon = "";
 $email = "";
-//$datumVon = "";
-//$datumBis ="";
+$datumVon = "";
+$datumBis ="";
+$gastNr = "";
 
 if (isset($_POST['submit'])) {
     $zimmerNr = $_POST['submit'];
@@ -34,20 +36,17 @@ if (isset($_POST['submit'])) {
     $land = $_POST['land'];
     $telefon = $_POST['telefonNr'];
     $email = $_POST['emailAddy'];
-//    $datumVon = $_POST['datumVon'];
-//    $datumBis = $_POST['datumBis'];
+    $datumVon = $_POST['DatumVon'];
+    $datumBis = $_POST['DatumBis'];
+    var_dump($datumVon);
+    var_dump($datumBis);
+
+
     $gast = new Gast($anrede, $vorname, $nachname, $strasse, $hausnr,  $plz, $ort, $land, $telefon, $email);
     $gastDao = new GastDAO();
+    $reservierung = new Reservierung($zimmerNr, $gastNr, $datumVon, $datumBis);
 
-    //Gastnr. aus der Datenbank auslesen und in die Reservierungstabelle eintragen (neue DAO?)
-//    $reservierung = new Reservierung($zimmerNr, $gastnr, $datumVon, $datumBis);
-//    $reservierungDao = new ReservierungDAO();
-
-   
-
-    $objGastDao1 = $gastDao->create($gast, $zimmerNr);
-    $objReservierungDao = $reservierungDao->create($reservierung);
-    $objGastDao2 = $gastDao->read($gast);
+    $objGastDao1 = $gastDao->create($gast, $zimmerNr,$datumVon, $datumBis);
 
 } else {
     echo "Fehler";
