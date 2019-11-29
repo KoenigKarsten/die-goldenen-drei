@@ -9,8 +9,7 @@ use mapper\SQLDAOFactory;
 spl_autoload_register();
 $dbConnect = SQLDAOFactory::getInstance();
 
-//$zimmerNr = $_POST['zimmerNr'];
-$zimmerNrInput = 'D903';
+$zimmerNrInput = $_POST['zimmerNr'];
 
 $statement = $dbConnect->prepare("SELECT gast.*, reservierung.DatumVon, reservierung.DatumBis
                         FROM gast, reservierung WHERE reservierung.GastNr = gast.GastNr AND reservierung.ZimmerNr = ?");

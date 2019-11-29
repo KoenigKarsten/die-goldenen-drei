@@ -4,7 +4,6 @@ namespace mapper;
 require_once("SQLDAOFactory.php");
 
 use model\Gast;
-use model\Reservierung;
 
 // include_once("../model/Gast.php");
 
@@ -17,11 +16,11 @@ class GastDAO
         $this->dbConnect = SQLDAOFactory::getInstance();
     }
 
-    public function create(Gast $gast, Reservierung $reservierung)
+    public function create(Gast $gast)
     {
         $id = -1;
 
-        $sql = ("INSERT INTO gast (anrede, vorname, nachname, strasse, hausnr, zusatz, plz, ort, land, telefon, email) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+        $sql = ("INSERT INTO gast (anrede, vorname, nachname, strasse, hausnr, plz, ort, land, telefon, email) VALUES(?,?,?,?,?,?,?,?,?,?)");
 
         $anrede = $gast->getAnrede();
         $vorname = $gast->getVorname();
@@ -31,14 +30,13 @@ class GastDAO
         $plz = $gast->getPlz();
         $ort = $gast->getOrt();
         $land = $gast->getLand();
-        $zusatz = $gast->getZusatz();
         $telefon = $gast->getTelefon();
         $email = $gast->getEmail();
 
         if (!$preStmt = $this->dbConnect->prepare($sql)) {
             echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
         } else {
-            if (!$preStmt->bind_param("sssssssssss", $anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email)) {
+            if (!$preStmt->bind_param("ssssssssss", $anrede, $vorname, $nachname, $strasse, $hausnr, $plz, $ort, $land, $telefon, $email)) {
                 echo "Fehler beim Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
             } else {
                 if (!$preStmt->execute()) {
@@ -72,7 +70,7 @@ class GastDAO
                 if (!$preStmt->execute()) {
                     echo "Fehler beim Ausführen (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                 } else {
-                    if (!$preStmt->bind_result($gastnr, $anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email)) {
+                    if (!$preStmt->bind_result($gastnr, $anrede, $vorname, $nachname, $strasse, $hausnr, $plz, $ort, $land, $telefon, $email)) {
                         echo "Fehler beim Ergebnis-Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                     } else {
                         if ($preStmt->fetch()) {
@@ -86,10 +84,11 @@ class GastDAO
             $preStmt->close();
         }
 
-        return  json_decode($gast);
+        return json_decode($gast);
     }
 
-    public function readAll(Gast $gast) {
+    public function readAll(Gast $gast)
+    {
         include("./model/gast.php");
 
         $sql = ("SELECT * FROM gast");
@@ -103,11 +102,11 @@ class GastDAO
                 if (!$preStmt->execute()) {
                     echo "Fehler beim Ausführen (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                 } else {
-                    if (!$preStmt->bind_result($gastnr, $anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email)) {
+                    if (!$preStmt->bind_result($gastnr, $anrede, $vorname, $nachname, $strasse, $hausnr, $plz, $ort, $land, $telefon, $email)) {
                         echo "Fehler beim Ergebnis-Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                     } else {
                         if ($preStmt->fetch()) {
-                            $gast = new Gast($gastnr, $anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email);
+                            $gast = new Gast($gastnr, $anrede, $vorname, $nachname, $strasse, $hausnr, $plz, $ort, $land, $telefon, $email);
                         }
                         $preStmt->free_result();
                     }

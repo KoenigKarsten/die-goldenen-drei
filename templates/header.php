@@ -9,13 +9,13 @@
     <!-- Custom styles for this template -->
     <link href="./css/style.css" rel="stylesheet" type="text/css" media="screen">
     <link href="./css/fontawesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome.min.css"
-
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome.min.css">
+    <link rel="icon" href="./icon.png">
 
 
 </head>
 <body>
-<?php 
+<?php
 
 require_once('./inc/functions.php');
 if (!is_checked_in()): ?>
