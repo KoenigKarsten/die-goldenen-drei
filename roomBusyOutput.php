@@ -11,17 +11,15 @@ $dbConnect = SQLDAOFactory::getInstance();
 
 $zimmerNrInput = $_POST['zimmerNr'];
 
+
+
 $statement = $dbConnect->prepare("SELECT gast.*, reservierung.DatumVon, reservierung.DatumBis
                         FROM gast, reservierung WHERE reservierung.GastNr = gast.GastNr AND reservierung.ZimmerNr = ?");
-//$statement->bind_param("s", $_POST['name']);
+
 $statement->bind_param("s", $zimmerNrInput);
 $statement->execute();
-//$statement->store_result();
-//$statement->bind_result($gastNr, $anrede, $vorname, $nachname, $strasse, $hausNr, $zusatz, $plz, $ort, $land, $telefon, $email, $datumVon, $datumBis);
-//
-$statement->execute();
 $res = $statement->get_result();
-echo json_encode($res->fetch_all(MYSQLI_ASSOC));
+echo json_encode($res->fetch_assoc());
 
 
 

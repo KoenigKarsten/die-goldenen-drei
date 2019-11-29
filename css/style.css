@@ -556,4 +556,18 @@ nav ul li a.active {
     display: none;
 }
 
+#anredeBuchungBusy,
+#vornameBuchungBusy,
+#nachnameBuchungBusy,
+#strasseBuchungBusy,
+#hausnummerBuchungBusy,
+#postleitzahlBuchungBusy,
+#ortBuchungBusy,
+#landBuchungBusy,
+#telefonNrBusy,
+#emailAddyBusy,
+#inputDatumVonBusy,
+#inputDatumBisBusy{
+    color: red;
+}
 /*MODAL BOX ENDE*/
