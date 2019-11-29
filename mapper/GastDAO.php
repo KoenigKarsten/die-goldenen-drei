@@ -16,9 +16,15 @@ class GastDAO
         $this->dbConnect = SQLDAOFactory::getInstance();
     }
 
-    public function create(Gast $gast)
+    public function create(Gast $gast, $zimmerNr)
     {
         $id = -1;
+        $sqlChange = ("UPDATE zimmer SET Status = 1 WHERE ZimmerNr=?");
+        $stat = $this->dbConnect->prepare($sqlChange);
+        $stat->bind_param('s', $zimmerNr);
+        $stat->execute();
+
+
 
         $sql = ("INSERT INTO gast (anrede, vorname, nachname, strasse, hausnr, plz, ort, land, telefon, email) VALUES(?,?,?,?,?,?,?,?,?,?)");
 
