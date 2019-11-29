@@ -15,18 +15,17 @@ class ReservierungDAO
     public function create(Reservierung $reservierung){
         $id = -1;
 
-        $sql = ("INSERT INTO reservierung (zimmerNr, gastNr, mitarbeiterNr, datumVon, datumBis) VALUES(?,?,?,?,?)");
+        $sql = ("INSERT INTO reservierung (zimmerNr, gastNr, datumVon, datumBis) VALUES(?,?,,?,?)");
 
         $zimmernr = $reservierung->getZimmernr();
         $gastnr = $reservierung->getGastnr();
-        $mitarbeiternr = $reservierung->getMitarbeiternr();
         $datumVon = $reservierung->getDatumVon();
         $datumBis = $reservierung->getDatumBis();
 
         if (!$preStmt = $this->dbConnect->prepare($sql)) {
             echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
         } else {
-            if (!$preStmt->bind_param("sssss", $zimmernr, $gastnr, $mitarbeiternr, $datumVon, $datumBis)) {
+            if (!$preStmt->bind_param("sssss", $zimmernr, $gastnr, $datumVon, $datumBis)) {
                 echo "Fehler beim Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
             } else {
                 if (!$preStmt->execute()) {

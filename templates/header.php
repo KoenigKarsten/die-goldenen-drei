@@ -15,6 +15,7 @@
 
 </head>
 <body>
+
 <?php
 
 require_once('./inc/functions.php');
@@ -77,5 +78,10 @@ if (!is_checked_in()): ?>
             </ul>
         </nav>
     </header>
-
+    <form>
+  <input type="button" value="Zurück" onclick="history.back()">
+</form>
+<form>
+  <input type="button" value="Vor" onclick="history.forward()">
+</form>
 <?php endif; ?>
