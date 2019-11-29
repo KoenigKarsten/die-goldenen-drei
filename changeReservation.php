@@ -10,19 +10,22 @@ require_once('templates/header.php');
 //Der Aufruf von check_user() muss in alle internen Seiten eingebaut sein
 
 $user = check_user();
-$showFormular = "";
 
-if (isset($_GET['changeReservation'])) {
-    $statement = $pdo->prepare("SELECT * FROM reservierung WHERE ReservierungNr = ?");
-    $statement->bindParam(1, $_GET['changeReservation']);
-    $result = $statement->execute();
+if (isset($_GET['changeReservation']) ) {
+        
+    $reservierungNr = $_GET['ReservierungNr'];
+    $zimmerNr = $_GET['ZimmerNr'];
+    $gastNr = $_GET['GastNr'];
+    $datumVon = $_GET['DatumVon'];
+    $datumBis = $_GET['DatumBis'];
+    
+$statement = $pdo->prepare("UPDATE reservierung SET reservierung.DatumVon = '$datumVon', reservierung.DatumBis = '$datumBis' WHERE reservierung.ReservierungNr = ?");
+$statement->bindParam(1, $_GET['ReservierungNr']);
+$result = $statement->execute();
 
-    $statement = $pdo->prepare("UPDATE FROM reservierung WHERE ReservierungNr = ?");
-    $statement->bindParam(1, $_GET['changeReservation']);
-    $result = $statement->execute();
-    echo '<style type="text/css">table.table {
-        display:none;}
-        </style>';
+if ($result ) {
+    header("Location: reservierungsueberblick.php");
+}
 }
 
 ?>
@@ -57,21 +60,18 @@ if (isset($_GET['changeReservation'])) {
                 while ($row = $statement->fetch()) {
                     echo "<tr>";
                     ?>
-                    <td><input type="text" name="Reservierungsnummer" value="<?php echo htmlentities($row['ReservierungNr'])?>"></td>
-                    <td><input type="text" name="Zimmernummer" value="<?php echo htmlentities($row['ZimmerNr'])?>"></td>
-                    <td><input type="text" name="Gastnummer" value="<?php echo htmlentities($row['GastNr'])?>"></td>
-                    <td><input type="text" name="DatumVon" value="<?php echo htmlentities($row['DatumVon'])?>"></td>
-                    <td><input type="text" name="DatumBis" value="<?php echo htmlentities($row['DatumBis'])?>"></td>
+                    <form method="get">
+                    <td><output type="text" name="Reservierungsnummer" value="<?php echo htmlentities($row['ReservierungNr'])?>"><?php echo htmlentities($row['ZimmerNr'])?></td>
+                    <td><output type="text" name="Zimmernummer" value="<?php echo htmlentities($row['ZimmerNr'])?>"><?php echo htmlentities($row['ZimmerNr'])?></td>
+                    <td><output type="text" name="Gastnummer" value="<?php echo htmlentities($row['GastNr'])?>"><?php echo htmlentities($row['GastNr'])?></td>
+                    <td><input type="date" name="DatumVon" value="<?php echo htmlentities($row['DatumVon'])?>"></td>
+                    <td><input type="date" name="DatumBis" value="<?php echo htmlentities($row['DatumBis'])?>"></td>
+                    <td>
+                    <br><p><input type="submit" name="changeReservation" class="btn btn-primary btn-lg" role="button"></input></p>
+                    </td>
+                    </form>
                     <?php
-                    echo "</tr>";
-
-                    echo '<td>
-
-                        <br><p><a class="btn btn-primary btn-lg" href="changeReservation.php?changeReservation=' . $row['ReservierungNr'] . '" role="button">ändern</a></p>
-                    
-                        </td>';
-
-                    echo "</tr>";
+                  
                 }
                 ?>
 
