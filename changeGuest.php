@@ -24,22 +24,13 @@ if (isset($_GET['changeGuest']) && $_GET['GastNr'] != "") {
         $land = $_GET['Land'];
         $telefon = $_GET['Telefon'];
         $email = $_GET['Email'];
-        $zimmerNr = $_GET['ZimmerNr'];
-        $datumVon = $_GET['DatumVon'];
-        $datumBis = $_GET['DatumBis'];
-
-    $statement = $pdo->prepare("UPDATE gast SET gast.Vorname = '$vorname', gast.Nachname = '$nachname', gast.Strasse = '$strasse', gast.Hausnr = '$hausNr', gast.PLZ = '$plz', gast.Ort = '$ort', gast.Land = '$land', gast.Telefon = '$telefon', gast.Email = '$email'
+  
+    $statement = $pdo->prepare("UPDATE gast SET gast.Anrede = '$anrede', gast.Vorname = '$vorname', gast.Nachname = '$nachname', gast.Strasse = '$strasse', gast.Hausnr = '$hausNr', gast.PLZ = '$plz', gast.Ort = '$ort', gast.Land = '$land', gast.Telefon = '$telefon', gast.Email = '$email'
                                 WHERE GastNr = ?");
     $statement->bindParam(1, $_GET['GastNr']);
-    $result1 = $statement->execute();
+    $result = $statement->execute();
 
-
-    $statement = $pdo->prepare("UPDATE reservierung SET reservierung.ZimmerNr = '$zimmerNr', reservierung.DatumVon = '$datumVon', reservierung.DatumBis = '$datumBis'
-    WHERE GastNr = ?");
-    $statement->bindParam(1, $_GET['GastNr']);
-    $result2 = $statement->execute();
-
-    if ($result1 && $result2) {
+    if ($result) {
         header("Location: gaesteueberblick.php");
     }
 }
@@ -88,12 +79,32 @@ if (isset($_GET['changeGuest']) && $_GET['GastNr'] != "") {
                     echo "<td>" . $row['GastNr'] . "</td>";
                     ?> 
                     <form method="get">
-                        <input type="hidden" name="GastNr" value=" <?php echo $row['GastNr'] ?>">
+                        <input type="hidden" name="GastNr" value=" <?php echo $row['GastNr']?>">
                     <td>
                     <select name="Anrede" id="anrede">
-                        <option value="herr">Herr</option>
-                        <option value="frau">Frau</option>
-                        <option value="divers">Divers</option>
+                        <?php 
+                        if ($row['Anrede'] == "Herr") {
+                            ?>
+                            <option value="Herr">Herr</option>
+                            <option value="Frau">Frau</option>
+                            <option value="Divers">Divers</option>
+                            <?php
+                        }
+                        else if ($row['Anrede'] == "Frau") {
+                            ?>
+                            <option value="Frau">Frau</option>
+                            <option value="Herr">Herr</option>
+                            <option value="Divers">Divers</option>
+                            <?php
+                        }
+                        else {
+                            ?>
+                            <option value="Divers">Divers</option>
+                            <option value="Herr">Herr</option>
+                            <option value="Frau">Frau</option>
+                            <?php
+                        }
+                        ?>
                     </select> 
                     </td>  
                     <td><input type="text" name="Vorname" value="<?php echo htmlentities($row['Vorname'])?>"></td>
@@ -105,9 +116,9 @@ if (isset($_GET['changeGuest']) && $_GET['GastNr'] != "") {
                     <td><input type="text" name="Land" value="<?php echo htmlentities($row['Land'])?>"></td>
                     <td><input type="text" name="Telefon" value="<?php echo htmlentities($row['Telefon'])?>"></td>
                     <td><input type="text" name="Email" value=" <?php echo htmlentities($row['Email'])?>"></td>
-                    <td><input type="text" name="ZimmerNr" value="<?php echo htmlentities($row['ZimmerNr'])?>"></td>
-                    <td><input type="date" name="DatumVon" value="<?php echo htmlentities($row['DatumVon'])?>"></td>
-                    <td><input type="date" name="DatumBis" value="<?php echo htmlentities($row['DatumBis'])?>"></td>
+                    <td><output type="text" name="ZimmerNr" value="<?php echo htmlentities($row['ZimmerNr'])?>"><?php echo htmlentities($row['ZimmerNr'])?></td>
+                    <td><output type="date" name="DatumVon" value="<?php echo htmlentities($row['DatumVon'])?>"><?php echo htmlentities($row['DatumVon'])?></td>
+                    <td><output type="date" name="DatumBis" value="<?php echo htmlentities($row['DatumBis'])?>"><?php echo htmlentities($row['DatumBis'])?></td>
                     <td>
                     <br><p><input type="submit" name="changeGuest" class="btn btn-primary btn-lg" role="button"></input></p>
                     </td>
