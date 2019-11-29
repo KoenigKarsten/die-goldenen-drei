@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
 
    
 
-    $objGastDao1 = $gastDao->create($gast);
+    $objGastDao1 = $gastDao->create($gast, $zimmerNr);
     $objReservierungDao = $reservierungDao->create($reservierung);
     $objGastDao2 = $gastDao->read($gast);
 
