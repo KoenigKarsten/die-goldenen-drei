@@ -411,7 +411,7 @@ nav ul li a.active {
     font-size: 40px;
     color: #001f47;
     background-color: #eeeeee;
-    border-radius: 5px;
+    border-radius: 30px;
 }
 
 .textAusgabeRest{
@@ -466,23 +466,24 @@ nav ul li a.active {
 .modalContent {
     background-color: #dddddd;
     border-radius: 40px 10px;
-    width: auto;
+    width: 600px;
     height: auto;
+    display: flex;
+    justify-content: space-around;
+    padding: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -200px;
+    margin-left: -300px;
 }
 
 .close {
-    float: right;
-    position: relative;
-    z-index: 3;
-    top: 40px;
-    right: 220px;
     color: #e95d0f;
     font-size: 28px;
     height: auto;
     width: auto;
     font-weight: bold;
-    transition: transform .8s ease-in-out;
-
 }
 
 
@@ -545,9 +546,6 @@ nav ul li a.active {
 
 .zimmerNrAnzeige {
     width: 70px;
-    position: absolute;
-    top: 130px;
-    left: 600px;
     font-size: 33px;
     font-weight: bold;
     color: #001f47;
@@ -558,4 +556,18 @@ nav ul li a.active {
     display: none;
 }
 
+#anredeBuchungBusy,
+#vornameBuchungBusy,
+#nachnameBuchungBusy,
+#strasseBuchungBusy,
+#hausnummerBuchungBusy,
+#postleitzahlBuchungBusy,
+#ortBuchungBusy,
+#landBuchungBusy,
+#telefonNrBusy,
+#emailAddyBusy,
+#inputDatumVonBusy,
+#inputDatumBisBusy{
+    color: red;
+}
 /*MODAL BOX ENDE*/

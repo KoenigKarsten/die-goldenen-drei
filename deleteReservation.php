@@ -41,7 +41,6 @@ if (isset($_GET['deleteReservation'])) {
                     <th>Reservierungsnummer |</th>
                     <th>Zimmernummer |</th>
                     <th>Gastnummer |</th>
-                    <th>Mitarbeiternummer |</th>
                     <th>Datum von |</th>
                     <th>Datum bis</th>
                 </tr>
@@ -56,7 +55,6 @@ if (isset($_GET['deleteReservation'])) {
                     echo "<td>" . $row['ReservierungNr'] . "</td>";
                     echo "<td>" . $row['ZimmerNr'] . "</td>";
                     echo "<td>" . $row['GastNr'] . "</td>";
-                    echo "<td>" . $row['MitarbeiterNr'] . "</td>";
                     echo "<td>" . $row['DatumVon'] . "</td>";
                     echo "<td>" . $row['DatumBis'] . "</td>";
                     echo "</tr>";

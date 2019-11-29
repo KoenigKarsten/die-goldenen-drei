@@ -9,14 +9,13 @@ class Gast
     private $nachname;
     private $strasse;
     private $hausnr;
-    private $zusatz;
     private $plz;
     private $ort;
     private $land;
     private $telefon;
     private $email;
 
-    public function __construct($anrede, $vorname, $nachname, $strasse, $hausnr, $zusatz, $plz, $ort, $land, $telefon, $email)
+    public function __construct($anrede, $vorname, $nachname, $strasse, $hausnr,  $plz, $ort, $land, $telefon, $email)
     {
         // $this->gastnr = $gastnr;
         $this->anrede = $anrede;
@@ -24,7 +23,6 @@ class Gast
         $this->nachname = $nachname;
         $this->strasse = $strasse;
         $this->hausnr = $hausnr;
-        $this->zusatz = $zusatz;
         $this->plz = $plz;
         $this->ort = $ort;
         $this->land = $land;
@@ -62,10 +60,6 @@ class Gast
         return $this->hausnr;
     }
 
-    public function getZusatz()
-    {
-        return $this->zusatz;
-    }
 
     public function getPlz()
     {
@@ -122,10 +116,6 @@ class Gast
         $this->hausnr = $hausnr;
     }
 
-    public function setZusatz($zusatz)
-    {
-        $this->zusatz = $zusatz;
-    }
 
     public function setPlz($plz)
     {

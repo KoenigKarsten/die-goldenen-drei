@@ -4,16 +4,14 @@ class Reservierung
 {
     private $zimmernr;
     private $gastnr;
-    private $mitarbeiternr;
     private $datumVon;
     private $datumBis;
 
-    public function __construct($zimmernr, $gastnr, $mitarbeiternr, $datumVon, $datumBis)
+    public function __construct($zimmernr, $gastnr, $datumVon, $datumBis)
     {
 
         $this->zimmernr = $zimmernr;
         $this->gastnr = $gastnr;
-        $this->mitarbeiternr = $mitarbeiternr;
         $this->datumVon = $datumVon;
         $this->datumBis = $datumBis;
 
@@ -29,10 +27,6 @@ class Reservierung
         return $this->gastnr;
     }
 
-    public function getMitarbeiternr()
-    {
-        return $this->mitarbeiternr;
-    }
 
     public function getDatumVon()
     {
@@ -53,11 +47,6 @@ class Reservierung
     public function setGastnr($gastnr)
     {
         $this->gastnr = $gastnr;
-    }
-
-    public function setMitarbeiternr($mitarbeiternr)
-    {
-        $this->mitarbeiternr = $mitarbeiternr;
     }
 
     public function setDatumVon($datumVon)
