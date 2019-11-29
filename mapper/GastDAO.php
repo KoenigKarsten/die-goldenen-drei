@@ -16,16 +16,17 @@ class GastDAO
         $this->dbConnect = SQLDAOFactory::getInstance();
     }
 
-    public function create(Gast $gast, $zimmerNr)
-    {
-        $id = -1;
+    public function create(Gast $gast, $zimmerNr,$datumVon, $datumBis){
+
+        //////ZimmerNr Status Ändern
         $sqlChange = ("UPDATE zimmer SET Status = 1 WHERE ZimmerNr=?");
+
         $stat = $this->dbConnect->prepare($sqlChange);
         $stat->bind_param('s', $zimmerNr);
         $stat->execute();
 
 
-
+        ///////////Tabelle Gast Beschreiben
         $sql = ("INSERT INTO gast (anrede, vorname, nachname, strasse, hausnr, plz, ort, land, telefon, email) VALUES(?,?,?,?,?,?,?,?,?,?)");
 
         $anrede = $gast->getAnrede();
@@ -39,24 +40,23 @@ class GastDAO
         $telefon = $gast->getTelefon();
         $email = $gast->getEmail();
 
-        if (!$preStmt = $this->dbConnect->prepare($sql)) {
-            echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
-        } else {
-            if (!$preStmt->bind_param("ssssssssss", $anrede, $vorname, $nachname, $strasse, $hausnr, $plz, $ort, $land, $telefon, $email)) {
-                echo "Fehler beim Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
-            } else {
-                if (!$preStmt->execute()) {
-                    echo "Fehler beim Ausführen (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
-                } else {
-                    //success.php nur zu Testzwecken, muss eventuell noch geändert werden zu overview.php
-                    header("Location: overview.php?signup=success");
+        $preStmt = $this->dbConnect->prepare($sql);
+        $preStmt->bind_param("ssssssssss", $anrede, $vorname, $nachname, $strasse, $hausnr, $plz, $ort, $land, $telefon, $email);
+        $preStmt->execute();
 
-                }
-            }
+        $gastNr = $preStmt->insert_id;
+
+
+        $sqlReservierung = ("INSERT INTO reservierung(ZimmerNr, GastNr, DatumVon, DatumBis) VALUES(?, ?, ?, ?)");
+        $statRes = $this->dbConnect->prepare($sqlReservierung);
+        $statRes->bind_param('siss', $zimmerNr, $gastNr, $datumVon, $datumBis);
+        $statRes->execute();
+
+        header("Location: overview.php?signup=success");
+        $preStmt->close();
         }
 
-        $preStmt->close();
-    }
+
 
 
     public function read($zimmerNr)
