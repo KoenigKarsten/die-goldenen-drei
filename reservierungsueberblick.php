@@ -49,9 +49,8 @@ use mapper\ReservierungsDAO;
             </table>
         </div>
 
-        <p><a class="btn btn-primary btn-lg" href="changeReservation.php" role="button">Reservierung ändern</a></p>
-        <br>
-        <p><a class="btn btn-primary btn-lg" href="deleteReservation.php" role="button">Reservierung löschen</a></p>
+        <p><a class="btn btn-primary btn-lg" href="changeReservation.php" role="button">Reservierung ändern</a>
+           <a class="btn btn-primary btn-lg" href="deleteReservation.php" role="button">Reservierung löschen</a></p>
 
     </div>
 
