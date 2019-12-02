@@ -13,18 +13,26 @@ $user = check_user();
 
 if (isset($_GET['changeReservation']) && $_GET['ReservierungNr'] !="") {
 
-    $zimmerNr = $_GET['ZimmerNr'];
-    $gastNr = $_GET['GastNr'];
     $datumVon = $_GET['DatumVon'];
     $datumBis = $_GET['DatumBis'];
-    
-$statement = $pdo->prepare("UPDATE reservierung SET reservierung.DatumVon = '$datumVon', reservierung.DatumBis = '$datumBis' WHERE reservierung.ReservierungNr = ?");
-$statement->bindParam(1, $_GET['ReservierungNr']);
-$result = $statement->execute();
 
-if ($result ) {
-    header("Location: reservierungsueberblick.php");
-}
+      if ($datumVon <= $datumBis) {
+
+        $statement = $pdo->prepare("UPDATE reservierung SET reservierung.DatumVon = '$datumVon', reservierung.DatumBis = '$datumBis' WHERE reservierung.ReservierungNr = ?");
+        $statement->bindParam(1, $_GET['ReservierungNr']);
+        $result = $statement->execute();
+
+        if ($result ) {
+            header("Location: reservierungsueberblick.php");
+        }
+      }
+
+      else {
+        ?>
+        <script>alert("Das Anfangsdatum der Reservierung liegt hinter dem Enddatum, bitte ändern Sie das Datum.");</script>
+        <?php
+
+      }
 }
 
 ?>
