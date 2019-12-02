@@ -111,9 +111,8 @@ function hideInfo() {
 
 function showRoomInModal(e) {
     const zimmerNrAnzeigeModalBox = document.querySelector('.zimmerNrAnzeige');
-    const submitButtonInModal = document.querySelector('.btn.btn-primary');
     zimmerNrAnzeigeModalBox.innerHTML = e.getAttribute('room');
-    submitButtonInModal.setAttribute('value', e.getAttribute('room'));
+
     let zimmerNr = e.getAttribute('room');
 
 
@@ -142,6 +141,9 @@ function showRoomInModal(e) {
                 }
             }
         };
+    } else {
+        const submitButtonInModal = document.querySelector('.btn.btn-primary');
+        submitButtonInModal.setAttribute('value', e.getAttribute('room'));
     }
 }
 

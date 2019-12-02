@@ -572,3 +572,7 @@ nav ul li a.active {
     font-weight: bold;
 }
 /*MODAL BOX ENDE*/
+
+.btn.btn-primary.hide{
+    display: none;
+}
