@@ -11,9 +11,8 @@ require_once('templates/header.php');
 
 $user = check_user();
 
-if (isset($_GET['changeReservation']) ) {
-        
-    $reservierungNr = $_GET['ReservierungNr'];
+if (isset($_GET['changeReservation']) && $_GET['ReservierungNr'] !="") {
+
     $zimmerNr = $_GET['ZimmerNr'];
     $gastNr = $_GET['GastNr'];
     $datumVon = $_GET['DatumVon'];
@@ -59,9 +58,10 @@ if ($result ) {
 
                 while ($row = $statement->fetch()) {
                     echo "<tr>";
+                    echo "<td>" . $row['ReservierungNr'] . "</td>";
                     ?>
                     <form method="get">
-                    <td><output type="text" name="Reservierungsnummer" value="<?php echo htmlentities($row['ReservierungNr'])?>"><?php echo htmlentities($row['ZimmerNr'])?></td>
+                    <input type="hidden" name="ReservierungNr" value="<?php echo $row['ReservierungNr']?>">
                     <td><output type="text" name="Zimmernummer" value="<?php echo htmlentities($row['ZimmerNr'])?>"><?php echo htmlentities($row['ZimmerNr'])?></td>
                     <td><output type="text" name="Gastnummer" value="<?php echo htmlentities($row['GastNr'])?>"><?php echo htmlentities($row['GastNr'])?></td>
                     <td><input type="date" name="DatumVon" value="<?php echo htmlentities($row['DatumVon'])?>"></td>

@@ -73,15 +73,8 @@ if (!is_checked_in()): ?>
                     echo "<li><a href=\"internal.php\">Intern</a></li>";
                 } ?>
                 <li><a href="settings.php">Einstellung</a></li>
-
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
-    <form>
-  <input type="button" value="Zurück" onclick="history.back()">
-</form>
-<form>
-  <input type="button" value="Vor" onclick="history.forward()">
-</form>
 <?php endif; ?>
