@@ -400,6 +400,9 @@ nav ul li a.active {
     width: auto;
     padding: 30px;
     border-radius: 40px;
+    border: 1px solid #e95d0f;
+    box-shadow: 0px 0px 10px #2c2525;
+
 }
 
 .wahlReiter {
@@ -412,6 +415,9 @@ nav ul li a.active {
     color: #001f47;
     background-color: #eeeeee;
     border-radius: 30px;
+    border: 1px solid #e95d0f;
+    box-shadow: 0px 0px 5px #2c2525;
+
 }
 
 .textAusgabeRest{
@@ -423,6 +429,8 @@ nav ul li a.active {
     text-align: center;
     color: #001f47;
     background: #eeeeee;
+    border: 1px solid #e95d0f;
+    box-shadow: 0px 0px 10px #2c2525;
 }
 
 .polygonZeichnung{
@@ -430,6 +438,8 @@ nav ul li a.active {
     border-radius: 30px;
     width: 1240px;
     padding: 40px;
+    box-shadow: 0px 0px 10px #2c2525;
+    border: 1px solid #e95d0f;
 }
 
 .reiter {
