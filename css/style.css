@@ -243,63 +243,6 @@ body, html {
     left: 70px;
 }
 
-/*input[type="checkbox"] {*/
-/*    display: none;*/
-/*}*/
-
-/*input[type="checkbox"] + label {*/
-/*    width: 60px;*/
-/*    border-radius: 30px;*/
-/*    border: 2px solid #ddd;*/
-/*    background-color: #EEE;*/
-/*    display: inline-block;*/
-/*    content: "";*/
-/*    float: left;*/
-/*    margin-right: 5px;*/
-/*    transition: background-color 0.5s linear;*/
-/*    margin-bottom: 22px;*/
-/*}*/
-
-/*input[type="checkbox"] + label:hover {*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*input[type="checkbox"] + label::before {*/
-/*    width: 30px;*/
-/*    height: 30px;*/
-/*    border-radius: 30px;*/
-/*    background-color: #fff;*/
-/*    display: block;*/
-/*    content: "";*/
-/*    float: left;*/
-/*    margin-right: 5px;*/
-/*    transition: margin 0.1s linear;*/
-/*    box-shadow: 0px 0px 5px #aaa;*/
-/*}*/
-
-/*input[type="checkbox"]:checked + label {*/
-/*    background-color: #e95d0f;*/
-/*}*/
-
-/*input[type="checkbox"]:checked + label::before {*/
-/*    margin: 0 0 0 30px;*/
-/*}*/
-
-/*input[type="checkbox"] + label {*/
-/*    position: relative;*/
-/*}*/
-
-/*input[type="checkbox"] + label::after {*/
-/*    top: 5px;*/
-/*    white-space: nowrap;*/
-/*    overflow: hidden;*/
-/*    content: "Angemeldet bleiben";*/
-/*    color: #e95d0f;*/
-/*    position: absolute;*/
-/*    left: 70px;*/
-/*}*/
-
-
 /*ENDE LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
 /*ENDE LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
 /*ENDE LOGIN BEREICH////////////////////////////////////////////////////////////////////////*/
@@ -349,28 +292,6 @@ nav ul li a.active {
     background-color: #001f47;
 }
 
-
-/*ul {*/
-/*    display: flex;*/
-/*    list-style-type: none;*/
-/*}*/
-
-/*nav ul li{*/
-/*    background-color: #e95d0f;*/
-/*    width: 100%;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    height: 60px;*/
-/*    !*border-left: 1px solid #201c29;*!*/
-/*    !*border-right: 1px solid #201c29;*!*/
-/*    !*border-bottom: 1px solid #201c29;*!*/
-/*    text-align: center;*/
-/*    text-transform: uppercase;*/
-/*}*/
-
-/*nav ul li a.active{*/
-/*    background-color: #001f47;*/
-/*}*/
 
 .footer {
     height: 50px;
