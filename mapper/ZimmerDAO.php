@@ -18,20 +18,17 @@ class ZimmerDAO
     public function create(Zimmer $zimmer)
     {
         $id = -1;
-        $sql = "INSERT INTO zimmer (ZimmerNr, Gebäude, Etage, barrierefrei, WCBadIntegriert, PreisTag, Status) values(?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO zimmer (ZimmerNr, Gebäude, Etage, Status) values(?,?,?,?)";
 
         $zimmernr = $zimmer->getZimmernr();
         $gebaeude = $zimmer->getGebaeude();
         $etage = $zimmer->getEtage();
-        $barrierefrei = $zimmer->getBarrierefrei();
-        $wcbad = $zimmer->getWcbad();
-        $preistag = $zimmer->getPreistag();
         $status = $zimmer->getStatus();
 
         if (!$preStmt = $this->dbConnect->prepare($sql)) {
             echo "Fehler bei SQL-Vorbereitung (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
         } else {
-            if (!$preStmt->bind_param("sssssss", $zimmerNr, $gebaeude, $etage, $barrierefrei, $wcBad, $preisTag, $status)) {
+            if (!$preStmt->bind_param("ssss", $zimmerNr, $gebaeude, $etage, $status)) {
                 echo "Fehler beim Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
             } else {
                 if (!$preStmt->execute()) {

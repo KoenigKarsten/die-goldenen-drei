@@ -43,7 +43,7 @@ class ReservierungDAO
     {
         include("./model/Reservierung.php");
 
-        $sql = ("SELECT ZimmerNr, ReservierungNr, GastNr, MitarbeiterNr, DatumVon, DatumBis
+        $sql = ("SELECT ZimmerNr, ReservierungNr, GastNr, DatumVon, DatumBis
                         FROM Reservierung 
                         WHERE ZimmerNr = $Zimmernr
                         AND DatumVon = $datumVon
@@ -58,11 +58,11 @@ class ReservierungDAO
                 if (!$preStmt->execute()) {
                     echo "Fehler beim Ausführen (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                 } else {
-                    if (!$preStmt->bind_result($zimmernr, $gastnr, $mitarbeiternr, $datumVon, $datumBis)) {
+                    if (!$preStmt->bind_result($zimmernr, $gastnr, $datumVon, $datumBis)) {
                         echo "Fehler beim Ergebnis-Binding (" . $this->dbConnect->errno . ")" . $this->dbConnect->error . "<br>";
                     } else {
                         if ($preStmt->fetch()) {
-                            $reservierung = new Reservierung($zimmernr, $gastnr, $mitarbeiternr, $datumVon, $datumBis);
+                            $reservierung = new Reservierung($zimmernr, $gastnr, $datumVon, $datumBis);
                         }
                         $preStmt->free_result();
                     }
