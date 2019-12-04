@@ -31,6 +31,7 @@ if (isset($_GET['changeReservation']) && $_GET['ReservierungNr'] !="") {
         ?>
         <script>alert("Das Anfangsdatum der Reservierung liegt hinter dem Enddatum, bitte ändern Sie das Datum.");</script>
         <?php
+        header("Location: changeReservation.php");
 
       }
 }

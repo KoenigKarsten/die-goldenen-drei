@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+if (!isset($_SESSION)) { session_start(); }
+
 require_once("inc/config.php.inc");
 require_once("inc/functions.php");
 include_once("mapper/SQLDAOFactory.php");

@@ -49,6 +49,7 @@ if (isset($_POST['submit'])) {
         ?>
         <script>alert("Das Anfangsdatum der Reservierung liegt hinter dem Enddatum, bitte ändern Sie das Datum.");</script>
         <?php
+        header("Location: overview.php");
     }
 
 } else {
