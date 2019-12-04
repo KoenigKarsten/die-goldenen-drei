@@ -11,9 +11,14 @@ require_once('templates/header.php');
 $user = check_user();
 
 if (isset($_GET['deleteReservation'])) {
+
+    $statement = $pdo->prepare("UPDATE zimmer, reservierung SET status = 0 WHERE zimmer.ZimmerNr = reservierung.ZimmerNr AND ReservierungNr =?");
+    $statement->bindParam(1, $_GET['deleteReservation']);
+    $result = $statement->execute();
     $statement = $pdo->prepare("DELETE FROM reservierung WHERE ReservierungNr = ?");
     $statement->bindParam(1, $_GET['deleteReservation']);
     $result = $statement->execute();
+
     if (!$result) {
         ?>
         <script>alert("Diese Reservierung kann nicht gelöscht werden.");</script>
@@ -57,13 +62,11 @@ if (isset($_GET['deleteReservation'])) {
                     echo "<td>" . $row['GastNr'] . "</td>";
                     echo "<td>" . $row['DatumVon'] . "</td>";
                     echo "<td>" . $row['DatumBis'] . "</td>";
-                    echo "</tr>";
-
                     echo '<td>
-                
-                <br><p><a class="btn btn-primary btn-lg" href="deleteReservation.php?deleteReservation=' . $row['ReservierungNr'] . '" role="button">löschen</a></p>
-               
-                </td>';
+                    <p><a class="btn btn-primary btn-lg" href="deleteReservation.php?deleteReservation=' . $row['ReservierungNr'] . '" role="button">löschen</a></p>
+    
+                    </td>';
+                    echo "<td><p><br><br></p></td>";
                     echo "</tr>";
                 }
                 ?>
