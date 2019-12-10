@@ -46,6 +46,8 @@ $user = check_user();
                 $count = 1;
 
                 while ($row = $statement->fetch()) {
+                    $dateStart = new DateTime($row['DatumVon']);
+                    $dateEnd = new DateTime($row['DatumBis']);
                     echo "<tr>";
                     echo "<td>" . $count++ . "</td>";
                     echo "<td>" . $row['GastNr'] . "</td>";
@@ -60,8 +62,8 @@ $user = check_user();
                     echo "<td>" . $row['Telefon'] . "</td>";
                     echo '<td><a href="mailto:' . $row['Email'] . '">' . $row['Email'] . '</a></td>';
                     echo "<td>" . $row['ZimmerNr'] . "</td>";
-                    echo "<td>" . $row['DatumVon'] . "</td>";
-                    echo "<td>" . $row['DatumBis'] . "</td>";
+                    echo "<td>" . $dateStart->format('d.m.Y') . "</td>";
+                    echo "<td>" . $dateEnd->format('d.m.Y') . "</td>";
                     // echo '<td><input type="checkbox" name="guest" value="guest"></td>';
                     echo "</tr>";
                 }

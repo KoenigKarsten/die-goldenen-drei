@@ -35,14 +35,17 @@ use mapper\ReservierungsDAO;
                 $statement = $pdo->prepare("SELECT * FROM reservierung ORDER BY ReservierungNr");
                 $result = $statement->execute();
                 $count = 1;
+                
 
                 while ($row = $statement->fetch()) {
+                    $dateStart = new DateTime($row['DatumVon']);
+                    $dateEnd = new DateTime($row['DatumBis']);
                     echo "<tr>";
                     echo "<td>" . $row['ReservierungNr'] . "</td>";
                     echo "<td>" . $row['ZimmerNr'] . "</td>";
                     echo "<td>" . $row['GastNr'] . "</td>";
-                    echo "<td>" . $row['DatumVon'] . "</td>";
-                    echo "<td>" . $row['DatumBis'] . "</td>";
+                    echo "<td>" . $dateStart->format('d.m.Y') . "</td>";
+                    echo "<td>" . $dateEnd->format('d.m.Y') . "</td>";
                     echo "</tr>";
                 }
                 ?>
